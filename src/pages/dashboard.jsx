@@ -2,7 +2,7 @@ function Dashboard() {
 
     return (
         <h1>
-            Bonjour
+            Dashboard
         </h1>
     )
 
