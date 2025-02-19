@@ -1,10 +1,6 @@
 function FirstYear() {
 
-    return (
-        <h1>
-            Première année
-        </h1>
-    )
+
 
 }
 

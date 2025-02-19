@@ -1,10 +1,6 @@
 function SecondYear() {
 
-    return (
-        <h1>
-            Deuxième année
-        </h1>
-    )
+
 
 }
 

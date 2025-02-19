@@ -1,10 +1,6 @@
 function ThirdYear() {
 
-    return (
-        <h1>
-            Troisième année
-        </h1>
-    )
+
 
 }
 
