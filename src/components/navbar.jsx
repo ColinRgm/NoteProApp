@@ -9,35 +9,35 @@ function Navbar() {
             <ul>
                 <li>
                     <Link
-                        to="/"
-                    >
+                        to="/">
+                        Dashboard
                     </Link>
-                    Dashboard
                 </li>
                 <li>
                     <Link
-                        to="/first_year"
-                    >
+                        to="/first_year">
+                        Première année
                     </Link>
-                    Première année
+
                 </li>
                 <li>
                     <Link
                         to="/second_year">
+                        Deuxième année
                     </Link>
-                    Deuxième année
                 </li>
                 <li>
                     <Link
                         to="/third_year">
+                        Troisième année
                     </Link>
-                    Troisième année
+
                 </li>
                 <li>
                     <Link
                         to="/fourth_year">
+                        Quatrième année
                     </Link>
-                    Quatrième année
                 </li>
             </ul>
         </nav>
