@@ -7,15 +7,16 @@ function Navbar() {
 
     return (
 
-        <nav className="w-[225px] h-screen bg-gray-800 text-white fixed top-0 left-0">
+        <nav className="w-[225px] h-screen bg-[#141e66] text-white fixed top-0 left-0">
             <div className="flex flex-col justify-between h-full">
                 <div>
-                    {/* Liens en haut */ }
+
+                    {/* Top links */ }
                     <ul>
                         <li>
                             <Link
                                 to="/"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 Dashboard
                             </Link>
@@ -23,7 +24,7 @@ function Navbar() {
                         <li>
                             <Link
                                 to="/first_year"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 1<sup>ère</sup> année
                             </Link>
@@ -31,7 +32,7 @@ function Navbar() {
                         <li>
                             <Link
                                 to="/second_year"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 2<sup>ème</sup> année
                             </Link>
@@ -39,7 +40,7 @@ function Navbar() {
                         <li>
                             <Link
                                 to="/third_year"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 3<sup>ème</sup> année
                             </Link>
@@ -47,7 +48,7 @@ function Navbar() {
                         <li>
                             <Link
                                 to="/fourth_year"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 4<sup>ème</sup> année
                             </Link>
@@ -55,13 +56,13 @@ function Navbar() {
                     </ul>
                 </div>
 
-                {/* Bouton Profil en bas */ }
+                {/* Bottom links */}
                 <div>
                     <ul>
                         <li>
                             <Link
                                 to="/profil"
-                                className="block py-5 px-8 hover:bg-gray-700 text-center text-m font-semibold"
+                                className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                             >
                                 Profil
                             </Link>
