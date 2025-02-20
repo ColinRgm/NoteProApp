@@ -10,9 +10,8 @@ import Profile from "../pages/profile.jsx";
 function Sidebar() {
     return (
         <>
-        <div>
 
-            <div className="container-fluid bg-gray-200 h-[100vh]">
+            <div>
                 <Router>
                     <Navbar/>
                     <Routes>
@@ -37,9 +36,6 @@ function Sidebar() {
                     </Routes>
                 </Router>
             </div>
-
-        </div>
-
 
         </>
     )

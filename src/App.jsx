@@ -1,16 +1,20 @@
 import Sidebar from "./components/sidebar.jsx";
-import Main_content from "./components/main_content.jsx";
+import Content from "./components/content.jsx";
 
 function App() {
 
     return (
         <>
-            <div className="flex flex-row">
+            <div className="flex h-screen">
+                {/* Left side */}
+                <div className="w-[225px]">
+                    <Sidebar />
+                </div>
 
-                <Sidebar/>
-
-                <Main_content/>
-
+                {/* Right side */}
+                <div className="flex-1">
+                    <Content />
+                </div>
             </div>
         </>
     )
