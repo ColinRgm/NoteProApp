@@ -5,7 +5,9 @@ function FirstYear() {
     return (
 
         <>
-            <Grades_card />
+            <div>
+                <Grades_card title="First Year" />
+            </div>
         </>
 
     )
