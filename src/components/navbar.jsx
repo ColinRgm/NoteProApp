@@ -7,7 +7,7 @@ function Navbar() {
 
     return (
 
-        <nav className="w-[225px] h-screen bg-[#141e66] text-white fixed top-0 left-0">
+        <nav className="container-fluid h-screen w-[225px] bg-[#141e66] text-white fixed top-0 left-0">
             <div className="flex flex-col justify-between h-full">
                 <div>
 

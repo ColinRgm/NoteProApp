@@ -20,7 +20,7 @@ function GradesList() {
 
 
                 {/* ----- Entête du tableau ----- */}
-                <thead className="h-15">
+                <thead className="h-20">
                 <tr>
                     <th className="tg-0lax text-left">Nom de la branche / module</th>
                     <th className="tg-0lax">PDF</th>
