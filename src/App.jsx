@@ -6,6 +6,7 @@ import SecondYear from "./pages/second_year.jsx";
 import ThirdYear from "./pages/third_year.jsx";
 import FourthYear from "./pages/fourth_year.jsx";
 import Profile from "./pages/profile.jsx";
+import Content from "./components/content.jsx";
 
 function App() {
 

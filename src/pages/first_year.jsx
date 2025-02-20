@@ -1,12 +1,13 @@
-import Content from "../components/content.jsx";
+import Grades_card from "../components/grades_card.jsx";
 
 function FirstYear() {
 
     return (
 
         <>
-            <Content />
+            <Grades_card />
         </>
+
     )
 
 }
