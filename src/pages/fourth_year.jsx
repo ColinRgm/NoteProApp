@@ -1,13 +1,16 @@
+import Grades_card from "../components/grade/grades_card.jsx";
+
 function FourthYear() {
 
     return (
 
         <>
-            <h1>4<sup>ème</sup> année</h1>
+            <div>
+                <Grades_card title="4ème année" />
+            </div>
         </>
 
     )
-
 }
 
 export default FourthYear;

@@ -6,12 +6,11 @@ function FirstYear() {
 
         <>
             <div>
-                <Grades_card title="First Year" />
+                <Grades_card title="1ère année" />
             </div>
         </>
 
     )
-
 }
 
 export default FirstYear;
