@@ -11,7 +11,7 @@ function Grades_card({ title }) {
             </div>
 
             {/* Contenu de la carte */}
-            <div className="border-1 h-auto w-300 p-20">
+            <div className="border-1 h-auto w-300 p-20 shadow-lg">
                 <GradesList />
             </div>
         </>

@@ -10,7 +10,7 @@ function Average_card({ title }) {
                 </div>
 
                 {/* Contenu de la carte */ }
-                <div className="border-1 h-40 w-40 flex items-center justify-center">
+                <div className="border-1 h-40 w-40 flex items-center justify-center  shadow-lg">
                     <h1 className="text-3xl font-bold">6</h1>
                 </div>
             </div>
