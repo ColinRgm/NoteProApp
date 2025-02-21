@@ -1,15 +1,12 @@
 import Popup from "reactjs-popup";
 
 function AddGrade() {
-
     return (
-
         <>
-
             <div className="flex items-center justify-center">
                 <Popup
                     trigger={
-                        <button className="bg-[#141e66] text-white px-10 py-2 rounded-md hover:bg-[#8fc62e] hover:text-[#141e66] transition">
+                        <button className="bg-[#141e66] text-white px-10 py-2 rounded-md hover:bg-[#8fc62e] hover:text-[#141e66] transition cursor-pointer">
                             Ajouter note
                         </button>
                     }
@@ -17,8 +14,9 @@ function AddGrade() {
                     nested
                 >
                     {close => (
-                        <div>
-                            <div className="bg-white w-[400px] p-6 rounded-lg shadow-lg flex flex-col ml-[225px]">
+                        <div className="fixed inset-0 flex items-center justify-center ml-[225px] bg-black-100 bg-opacity-10 backdrop-blur-md">
+                            {/* Contenu de la popup */}
+                            <div className="bg-white w-[400px] p-6 rounded-lg shadow-lg flex flex-col">
                                 <h2 className="text-xl font-bold mb-4 text-center">Ajout d'une note</h2>
 
                                 {/* Module */}
@@ -26,7 +24,6 @@ function AddGrade() {
                                 <select className="w-full border rounded-md p-2 mb-3">
                                     <option value="117">Module 117 - Infrastructure</option>
                                     <option value="122">Module 122 - Automatisation</option>
-                                    {/* Ajoute d'autres modules si nécessaire */}
                                 </select>
 
                                 {/* Semestre */}
@@ -61,12 +58,13 @@ function AddGrade() {
                                 {/* Boutons */}
                                 <div className="flex justify-between">
                                     <button
-                                        className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
+                                        className="bg-red-400 text-white px-4 py-2 rounded-md transition cursor-pointer"
                                         onClick={() => close()}
                                     >
                                         Annuler
                                     </button>
-                                    <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
+                                    <button
+                                        className="bg-[#8fc62e] text-white px-4 py-2 rounded-md cursor-pointer transition"
                                         onClick={() => close()}
                                     >
                                         Ajouter
@@ -77,10 +75,9 @@ function AddGrade() {
                     )}
                 </Popup>
             </div>
-
         </>
-
-    )
+    );
 }
+
 
 export default AddGrade;
