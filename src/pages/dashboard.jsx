@@ -1,5 +1,6 @@
 import Grades_card from "../components/grade/grades_card.jsx";
 import Average_card from "../components/average/average_card.jsx";
+import Add_grade from "../components/grade/add_grade.jsx";
 
 function Dashboard() {
 
@@ -15,13 +16,11 @@ function Dashboard() {
                 </div>
 
                 <div className="flex flex-col">
-                    <Grades_card/>
+                    <Grades_card title="5 dernières notes"/>
                 </div>
 
-                <div className=" flex items-center justify-center">
-                    <button className="bg-[#141e66] text-white px-10 py-2 rounded-md hover:bg-[#8fc62e] hover:text-[#141e66] transition">
-                        Ajouter note
-                    </button>
+                <div>
+                    <Add_grade />
                 </div>
             </div>
         </>
