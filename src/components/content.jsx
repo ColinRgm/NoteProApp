@@ -6,19 +6,21 @@ function Content({ children }) {
     return (
         <div className="flex">
 
-            {/* Sidebar */}
+            {/* Sidebar */ }
             <nav className="h-screen w-[225px] bg-[#141e66] text-white fixed top-0 left-0 flex flex-col">
 
-                {/* Logo */}
+                {/* Logo */ }
                 <div className="flex items-center justify-center p-4">
-                    <img src="/logo/jobtrek-white.svg" alt="Jobtrek" />
+                    <a href="/">
+                        <img src="/logo/jobtrek-white.svg" alt="Jobtrek"/>
+                    </a>
                 </div>
 
-                {/* Navigation */}
+                {/* Navigation */ }
                 <div className="flex flex-col h-full justify-between">
 
 
-                    {/* Lien vers les différents années */}
+                    {/* Lien vers les différents années */ }
                     <div className="flex-1 overflow-auto">
                         <ul>
                             <li>
@@ -65,7 +67,7 @@ function Content({ children }) {
                     </div>
 
 
-                    {/* Lien vers le profil */}
+                    {/* Lien vers le profil */ }
                     <div className="pb-4">
                         <ul>
                             <li>
@@ -81,11 +83,12 @@ function Content({ children }) {
                 </div>
             </nav>
 
-            {/* Contenu principal */}
-            <main className="flex-1 ml-[225px] flex items-center justify-center h-screen">
-                {children}
+            {/* Contenu principal */ }
+            <main className="flex-1 ml-[225px] flex items-center justify-center h-screen bg-white">
+                { children }
             </main>
         </div>
     );
 }
+
 export default Content;
