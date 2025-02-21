@@ -5,8 +5,10 @@ import '../style/style.css'
 function Content({ children }) {
     return (
         <div className="flex">
+
             {/* Sidebar */}
             <nav className="h-screen w-[225px] bg-[#141e66] text-white fixed top-0 left-0 flex flex-col">
+
                 {/* Logo */}
                 <div className="flex items-center justify-center p-4">
                     <img src="/logo/jobtrek-white.svg" alt="Jobtrek" />
@@ -14,7 +16,9 @@ function Content({ children }) {
 
                 {/* Navigation */}
                 <div className="flex flex-col h-full justify-between">
-                    {/* Partie haute qui prend tout l'espace disponible */}
+
+
+                    {/* Lien vers les différents années */}
                     <div className="flex-1 overflow-auto">
                         <ul>
                             <li>
@@ -60,7 +64,8 @@ function Content({ children }) {
                         </ul>
                     </div>
 
-                    {/* Partie basse avec Profil */}
+
+                    {/* Lien vers le profil */}
                     <div className="pb-4">
                         <ul>
                             <li>
