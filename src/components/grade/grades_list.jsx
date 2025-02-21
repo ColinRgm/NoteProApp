@@ -22,9 +22,9 @@ function GradesList() {
                 {/* ----- Entête du tableau ----- */}
                 <thead className="h-20">
                 <tr>
-                    <th className="tg-0lax text-left">Nom de la branche / module</th>
-                    <th className="tg-0lax">PDF</th>
-                    <th className="tg-0lax">Note</th>
+                    <th className="tg-0lax text-left text-xl w-4/6">Nom de la branche / module</th>
+                    <th className="tg-0lax text-xl w-1/6">PDF</th>
+                    <th className="tg-0lax text-xl w-1/6">Note</th>
                 </tr>
                 </thead>
 
@@ -37,7 +37,7 @@ function GradesList() {
                     <tr key={index} className="text-center h-15">
                         <td className="tg-0lax text-left">{branch}</td>
                         <td className="tg-0lax">
-                                Lien PDF
+                                PDF
                         </td>
                         <td className="tg-0lax">{datas.grades[index]}</td>
                     </tr>
