@@ -4,13 +4,18 @@ import '../style/style.css'
 
 function Content({ children }) {
     return (
-
         <div className="flex">
-            <nav className="container-fluid h-screen w-[225px] bg-[#141e66] text-white fixed top-0 left-0">
-                <div className="flex flex-col justify-between h-full">
-                    <div>
+            {/* Sidebar */}
+            <nav className="h-screen w-[225px] bg-[#141e66] text-white fixed top-0 left-0 flex flex-col">
+                {/* Logo */}
+                <div className="flex items-center justify-center p-4">
+                    <img src="/logo/jobtrek-white.svg" alt="Jobtrek" />
+                </div>
 
-                        {/* Top links */ }
+                {/* Navigation */}
+                <div className="flex flex-col h-full justify-between">
+                    {/* Partie haute qui prend tout l'espace disponible */}
+                    <div className="flex-1 overflow-auto">
                         <ul>
                             <li>
                                 <Link
@@ -55,8 +60,8 @@ function Content({ children }) {
                         </ul>
                     </div>
 
-                    {/* Bottom links */ }
-                    <div>
+                    {/* Partie basse avec Profil */}
+                    <div className="pb-4">
                         <ul>
                             <li>
                                 <Link
@@ -70,10 +75,12 @@ function Content({ children }) {
                     </div>
                 </div>
             </nav>
-            <main className="flex-1 ml-[225px] flex items-center justify-center h-screen">{ children }</main>
+
+            {/* Contenu principal */}
+            <main className="flex-1 ml-[225px] flex items-center justify-center h-screen">
+                {children}
+            </main>
         </div>
-
-    )
+    );
 }
-
 export default Content;
