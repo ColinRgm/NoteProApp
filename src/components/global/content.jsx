@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import '../style/style.css'
+import '../../style/style.css'
 
 function Content({ children }) {
     return (
