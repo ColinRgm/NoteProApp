@@ -1,6 +1,14 @@
 import Card from "../components/profil/card.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
 
     return (
 
@@ -38,6 +46,9 @@ function Profile() {
                         />
                     </div>
                 </div>
+<div className="col-start-1 col-end-3 text-center">
+                <button onClick={handleLogout} className="bg-[#141e66] text-white px-10 py-2 rounded-md border-1 hover:bg-[#141e66ba] transition cursor-pointer">Se déconnecter</button>
+</div>
             </div>
         </>
 
