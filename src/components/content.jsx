@@ -11,7 +11,7 @@ function Content({ children }) {
 
                 {/* Logo */ }
                 <div className="flex items-center justify-center p-4">
-                    <a href="/">
+                    <a href="/dashboard">
                         <img src="/logo/jobtrek-white.svg" alt="Jobtrek"/>
                     </a>
                 </div>
@@ -20,12 +20,11 @@ function Content({ children }) {
                 <div className="flex flex-col h-full justify-between">
 
 
-                    {/* Lien vers les différents années */ }
                     <div className="flex-1 overflow-auto">
                         <ul>
                             <li>
                                 <Link
-                                    to="/"
+                                    to="/dashboard"
                                     className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                                 >
                                     Dashboard
@@ -66,9 +65,8 @@ function Content({ children }) {
                         </ul>
                     </div>
 
-
-                    {/* Lien vers le profil */ }
-                    <div className="pb-4">
+                    
+                    <div>
                         <ul>
                             <li>
                                 <Link

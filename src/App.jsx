@@ -6,6 +6,7 @@ import ThirdYear from "./pages/third_year.jsx";
 import FourthYear from "./pages/fourth_year.jsx";
 import Profile from "./pages/profile.jsx";
 import Content from "./components/content.jsx";
+import Login from "./pages/login.jsx";
 
 function App() {
 
@@ -14,8 +15,10 @@ function App() {
             <Router>
                 <Content>
                     <Routes>
+                        <Route path="/"
+                               element={<Login />} />
                         <Route
-                            path="/"
+                            path="/dashboard"
                             element={ <Dashboard/> }/>
                         <Route
                             path="/first_year"
