@@ -5,9 +5,9 @@ import SecondYear from "./pages/second_year.jsx";
 import ThirdYear from "./pages/third_year.jsx";
 import FourthYear from "./pages/fourth_year.jsx";
 import Profile from "./pages/profile.jsx";
-import Content from "./components/content.jsx";
+import Content from "./components/global/content.jsx";
 import Login from "./pages/login.jsx";
-import ProtectedRoute from "./components/protectedRoute.jsx";
+import ProtectedRoute from "./components/global/protectedRoute.jsx";
 
 function App() {
 
