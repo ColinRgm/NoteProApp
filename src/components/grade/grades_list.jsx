@@ -25,6 +25,7 @@ function GradesList() {
                     <th className="tg-0lax text-left text-xl w-4/6">Nom de la branche / module</th>
                     <th className="tg-0lax text-xl w-1/6">PDF</th>
                     <th className="tg-0lax text-xl w-1/6">Note</th>
+                    <th className="tg-0lax text-xl w-1/6">Modifier</th>
                 </tr>
                 </thead>
 
@@ -40,6 +41,9 @@ function GradesList() {
                                 PDF
                         </td>
                         <td className="tg-0lax">{datas.grades[index]}</td>
+                        <td className="tg-0lax">
+
+                        </td>
                     </tr>
                 ))}
                 </tbody>
