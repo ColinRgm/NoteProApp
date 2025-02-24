@@ -73,7 +73,7 @@ function Content({ children }) {
                                     to="/profile"
                                     className="block py-5 px-8 hover:bg-[#8fc62e] text-center text-m font-semibold hover:text-[#141e66]"
                                 >
-                                    Profil
+                                    Profil {/* Récupérer le nom de la personne connectée */}
                                 </Link>
                             </li>
                         </ul>
