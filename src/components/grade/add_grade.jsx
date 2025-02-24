@@ -30,7 +30,7 @@ function AddGrade() {
                 <Popup
                     trigger={
                         <button
-                            className="bg-[#141e66] text-white px-10 py-2 rounded-md border-1 hover:bg-white hover:text-[#141e66] hover:border-[#141e66] hover:border-1 transition cursor-pointer">
+                            className="bg-[#141e66] text-white px-10 py-2 rounded-md border-1 hover:bg-[#141e66ba] transition cursor-pointer">
                             Ajouter note
                         </button>
                     }
