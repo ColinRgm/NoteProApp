@@ -2,30 +2,9 @@ import Popup from "reactjs-popup";
 
 function AddGrade() {
 
-    /* Fonction pour ajouter les :
-    *
-    * Les modules
-    * Les semestres
-    *
-    * -> dans le select coresspondant
-    *
-    */
-
-
-
-    /* Fonction pour récupérer les valeurs de :
-    *
-    * Les modules
-    * Les semestres
-    *
-    * -> Les ajouter dans la base de données
-    *
-    */
-
     return (
 
         <>
-
             <div className="flex items-center justify-center">
                 <Popup
                     trigger={
@@ -92,7 +71,6 @@ function AddGrade() {
                     ) }
                 </Popup>
             </div>
-
         </>
 
     );
