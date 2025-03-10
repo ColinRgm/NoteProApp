@@ -6,7 +6,6 @@ import { Head } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter une note',
@@ -14,17 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-interface Branche {
-    id: number,
-    name: string
-}
-
-interface BrancheProps {
-    branche: Branche
-}
-
-
-export default function AddGrade({ branche }: BrancheProps) {
+export default function AddGrade({ branche }) {
 
     return (
 
@@ -44,7 +33,7 @@ export default function AddGrade({ branche }: BrancheProps) {
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Modules</SelectLabel>
-                                    <SelectItem key={branche.id} value={branche.name}>
+                                    <SelectItem key={branche.id} value={branche.id}>
                                         {branche.name}
                                     </SelectItem>
                                     ;<SelectLabel>CIE</SelectLabel>

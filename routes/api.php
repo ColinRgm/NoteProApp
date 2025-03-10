@@ -11,7 +11,6 @@ use App\Http\Controllers\API\BrancheController;
 Route::apiResources([
     'roles' => RoleUserController::class,
     'grades' => GradeController::class,
-    // 'branches' => BrancheController::class
 ]);
 
-Route::get('/branches', [BrancheController::class, 'show']);
+Route::get('/addGrade', [BrancheController::class, 'show']);
