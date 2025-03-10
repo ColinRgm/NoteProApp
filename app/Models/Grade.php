@@ -64,4 +64,13 @@ class Grade extends Model
 
     /* ----------------------------------- Fonction de relation avec les branches ----------------------------------- */
 
+    /**
+     * Une note appartient à une seule branche
+     *
+     * @return BelongsTo
+     *
+     */
+    public function gradeOnBranche(): BelongsTo {
+        return $this->belongsTo(Branche::class, 'branche_id');// Relation avec le model User
+    }
 }

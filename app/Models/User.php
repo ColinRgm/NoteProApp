@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Un utilisateur peut avoir plusieurs notes
+     * Un utilisateur peut avoir une ou plusieurs notes
      *
      * @return HasMany
      *
@@ -62,7 +62,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Un utilisateur peut ajouté plusieurs notes
+     * Un utilisateur peut ajouté une ou plusieurs notes
      *
      * @return BelongsToMany
      *
