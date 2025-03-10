@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class Grade extends Model
 {
-    /* Relation à une branche et à un personne */
-
+    /**
+     * Table associée au model
+     *
+     * @var string
+     *
+     */
     protected $table = 'grades';
 
 
@@ -18,10 +22,6 @@ class Grade extends Model
         'grade',
         'user_id',
     ];*/
-
-
-
-
 
     /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**
@@ -42,9 +42,9 @@ class Grade extends Model
      * @return BelongsTo
      *
      */
-    public function addedBy(): BelongsTo
+    public function addedBy(): HasOne
     {
-        return $this->belongsTo(User::class, 'user_id');// Relation avec le model User
+        return $this->hasOne(User::class, 'user_id');// Relation avec le model User
     }
 
 
@@ -58,9 +58,6 @@ class Grade extends Model
     {
         return Auth::check() && $this->addedBy->contains('id', Auth::id());
     }
-
-
-
 
     /* ----------------------------------- Fonction de relation avec les branches ----------------------------------- */
 

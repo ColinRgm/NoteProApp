@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\GroupeController;
 use Illuminate\Support\Facades\Route;
 
 // Call controllers
@@ -12,6 +13,7 @@ Route::resources([
     'roles' => RoleUserController::class,
     'grades' => GradeController::class,
     'branches' => BrancheController::class,
+    'groupes' => GroupeController::class,
 ]);
 
 // Route::get('/branches', [BrancheController::class, 'index']);

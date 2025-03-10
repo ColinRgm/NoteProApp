@@ -10,6 +10,12 @@ use Illuminate\Http\JsonResponse;
 class Branche extends Model
 {
 
+    /**
+     * Table associée au model
+     *
+     * @var string
+     *
+     */
     protected $table = 'branche';
 
 
