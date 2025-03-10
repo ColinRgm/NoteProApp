@@ -3,9 +3,9 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/react';
 
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import Tables from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { IoAddCircleOutline } from 'react-icons/io5';
+import { Separator } from '@radix-ui/react-separator';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -27,15 +27,12 @@ export default function Students() {
                         </CardTitle>
 
                         <CardContent>
-                            <Tables
-                                col_one_title="Prénom"
-                                col_two_title="Nom"
-                                col_three_title="Année"
-
-                                col_one_content="Jean"
-                                col_two_content="Dupont"
-                                col_three_content="2021"
-                            />
+                            <ul>
+                                <li>Regamey Colin</li>
+                                <Separator />
+                                <li>Heutschi Bryan</li>
+                                <li></li>
+                            </ul>
                         </CardContent>
                     </Card>
                 </div>

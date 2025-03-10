@@ -8,8 +8,8 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
-    },
+        href: '/dashboard'
+    }
 ];
 
 export default function Dashboard() {
@@ -47,21 +47,12 @@ export default function Dashboard() {
                         5 dernière notes
                     </CardTitle>
 
-                    {
-                        /*
-                         * Récupérer les 5 dernières notes (en fonction de la date)
-                         * Limiter le nombre de lignes
-                         */
-                    }
+                    {/*
+                     * Récupérer les 5 dernières notes (en fonction de la date)
+                     * Limiter le nombre de lignes
+                     */}
                     <CardContent>
-                        <Tables
-                            col_one_title="Branche / modules"
-                            col_two_title="PDF"
-                            col_three_title="Note"
-                            col_one_content="Module 231"
-                            col_two_content="test.pdf"
-                            col_three_content="5"
-                        />
+                        <Tables />
                     </CardContent>
                 </Card>
 
