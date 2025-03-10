@@ -28,9 +28,9 @@ class BrancheController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Branche $branche)
+    public function show()
     {
-        // $branche = Branche::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
+        $branche = Branche::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
 
         return Inertia::render('AddGrade', [
             'branche' => $branche
