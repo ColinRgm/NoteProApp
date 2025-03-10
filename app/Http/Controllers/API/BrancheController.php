@@ -14,7 +14,9 @@ class BrancheController extends Controller
      */
     public function index()
     {
-        //
+        /*$branches = Branche::select('name', 'id')->get();
+
+        return  $branches;*/
     }
 
     /**
@@ -32,8 +34,8 @@ class BrancheController extends Controller
     {
         $branche = Branche::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
 
-        return Inertia::render('AddGrade', [
-            'branche' => $branche
+        return Inertia::render('/AddGrade', [
+            'branche' => $branche,
         ]);
     }
 
