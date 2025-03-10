@@ -34,9 +34,7 @@ class BrancheController extends Controller
     {
         $branche = Branche::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
 
-        return Inertia::render('/AddGrade', [
-            'branche' => $branche,
-        ]);
+        return $branche;
     }
 
     /**

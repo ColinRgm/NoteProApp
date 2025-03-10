@@ -8,7 +8,7 @@ use App\Http\Controllers\API\GradeController;
 use App\Http\Controllers\API\BrancheController;
 
 
-Route::apiResources([
+Route::resources([
     'roles' => RoleUserController::class,
     'grades' => GradeController::class,
     'branches' => BrancheController::class,
