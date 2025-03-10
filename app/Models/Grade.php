@@ -70,7 +70,7 @@ class Grade extends Model
      * @return BelongsTo
      *
      */
-    public function gradeOnBranche(): BelongsTo {
-        return $this->belongsTo(Branche::class, 'branche_id');// Relation avec le model User
+    public function gradeByBranche(): BelongsTo {
+        return $this->belongsTo(Branche::class, 'branche_id');// Relation avec le model branche
     }
 }

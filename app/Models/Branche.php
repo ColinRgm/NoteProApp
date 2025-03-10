@@ -19,7 +19,7 @@ class Branche extends Model
      * @return HasMany
      *
      */
-    public function grades(): HasMany
+    public function brancheForGrade(): HasMany
     {
         return $this->hasMany(Grade::class, 'branch_id'); // Relation avec le model Grade
     }
