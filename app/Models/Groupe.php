@@ -23,6 +23,6 @@ class Groupe extends Model
      */
     public function groupeBy(): BelongsToMany
     {
-        return $this->belongsToMany(Groupe::class, 'branches');
+        return $this->belongsToMany(Branche::class, 'branches');
     }
 }
