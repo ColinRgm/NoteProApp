@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branche;
-use App\Models\Groupe;
+use App\Models\Group;
 
 class GroupeController extends Controller
 {
@@ -13,7 +12,7 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        return Groupe::all();
+        return Group::all();
     }
 
     /**
