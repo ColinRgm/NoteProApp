@@ -55,7 +55,8 @@ export default function Register() {
         last_name: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        role: ''
     });
 
     const submit: FormEventHandler = (e) => {
