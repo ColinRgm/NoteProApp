@@ -22,7 +22,7 @@ interface RegisterForm {
 
 interface Role {
     id: number,
-    type: string
+    name: string
 }
 
 export default function Register() {
@@ -55,7 +55,8 @@ export default function Register() {
         last_name: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        role: ''
     });
 
     const submit: FormEventHandler = (e) => {
@@ -183,7 +184,7 @@ export default function Register() {
                                         {
                                             roles.map(role => (
                                                 <SelectItem key={role.id} value={role.id.toString()}>
-                                                    {role.type}
+                                                    {role.name}
                                                 </SelectItem>
                                             ))
                                         }
