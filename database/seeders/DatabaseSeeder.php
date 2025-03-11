@@ -18,11 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'first_name' => "colin",
-            'last_name' => "Oui",
-            'email' => 'colin.test@jobtrek.ch',
-            'password' => Hash::make('password'),
+        User::insert([
+            'first_name' => "Admin",
+            'last_name' => "Jobtrek",
+            'email' => 'admin@admin.ch',
+            'password' => Hash::make('admin'),
+            'role_id' => 4,
         ]);
 
         Branch::insert([
