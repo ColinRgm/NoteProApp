@@ -14,9 +14,7 @@ class BrancheController extends Controller
      */
     public function index()
     {
-        /*$branches = Branche::select('name', 'id')->get();
-
-        return  $branches;*/
+        return Branche::all();
     }
 
     /**
