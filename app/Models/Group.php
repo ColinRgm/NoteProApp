@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Group extends Model
 {
     /**
      * Un Group peut contenir une ou plusieurs Branch
      *
-     * @return BelongsToMany
+     * @return HasMany
      *
      */
-    public function branch(): BelongsToMany
+    public function branches(): HasMany
     {
-        return $this->belongsToMany(Branch::class);
+        return $this->hasMany(Branch::class);
     }
 }
