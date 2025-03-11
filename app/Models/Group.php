@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Groupe extends Model
+class Group extends Model
 {
     /**
-     * Un Groupe peut contenir une ou plusieurs Branch
+     * Un Group peut contenir une ou plusieurs Branch
      *
      * @return BelongsToMany
      *
