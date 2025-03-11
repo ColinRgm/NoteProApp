@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Role extends Model
+class Group extends Model
 {
     /**
-     * Un Role peut avoir un ou plusieurs User
+     * Un Group peut contenir une ou plusieurs Branch
      *
      * @return HasMany
      *
      */
-    public function users(): HasMany {
-        return $this->hasMany(User::class);
+    public function branches(): HasMany
+    {
+        return $this->hasMany(Branch::class);
     }
 }

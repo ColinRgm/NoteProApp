@@ -13,7 +13,8 @@ return new class extends Migration
         DB::table('roles')->insert([
             ['name' => 'Apprenti'],
             ['name' => 'Formateur'],
-            ['name' => 'Coach']
+            ['name' => 'Coach'],
+            ['name' => 'Admin'],
         ]);
     }
 
