@@ -30,6 +30,6 @@ class Branch extends Model
      */
     public function group(): HasOne
     {
-        return $this->hasOne(Groupe::class);
+        return $this->hasOne(Group::class);
     }
 }
