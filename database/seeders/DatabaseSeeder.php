@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Branch;
+use App\Models\Groupe;
+use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -62,6 +64,19 @@ class DatabaseSeeder extends Seeder
             ['name' => 'CIE 295 - Réaliser le back-end pour des applications', 'weight' => 20, 'rounding' => 0.5, 'groupe_id' => 3, 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'CIE 335 - Réaliser une application pour mobile', 'weight' => 20, 'rounding' => 0.5, 'groupe_id' => 3, 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'TPI', 'weight' => 100, 'rounding' => 0.5, 'groupe_id' => 4, 'created_at' => now(), 'updated_at' => now()],
+        ]);
+
+        Groupe::insert([
+            ['name' => 'Culture générale', 'weight' => 20, 'rounding' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Compétence de base élargie', 'weight' => 10, 'rounding' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Compétence en informatique', 'weight' => 30, 'rounding' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Travail pratique', 'weight' => 40, 'rounding' => 1, 'created_at' => now(), 'updated_at' => now()]
+        ]);
+
+        Role::insert([
+            ['name' => 'Apprenti'],
+            ['name' => 'Formateur'],
+            ['name' => 'Coach']
         ]);
     }
 }
