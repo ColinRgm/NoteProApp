@@ -14,7 +14,7 @@ class BrancheController extends Controller
      */
     public function index()
     {
-        return Branch::first()->grades;
+        return Branch::all('id', 'name');
     }
 
     /**
