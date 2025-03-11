@@ -76,7 +76,8 @@ class DatabaseSeeder extends Seeder
         Role::insert([
             ['name' => 'Apprenti'],
             ['name' => 'Formateur'],
-            ['name' => 'Coach']
+            ['name' => 'Coach'],
+            ['name' => 'Admin']
         ]);
     }
 }
