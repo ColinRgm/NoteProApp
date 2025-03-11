@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Grade extends Model
 {
-    /**
-     * Table associée au model
-     *
-     * @var string
-     *
-     */
-    protected $table = 'grades';
-
-
     /*protected $fillable = [
         'grade',
         'user_id',
@@ -25,49 +16,25 @@ class Grade extends Model
 
     /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**
-     * Un utilisateur peut ajouter plusieurs notes
+     * Un User peut ajouter plusieurs Grades
      *
      * @return BelongsTo
      *
      */
-    public function userAddGrade(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id'); // Relation avec le model User
-    }
-
-
-    /**
-     * Une note appartient à un seul utilisateur
-     *
-     * @return BelongsTo
-     *
-     */
-    public function addedBy(): HasOne
-    {
-        return $this->hasOne(User::class, 'user_id');// Relation avec le model User
-    }
-
-
-    /**
-     * Vérifier sur l'utilisateur authentifié à déjà ajouté une note pour un module
-     *
-     * @return bool
-     *
-     */
-    public function alreadyAddedBy(): bool
-    {
-        return Auth::check() && $this->addedBy->contains('id', Auth::id());
+        return $this->belongsTo(User::class);
     }
 
     /* ----------------------------------- Fonction de relation avec les branches ----------------------------------- */
-
     /**
-     * Une note appartient à une seule branche
+     * Une Grade appartient à une seule Branch
      *
      * @return BelongsTo
      *
      */
-    public function gradeByBranche(): BelongsTo {
-        return $this->belongsTo(Branche::class, 'branche_id');// Relation avec le model branche
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class);
     }
 }

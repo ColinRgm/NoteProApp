@@ -53,23 +53,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Un utilisateur peut avoir une ou plusieurs notes
+     * Un User peut avoir une ou plusieurs Grade
      *
      * @return HasMany
      *
      */
-    public function userHasGrade(): HasMany {
-        return $this->hasMany(Grade::class, 'user_id'); // Relation avec le model Grade
-    }
-
-    /**
-     * Un utilisateur peut ajouté une ou plusieurs notes
-     *
-     * @return BelongsToMany
-     *
-     */
-    public function addGrade(): BelongsToMany {
-        return $this->belongsToMany(Grade::class, 'grades'); // Relation avec la table grades
+    public function grades(): HasMany {
+        return $this->hasMany(Grade::class);
     }
 
     /**
@@ -78,8 +68,8 @@ class User extends Authenticatable
      * @return HasOne
      *
      */
-    public function oneRoleByUser(): HasOne {
-        return $this->hasOne(Role::class, 'user_id');
+    public function role(): HasOne {
+        return $this->hasOne(Role::class);
     }
 }
 

@@ -8,21 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Groupe extends Model
 {
     /**
-     * Table associée au model
-     *
-     * @return string
-     *
-     */
-    protected $table = 'groupes';
-
-    /**
-     * Un groupe peut contenir une ou plusieurs Branche
+     * Un Groupe peut contenir une ou plusieurs Branch
      *
      * @return BelongsToMany
      *
      */
-    public function groupeBy(): BelongsToMany
+    public function branch(): BelongsToMany
     {
-        return $this->belongsToMany(Branche::class, 'branches');
+        return $this->belongsToMany(Branch::class);
     }
 }

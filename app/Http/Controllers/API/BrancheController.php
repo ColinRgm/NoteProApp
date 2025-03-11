@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Branche;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +14,7 @@ class BrancheController extends Controller
      */
     public function index()
     {
-        return Branche::all();
+        return Branch::first()->grades;
     }
 
     /**
@@ -30,8 +30,9 @@ class BrancheController extends Controller
      */
     public function show()
     {
-        $branche = Branche::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
+        // $branche = Branch::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
 
+        $branche = Branch::first();
         return $branche;
     }
 
