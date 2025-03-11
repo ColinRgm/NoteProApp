@@ -18,16 +18,12 @@ interface RegisterForm {
     email: string;
     password: string;
     password_confirmation: string;
-}
-
-interface Role {
-    id: number,
-    name: string
+    role: string;
 }
 
 export default function Register() {
 
-    const [roles, setRoles] = useState<Role[]>([]);
+    const [roles, setRoles] = useState<{id: number; name: string}[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -175,15 +171,15 @@ export default function Register() {
 
                         <div className="grid gap-2">
                             <Label htmlFor="role">Rôle</Label>
-                            <Select>
+                            <Select name="role" onValueChange={(value)=> setData('role', value)}>
                                 <SelectTrigger className="w-[400px]">
                                     <SelectValue placeholder="Rôle" />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent tabIndex={6} >
                                     <SelectGroup>
                                         {
-                                            roles.map(role => (
-                                                <SelectItem key={role.id} value={role.id.toString()}>
+                                            roles.map((role: {id: number; name: string}) => (
+                                                <SelectItem key={role.id} value={role.name}>
                                                     {role.name}
                                                 </SelectItem>
                                             ))
@@ -196,7 +192,7 @@ export default function Register() {
                         <Button
                             type="submit"
                             className="mt-2 w-full border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
-                            tabIndex={5}
+                            tabIndex={7}
                             disabled={processing}
                         >
                             {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
@@ -206,7 +202,7 @@ export default function Register() {
 
                     <div className="text-muted-foreground text-center text-sm">
                         Vous avez déjà un compte ? {' '}
-                        <TextLink href={route('login')} tabIndex={6}>
+                        <TextLink href={route('login')} tabIndex={8}>
                             Se connecter
                         </TextLink>
                     </div>
