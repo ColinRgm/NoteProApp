@@ -13,12 +13,12 @@ use Inertia\Response;
 class BrancheController extends Controller
 {
 
-    public function create(): Response
-    {
-        return Inertia::render('addGrade', [
-            'branches' => Branch::select('id', 'name')->get()
-        ]);
-    }
+//    public function create(): Response
+//    {
+//        return Inertia::render('addGrade', [
+//            'branches' => Branch::select('id', 'name')->get()
+//        ]);
+//    }
 
 
     /**
@@ -35,17 +35,17 @@ class BrancheController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        $request->validate([
-            'branche_id' => 'required|integer'
-        ]);
-
-        $grade = Grade::create([
-            'branche_id' => $request->branche_id
-        ]);
-
-        event(new Branch($grade));
-
-        return to_route('dashboard');
+//        $request->validate([
+//            'branche_id' => 'required|integer'
+//        ]);
+//
+//        $grade = Grade::create([
+//            'branche_id' => $request->branche_id
+//        ]);
+//
+//        event(new Branch($grade));
+//
+//        return to_route('dashboard');
     }
 
     /**

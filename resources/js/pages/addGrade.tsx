@@ -16,7 +16,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface RegisterForm {
-    grade_id: number;
+    branch_id: number;
 }
 
 interface RegisterProps {
@@ -27,6 +27,7 @@ interface RegisterProps {
 }
 
 export default function AddGrade({ branches }: RegisterProps) {
+
     const { data, setData, post } = useForm<RegisterForm>({
         id: '',
     });
@@ -49,17 +50,19 @@ export default function AddGrade({ branches }: RegisterProps) {
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             <div>
                                 <Label htmlFor="grade">Choix de la branche</Label>
-                                <Select name="grade" onValueChange={(value) => setData('id', value)}>
+                                <Select name="grade" /*onValueChange={(value) => setData('name', value)}*/>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {/*{branches.map((branche) => (
+                                            {
+                                                branches.map((branche) => (
                                                 <SelectItem key={branche.id} value={branche.id.toString()}>
                                                     {branche.name}
                                                 </SelectItem>
-                                            ))}*/}
+                                                ))
+                                            }
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
