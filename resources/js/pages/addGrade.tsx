@@ -66,6 +66,7 @@ export default function AddGrade({ branches }: RegisterProps) {
                             </div>
 
                             <div>
+                                <Label>Choix du semestre</Label>
                                 <Select>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix du semestre" />
@@ -93,7 +94,27 @@ export default function AddGrade({ branches }: RegisterProps) {
                             </div>
 
                             <div>
-                                <input type="number" />
+                                <Label>Choix de la note</Label>
+                                <Select>
+                                    <SelectTrigger className="w-[400px]">
+                                        <SelectValue placeholder="Choix de la note" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+
+                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
+                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
+
+                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
+                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
+
+                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
+                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
+
+                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
+                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
+
+                                    </SelectContent>
+                                </Select>
                             </div>
 
                             <Button

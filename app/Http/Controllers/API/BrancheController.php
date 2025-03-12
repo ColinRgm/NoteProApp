@@ -16,7 +16,7 @@ class BrancheController extends Controller
     public function create(): Response
     {
         return Inertia::render('addGrade', [
-            'branches' => Branch::all('id', 'name')->get()
+            'branches' => Branch::select('id', 'name')->get()
         ]);
     }
 
