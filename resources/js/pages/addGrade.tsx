@@ -16,7 +16,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface RegisterForm {
-    grade_id: number;
+    id: number;
 }
 
 interface RegisterProps {
@@ -47,7 +47,7 @@ export default function AddGrade({ branches }: RegisterProps) {
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-                            <div>
+                            <div className="gap-">
                                 <Label htmlFor="grade">Choix de la branche</Label>
                                 <Select name="grade" onValueChange={(value) => setData('id', value)}>
                                     <SelectTrigger className="w-[400px]">
