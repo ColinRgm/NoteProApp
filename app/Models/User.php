@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -66,11 +67,11 @@ class User extends Authenticatable
     /**
      * Un User peut avoir un Role
      *
-     * @return HasOne
+     * @return BelongsTo
      *
      */
-    public function role(): HasOne {
-        return $this->hasOne(Role::class);
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class);
     }
 }
 

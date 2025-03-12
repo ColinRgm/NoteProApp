@@ -52,7 +52,7 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
-        role: ''
+        role_id: ''
     });
 
     const submit: FormEventHandler = (e) => {
