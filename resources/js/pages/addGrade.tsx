@@ -56,7 +56,7 @@ export default function AddGrade({branches}: RegisterProps) {
 
 
                         <Label htmlFor="grade">Choix de la branche</Label>
-                        <Select name="grade" onValueChange={(value) => setData('grade_id', value)}>
+                        <Select name="grade" onValueChange={(value) => setData('id', value)}>
                             <SelectTrigger className="w-[400px]">
                                 <SelectValue placeholder="Choix de la branche" />
                             </SelectTrigger>

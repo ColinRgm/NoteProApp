@@ -4,11 +4,23 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Grade;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class BrancheController extends Controller
 {
+
+    public function create(): Response
+    {
+        return Inertia::render('addGrade', [
+            'branches' => Branch::all('id', 'name')->get()
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -20,9 +32,20 @@ class BrancheController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+
+        $request->validate([
+            'branche_id' => 'required|integer'
+        ]);
+
+        $grade = Grade::create([
+            'branche_id' => $request->branche_id
+        ]);
+
+        event(new Branch($grade));
+
+        return to_route('dashboard');
     }
 
     /**
