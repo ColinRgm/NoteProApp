@@ -1,10 +1,12 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import type { BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { FormEventHandler } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -13,7 +15,32 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function AddGrade({branches}) {
+
+interface RegisterForm {
+    name: string;
+    id: number;
+}
+
+interface RegisterProps {
+    branches: {
+        name: string;
+        id: number;
+    }
+}
+
+export default function AddGrade({branches}: RegisterProps) {
+
+    const { data, setData, post } = useForm<RegisterForm>({
+        id: ''
+    });
+
+    const submit: FormEventHandler = (e) => {
+        e.preventDefault();
+        post(route('dashboard'), {
+            onFinish: () => route('dashboard')
+        });
+    }
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Ajouter une note" />
@@ -24,22 +51,32 @@ export default function AddGrade({branches}) {
                         Ajouter une note
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
-                        <Select>
+
+
+
+
+                        <Label htmlFor="grade">Choix de la branche</Label>
+                        <Select name="grade" onValueChange={(value) => setData('grade_id', value)}>
                             <SelectTrigger className="w-[400px]">
                                 <SelectValue placeholder="Choix de la branche" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>Modules</SelectLabel>
-                                    <SelectItem key={branches.id} value={branches.id}>
-                                        {branches.name}
-                                    </SelectItem>
-                                    <SelectLabel>CIE</SelectLabel>
-                                    <SelectLabel>Math / Anglais</SelectLabel>
-                                    <SelectLabel>ECG</SelectLabel>
+                                    {
+                                        branches.map((branche) => (
+                                            <SelectItem key={branche.id} value={branche.id.toString()}>
+                                                {branche.name}
+                                            </SelectItem>
+                                        ))
+                                    }
+
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
+
+
+
+
 
                         <Select>
                             <SelectTrigger className="w-[400px]">
@@ -90,7 +127,9 @@ export default function AddGrade({branches}) {
                             </SelectContent>
                         </Select>
 
-                        <Button className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]">
+                        <Button
+                            type="submit"
+                            className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]">
                             Ajouter
                         </Button>
                     </CardContent>
