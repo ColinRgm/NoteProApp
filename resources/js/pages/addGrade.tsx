@@ -4,8 +4,8 @@ import type { BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
 
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FormEventHandler } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -15,31 +15,26 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-
 interface RegisterForm {
-    name: string;
-    id: number;
+    grade_id: number;
 }
 
 interface RegisterProps {
     branches: {
-        name: string;
         id: number;
-    }
+        name: string;
+    }[];
 }
 
-export default function AddGrade({branches}: RegisterProps) {
-
+export default function AddGrade({ branches }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
-        id: ''
+        id: '',
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('dashboard'), {
-            onFinish: () => route('dashboard')
-        });
-    }
+        post(route('dashboard'));
+    };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -51,87 +46,63 @@ export default function AddGrade({branches}: RegisterProps) {
                         Ajouter une note
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
+                        <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
+                            <div>
+                                <Label htmlFor="grade">Choix de la branche</Label>
+                                <Select name="grade" onValueChange={(value) => setData('id', value)}>
+                                    <SelectTrigger className="w-[400px]">
+                                        <SelectValue placeholder="Choix de la branche" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {/*{branches.map((branche) => (
+                                                <SelectItem key={branche.id} value={branche.id.toString()}>
+                                                    {branche.name}
+                                                </SelectItem>
+                                            ))}*/}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
 
+                            <div>
+                                <Select>
+                                    <SelectTrigger className="w-[400px]">
+                                        <SelectValue placeholder="Choix du semestre" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>1ère année</SelectLabel>
+                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
+                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
 
+                                            <SelectLabel>2ème année</SelectLabel>
+                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
+                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
 
+                                            <SelectLabel>3ème année</SelectLabel>
+                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
+                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
 
-                        <Label htmlFor="grade">Choix de la branche</Label>
-                        <Select name="grade" onValueChange={(value) => setData('id', value)}>
-                            <SelectTrigger className="w-[400px]">
-                                <SelectValue placeholder="Choix de la branche" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    {
-                                        branches.map((branche) => (
-                                            <SelectItem key={branche.id} value={branche.id.toString()}>
-                                                {branche.name}
-                                            </SelectItem>
-                                        ))
-                                    }
+                                            <SelectLabel>4ème année</SelectLabel>
+                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
+                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
 
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                            <div>
+                                <input type="number" />
+                            </div>
 
-
-
-
-
-                        <Select>
-                            <SelectTrigger className="w-[400px]">
-                                <SelectValue placeholder="Choix du semestre" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    <SelectLabel>1ère année</SelectLabel>
-                                    <SelectItem value="semestre_1">Semestre 1</SelectItem>
-                                    <SelectItem value="semestre_2">Semestre 2</SelectItem>
-
-                                    <SelectLabel>2ème année</SelectLabel>
-                                    <SelectItem value="semestre_3">Semestre 3</SelectItem>
-                                    <SelectItem value="semestre_4">Semestre 4</SelectItem>
-
-                                    <SelectLabel>3ème année</SelectLabel>
-                                    <SelectItem value="semestre_5">Semestre 5</SelectItem>
-                                    <SelectItem value="semestre_6">Semestre 6</SelectItem>
-
-                                    <SelectLabel>4ème année</SelectLabel>
-                                    <SelectItem value="semestre_7">Semestre 7</SelectItem>
-                                    <SelectItem value="semestre_8">Semestre 8</SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
-
-                        <Select>
-                            <SelectTrigger className="w-[200px]">
-                                <SelectValue placeholder="Choix de la note" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    <SelectLabel>En dessus de la moyenne</SelectLabel>
-                                    <SelectItem value="note_6">6</SelectItem>
-                                    <SelectItem value="note_5_5">5.5</SelectItem>
-                                    <SelectItem value="note_5">5</SelectItem>
-                                    <SelectItem value="note_4_5">4.5</SelectItem>
-                                    <SelectItem value="note_4">4</SelectItem>
-
-                                    <SelectLabel>En dessous de la moyenne</SelectLabel>
-                                    <SelectItem value="note_3_5">3.5</SelectItem>
-                                    <SelectItem value="note_3">3</SelectItem>
-                                    <SelectItem value="note_2_5">2.5</SelectItem>
-                                    <SelectItem value="note_2">2</SelectItem>
-                                    <SelectItem value="note_1_5">1.5</SelectItem>
-                                    <SelectItem value="note_1">1</SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
-
-                        <Button
-                            type="submit"
-                            className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]">
-                            Ajouter
-                        </Button>
+                            <Button
+                                type="submit"
+                                className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
+                            >
+                                Ajouter
+                            </Button>
+                        </form>
                     </CardContent>
                 </Card>
             </div>
