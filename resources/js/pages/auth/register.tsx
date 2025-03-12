@@ -21,9 +21,16 @@ interface RegisterForm {
     role_id: string;
 }
 
-export default function Register() {
+interface RegisterProps {
+    roles: {
+        id: number;
+        name: string
+    }[];
+}
 
-    const [roles, setRoles] = useState<{id: number; name: string}[]>([]);
+export default function Register({roles}: RegisterProps) {
+
+/*    const [roles, setRoles] = useState<{id: number; name: string}[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -44,7 +51,7 @@ export default function Register() {
                 setError(error.message);
                 setLoading(false);
             });
-    }, []);
+    }, []);*/
 
     const { data, setData, post, processing, errors, reset } = useForm<RegisterForm>({
         first_name: '',
@@ -62,7 +69,7 @@ export default function Register() {
         });
     };
 
-    if (loading)
+    /*if (loading)
         return (
             <AppLayout>
                 <div className="flex flex-1 flex-col items-center justify-center gap-10 rounded-xl p-4">
@@ -82,7 +89,8 @@ export default function Register() {
                 </div>
             </AppLayout>
         );
-    else {
+    else {*/
+
         return (
             <AuthLayout title="Créer un compte" description="Entrez vos informations pour la création de votre compte">
                 <Head title="Register" />
@@ -178,7 +186,7 @@ export default function Register() {
                                 <SelectContent >
                                     <SelectGroup>
                                         {
-                                            roles.map((role: {id: number; name: string}) => (
+                                            roles.map((role) => (
                                                 <SelectItem key={role.id} value={role.id.toString()}>
                                                     {role.name}
                                                 </SelectItem>
@@ -187,6 +195,7 @@ export default function Register() {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
+                            <InputError message={errors.role_id} />
                         </div>
 
                         <Button
@@ -209,5 +218,5 @@ export default function Register() {
                 </form>
             </AuthLayout>
         );
-    }
+
 }

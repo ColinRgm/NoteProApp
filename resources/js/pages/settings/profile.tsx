@@ -46,7 +46,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
 
                     <div className="flex gap-4">
                         <p className="text-sm font-medium">Rôle</p>
-                        <p className={"text-sm font-medium"}>Apprenti</p>
+                        <p className={"text-sm font-medium"}>Récupérer le role</p>
 
                     </div>
 
