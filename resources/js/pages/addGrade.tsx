@@ -16,6 +16,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface RegisterForm {
+    // Get the grade
+    // Get the semester
     branch_id: number;
 }
 
@@ -76,19 +78,12 @@ export default function AddGrade({ branches }: RegisterProps) {
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            <SelectLabel>1ère année</SelectLabel>
                                             <SelectItem value="semestre_1">Semestre 1</SelectItem>
                                             <SelectItem value="semestre_2">Semestre 2</SelectItem>
-
-                                            <SelectLabel>2ème année</SelectLabel>
                                             <SelectItem value="semestre_3">Semestre 3</SelectItem>
                                             <SelectItem value="semestre_4">Semestre 4</SelectItem>
-
-                                            <SelectLabel>3ème année</SelectLabel>
                                             <SelectItem value="semestre_5">Semestre 5</SelectItem>
                                             <SelectItem value="semestre_6">Semestre 6</SelectItem>
-
-                                            <SelectLabel>4ème année</SelectLabel>
                                             <SelectItem value="semestre_7">Semestre 7</SelectItem>
                                             <SelectItem value="semestre_8">Semestre 8</SelectItem>
                                         </SelectGroup>
@@ -103,19 +98,17 @@ export default function AddGrade({ branches }: RegisterProps) {
                                         <SelectValue placeholder="Choix de la note" />
                                     </SelectTrigger>
                                     <SelectContent>
-
-                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
-                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
-
-                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
-                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
-
-                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
-                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
-
-                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
-                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
-
+                                            <SelectItem value="1">1</SelectItem>
+                                            <SelectItem value="1_5">1.5</SelectItem>
+                                            <SelectItem value="2">2</SelectItem>
+                                            <SelectItem value="2_5">2.5</SelectItem>
+                                            <SelectItem value="3">3</SelectItem>
+                                            <SelectItem value="3_5">3.5</SelectItem>
+                                            <SelectItem value="4">4</SelectItem>
+                                            <SelectItem value="4_5">4.5</SelectItem>
+                                            <SelectItem value="5">5</SelectItem>
+                                            <SelectItem value="5_5">5.5</SelectItem>
+                                            <SelectItem value="6">6</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>

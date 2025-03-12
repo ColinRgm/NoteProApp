@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Grade extends Model
 {
-    /*protected $fillable = [
-        'grade',
-        'user_id',
-    ];*/
 
     /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**

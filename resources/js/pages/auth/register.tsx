@@ -1,6 +1,6 @@
 import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
-import { FormEventHandler, useEffect, useState } from 'react';
+import { FormEventHandler } from 'react';
 
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
@@ -9,8 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AuthLayout from '@/layouts/auth-layout';
-import AppLayout from '@/layouts/app-layout';
-import { Card } from '@/components/ui/card';
 
 interface RegisterForm {
     first_name: string;
@@ -29,29 +27,6 @@ interface RegisterProps {
 }
 
 export default function Register({roles}: RegisterProps) {
-
-/*    const [roles, setRoles] = useState<{id: number; name: string}[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/roles')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erreur lors de la récupération des données...');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setRoles(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Erreur: ', error);
-                setError(error.message);
-                setLoading(false);
-            });
-    }, []);*/
 
     const { data, setData, post, processing, errors, reset } = useForm<RegisterForm>({
         first_name: '',

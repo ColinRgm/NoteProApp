@@ -14,11 +14,9 @@ class GradeController extends Controller
 {
 
 
-    public function create(): Response
+    public function create()
     {
-        return Inertia::render('addGrade', [
-            'branches' => Branch::select('id', 'name')->get()
-        ]);
+        //
     }
 
     /**
@@ -32,20 +30,9 @@ class GradeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-
-        $request->validate([
-            'branch_id' => 'required|integer'
-        ]);
-
-        $grade = Grade::create([
-            'branch_id' => $request->branch_id
-        ]);
-
-        event(new Branch($grade));
-
-        return to_route('dashboard');
+        //
     }
 
     /**
