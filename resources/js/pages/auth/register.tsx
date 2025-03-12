@@ -171,11 +171,11 @@ export default function Register() {
 
                         <div className="grid gap-2">
                             <Label htmlFor="role">Rôle</Label>
-                            <Select name="role" onValueChange={(value)=> setData('role', value)}>
-                                <SelectTrigger className="w-[400px]">
+                            <Select name="role" onValueChange={(value)=> setData('role', value)} >
+                                <SelectTrigger className="w-[400px]" tabIndex={6}>
                                     <SelectValue placeholder="Rôle" />
                                 </SelectTrigger>
-                                <SelectContent tabIndex={6} >
+                                <SelectContent >
                                     <SelectGroup>
                                         {
                                             roles.map((role: {id: number; name: string}) => (
