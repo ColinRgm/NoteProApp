@@ -18,7 +18,7 @@ interface RegisterForm {
     email: string;
     password: string;
     password_confirmation: string;
-    role: string;
+    role_id: string;
 }
 
 export default function Register() {
@@ -171,7 +171,7 @@ export default function Register() {
 
                         <div className="grid gap-2">
                             <Label htmlFor="role">Rôle</Label>
-                            <Select name="role" onValueChange={(value)=> setData('role', value)} >
+                            <Select name="role" onValueChange={(value)=> setData('role_id', value)} >
                                 <SelectTrigger className="w-[400px]" tabIndex={6}>
                                     <SelectValue placeholder="Rôle" />
                                 </SelectTrigger>
@@ -179,7 +179,7 @@ export default function Register() {
                                     <SelectGroup>
                                         {
                                             roles.map((role: {id: number; name: string}) => (
-                                                <SelectItem key={role.id} value={role.name}>
+                                                <SelectItem key={role.id} value={role.id.toString()}>
                                                     {role.name}
                                                 </SelectItem>
                                             ))
