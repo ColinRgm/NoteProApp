@@ -38,8 +38,8 @@ export default function Students() {
                 </div>
                 <div>
                     <button>
-                        <Link href="/home/colin/Documents/WEB/React/NoteProApp/resources/js/pages/AddStudent" prefetch>
-                            <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
+                        <Link href="/addStudent" prefetch>
+                            <IoAddCircleOutline className="hover:[h-40 w-40] h-10 w-10" />
                         </Link>
                     </button>
                 </div>

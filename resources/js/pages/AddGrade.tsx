@@ -4,6 +4,7 @@ import type { BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FormEventHandler } from 'react';
@@ -34,7 +35,6 @@ export default function AddGrade({ branches }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branch_id: '',
     });
-
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
@@ -88,7 +88,7 @@ export default function AddGrade({ branches }: RegisterProps) {
                              */}
                             <div className="flex flex-col">
                                 <Label>Choix de la note</Label>
-                                <input type="number" min="1" max="6" step="0.5" className="border-1 border-gray-200 w-[400px] h-10 rounded px-3 text-sm mt-1" placeholder="Choix de la note" />
+                                <Input type="number" min="1" max="6" step="0.5" className="w-[400px]" placeholder="Choix de la note" />
                             </div>
 
                             {/*
@@ -113,7 +113,14 @@ export default function AddGrade({ branches }: RegisterProps) {
                             <div>
                                 <div className="flex flex-col">
                                     <Label>Choix du semestre</Label>
-                                    <input type="number" min="1" max="8" step="1" className="border-1 border-gray-200 w-[400px] h-10 rounded px-3 text-sm mt-1" placeholder="Choix du semestre" />
+                                    <Input
+                                        type="number"
+                                        min="1"
+                                        max="8"
+                                        step="1"
+                                        className="w-[400px]"
+                                        placeholder="Choix du semestre"
+                                    />
                                 </div>
                             </div>
 
