@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\Database\BranchController;
 use App\Http\Controllers\API\BrancheController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -48,9 +49,8 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('students');
     })->name('students');
 
-    Route::get('addStudent', function () {
-        return Inertia::render('addStudent');
-    })->name('addStudent');
+    Route::get('addStudent', [RegisteredUserController::class, 'students'])->name('addStudent');
+
 
 });
 

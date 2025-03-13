@@ -8,8 +8,8 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard'
-    }
+        href: '/dashboard',
+    },
 ];
 
 export default function Dashboard() {
@@ -56,13 +56,9 @@ export default function Dashboard() {
                     </CardContent>
                 </Card>
 
-                <div>
-                    <button>
-                        <Link href="/addGrade" prefetch>
-                            <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
-                        </Link>
-                    </button>
-                </div>
+                <Link href="/addGrade" prefetch>
+                    <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
+                </Link>
             </div>
         </AppLayout>
     );

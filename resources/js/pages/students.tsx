@@ -4,8 +4,8 @@ import { Head, Link } from '@inertiajs/react';
 
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
-import { IoAddCircleOutline } from 'react-icons/io5';
 import { Separator } from '@radix-ui/react-separator';
+import { IoAddCircleOutline } from 'react-icons/io5';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -28,21 +28,14 @@ export default function Students() {
 
                         <CardContent>
                             <ul>
-                                <li>Regamey Colin</li>
-                                <Separator />
-                                <li>Heutschi Bryan</li>
                                 <li></li>
                             </ul>
                         </CardContent>
                     </Card>
                 </div>
-                <div>
-                    <button>
-                        <Link href="/addStudent" prefetch>
-                            <IoAddCircleOutline className="hover:[h-40 w-40] h-10 w-10" />
-                        </Link>
-                    </button>
-                </div>
+                <Link href="addStudent" prefetch>
+                    <IoAddCircleOutline className="hover:[h-40 w-40] h-10 w-10" />
+                </Link>
             </div>
         </AppLayout>
     );

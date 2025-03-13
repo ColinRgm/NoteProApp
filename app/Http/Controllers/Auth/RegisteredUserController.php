@@ -26,6 +26,13 @@ class RegisteredUserController extends Controller
         ]);
     }
 
+    public function students(): Response
+    {
+        return Inertia::render('addStudent', [
+            'users' => User::select('first_name', 'last_name', 'id', 'WHERE', 'role_id', 1)
+        ]);
+    }
+
     /**
      * Handle an incoming registration request.
      *
