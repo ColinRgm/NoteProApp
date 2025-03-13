@@ -14,7 +14,14 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Students() {
+interface Props {
+    students: {
+        first_name: string;
+        last_name: string
+    }
+}
+
+export default function Students({students}: Props) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -28,7 +35,11 @@ export default function Students() {
 
                         <CardContent>
                             <ul>
-                                <li></li>
+                                {students.map((student) => (
+                                    <li>
+                                        {student.first_name}
+                                    </li>
+                                ))}
                             </ul>
                         </CardContent>
                     </Card>

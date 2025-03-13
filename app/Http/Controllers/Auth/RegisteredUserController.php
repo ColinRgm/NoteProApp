@@ -26,10 +26,14 @@ class RegisteredUserController extends Controller
         ]);
     }
 
+
+    /**
+     * Get all the users that have ID 1 on column role_id
+     */
     public function students(): Response
     {
-        return Inertia::render('addStudent', [
-            'users' => User::select('first_name', 'last_name', 'id', 'WHERE', 'role_id', 1)
+        return Inertia::render('Students', [
+            'users' => User::select('first_name', 'last_name', 'id')->where('role_id', 1)->get()
         ]);
     }
 
