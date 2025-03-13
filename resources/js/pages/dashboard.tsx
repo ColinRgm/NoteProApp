@@ -58,7 +58,7 @@ export default function Dashboard() {
 
                 <div>
                     <button>
-                        <Link href="/home/colin/Documents/WEB/React/NoteProApp/resources/js/pages/AddGrade" prefetch>
+                        <Link href="/addGrade" prefetch>
                             <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
                         </Link>
                     </button>
