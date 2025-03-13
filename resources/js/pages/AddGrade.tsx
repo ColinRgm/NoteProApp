@@ -18,7 +18,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 interface RegisterForm {
     // Get the grade
     // Get the semester
-    branch_id: number;
+    branch_id: string;
+    grade: string;
+    semester: string;
 }
 
 interface RegisterProps {
@@ -30,7 +32,7 @@ interface RegisterProps {
 
 export default function AddGrade({ branches }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
-        id: '',
+        branch_id: '',
     });
 
     const submit: FormEventHandler = (e) => {
@@ -50,17 +52,17 @@ export default function AddGrade({ branches }: RegisterProps) {
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             {/*
-
-                                Récupérer le nom des branches et les ajouter dans le select
-
-                                Puis récupérer la valeur du choix selectionné (ID) et l'ajouter dans la table grade
-
-                                branch_id
-
+                             *
+                             * Récupérer le nom des branches et les ajouter dans le select
+                             *
+                             * Puis récupérer la valeur du choix selectionné (ID) et l'ajouter dans la table grade
+                             *
+                             * branch_id
+                             *
                              */}
                             <div>
                                 <Label htmlFor="grade">Choix de la branche</Label>
-                                <Select name="grade" /*onValueChange={(value) => setData('name', value)}*/>
+                                <Select name="grade" onValueChange={(value) => setData('branch_id', value)}>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>
@@ -77,39 +79,11 @@ export default function AddGrade({ branches }: RegisterProps) {
                             </div>
 
                             {/*
-
-                               Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
-
-                                semestre
-
-                             */}
-                            <div>
-                                <Label>Choix du semestre</Label>
-                                <Select>
-                                    <SelectTrigger className="w-[400px]">
-                                        <SelectValue placeholder="Choix du semestre" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
-                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
-                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
-                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
-                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
-                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
-                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
-                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-
-                            {/*
-
-                               Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
-
-                                grade
-
+                             *
+                             * Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
+                             *
+                             * grade
+                             *
                              */}
                             <div>
                                 <Label>Choix de la note</Label>
@@ -129,6 +103,45 @@ export default function AddGrade({ branches }: RegisterProps) {
                                         <SelectItem value="5">5</SelectItem>
                                         <SelectItem value="5_5">5.5</SelectItem>
                                         <SelectItem value="6">6</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/*
+                             *
+                             * Gestion du PDF à mettre au clair
+                             *
+                             * Probablement le chemin vers le pdf
+                             *
+                            */}
+                            <div>
+
+                            </div>
+
+                            {/*
+                             *
+                             * Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
+                             *
+                             * semestre
+                             *
+                             */}
+                            <div>
+                                <Label>Choix du semestre</Label>
+                                <Select>
+                                    <SelectTrigger className="w-[400px]">
+                                        <SelectValue placeholder="Choix du semestre" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
+                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
+                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
+                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
+                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
+                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
+                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
+                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
+                                        </SelectGroup>
                                     </SelectContent>
                                 </Select>
                             </div>

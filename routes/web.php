@@ -1,6 +1,7 @@
 <?php
 
 // use App\Http\Controllers\Database\BranchController;
+use App\Http\Controllers\API\BrancheController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,9 +16,7 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('addGrade', function () {
-        return Inertia::render('addGrade');
-    })->name('addGrade');
+    Route::get('addGrade', [BrancheController::class, 'index'])->name('addGrade');
 
 
     /* First year page */

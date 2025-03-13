@@ -12,6 +12,5 @@ use App\Http\Controllers\API\BrancheController;
 Route::apiResources([
     'roles' => RoleController::class,
     'grades' => GradeController::class,
-    'branches' => BrancheController::class,
     'groupes' => GroupeController::class,
 ]);
