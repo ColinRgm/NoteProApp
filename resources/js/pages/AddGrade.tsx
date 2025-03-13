@@ -35,6 +35,7 @@ export default function AddGrade({ branches }: RegisterProps) {
         branch_id: '',
     });
 
+
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
         post(route('dashboard'));
@@ -85,26 +86,9 @@ export default function AddGrade({ branches }: RegisterProps) {
                              * grade
                              *
                              */}
-                            <div>
+                            <div className="flex flex-col">
                                 <Label>Choix de la note</Label>
-                                <Select>
-                                    <SelectTrigger className="w-[400px]">
-                                        <SelectValue placeholder="Choix de la note" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="1">1</SelectItem>
-                                        <SelectItem value="1_5">1.5</SelectItem>
-                                        <SelectItem value="2">2</SelectItem>
-                                        <SelectItem value="2_5">2.5</SelectItem>
-                                        <SelectItem value="3">3</SelectItem>
-                                        <SelectItem value="3_5">3.5</SelectItem>
-                                        <SelectItem value="4">4</SelectItem>
-                                        <SelectItem value="4_5">4.5</SelectItem>
-                                        <SelectItem value="5">5</SelectItem>
-                                        <SelectItem value="5_5">5.5</SelectItem>
-                                        <SelectItem value="6">6</SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                <input type="number" min="1" max="6" step="0.5" className="border-1 border-gray-200 w-[400px] h-10 rounded px-3 text-sm mt-1" placeholder="Choix de la note" />
                             </div>
 
                             {/*
@@ -113,10 +97,11 @@ export default function AddGrade({ branches }: RegisterProps) {
                              *
                              * Probablement le chemin vers le pdf
                              *
-                            */}
+                            *
                             <div>
 
                             </div>
+                            */}
 
                             {/*
                              *
@@ -126,24 +111,10 @@ export default function AddGrade({ branches }: RegisterProps) {
                              *
                              */}
                             <div>
-                                <Label>Choix du semestre</Label>
-                                <Select>
-                                    <SelectTrigger className="w-[400px]">
-                                        <SelectValue placeholder="Choix du semestre" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectItem value="semestre_1">Semestre 1</SelectItem>
-                                            <SelectItem value="semestre_2">Semestre 2</SelectItem>
-                                            <SelectItem value="semestre_3">Semestre 3</SelectItem>
-                                            <SelectItem value="semestre_4">Semestre 4</SelectItem>
-                                            <SelectItem value="semestre_5">Semestre 5</SelectItem>
-                                            <SelectItem value="semestre_6">Semestre 6</SelectItem>
-                                            <SelectItem value="semestre_7">Semestre 7</SelectItem>
-                                            <SelectItem value="semestre_8">Semestre 8</SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
+                                <div className="flex flex-col">
+                                    <Label>Choix du semestre</Label>
+                                    <input type="number" min="1" max="8" step="1" className="border-1 border-gray-200 w-[400px] h-10 rounded px-3 text-sm mt-1" placeholder="Choix du semestre" />
+                                </div>
                             </div>
 
                             <Button
