@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('students');
     })->name('students');
 
-    Route::get('addStudent', [RegisteredUserController::class, 'students'])->name('addStudent');
+    Route::get('students', [RegisteredUserController::class, 'getStudents'])->name('students');
 
 
 });

@@ -16,6 +16,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 interface Props {
     students: {
+        id: number;
         first_name: string;
         last_name: string
     }
