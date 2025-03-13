@@ -5,7 +5,7 @@ import { Head, useForm } from '@inertiajs/react';
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FormEventHandler } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -29,7 +29,6 @@ interface RegisterProps {
 }
 
 export default function AddGrade({ branches }: RegisterProps) {
-
     const { data, setData, post } = useForm<RegisterForm>({
         id: '',
     });
@@ -50,6 +49,15 @@ export default function AddGrade({ branches }: RegisterProps) {
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
+                            {/*
+
+                                Récupérer le nom des branches et les ajouter dans le select
+
+                                Puis récupérer la valeur du choix selectionné (ID) et l'ajouter dans la table grade
+
+                                branch_id
+
+                             */}
                             <div>
                                 <Label htmlFor="grade">Choix de la branche</Label>
                                 <Select name="grade" /*onValueChange={(value) => setData('name', value)}*/>
@@ -58,18 +66,23 @@ export default function AddGrade({ branches }: RegisterProps) {
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {
-                                                branches.map((branche) => (
+                                            {branches.map((branche) => (
                                                 <SelectItem key={branche.id} value={branche.id.toString()}>
                                                     {branche.name}
                                                 </SelectItem>
-                                                ))
-                                            }
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
                             </div>
 
+                            {/*
+
+                               Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
+
+                                semestre
+
+                             */}
                             <div>
                                 <Label>Choix du semestre</Label>
                                 <Select>
@@ -91,6 +104,13 @@ export default function AddGrade({ branches }: RegisterProps) {
                                 </Select>
                             </div>
 
+                            {/*
+
+                               Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
+
+                                grade
+
+                             */}
                             <div>
                                 <Label>Choix de la note</Label>
                                 <Select>
@@ -98,17 +118,17 @@ export default function AddGrade({ branches }: RegisterProps) {
                                         <SelectValue placeholder="Choix de la note" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                            <SelectItem value="1">1</SelectItem>
-                                            <SelectItem value="1_5">1.5</SelectItem>
-                                            <SelectItem value="2">2</SelectItem>
-                                            <SelectItem value="2_5">2.5</SelectItem>
-                                            <SelectItem value="3">3</SelectItem>
-                                            <SelectItem value="3_5">3.5</SelectItem>
-                                            <SelectItem value="4">4</SelectItem>
-                                            <SelectItem value="4_5">4.5</SelectItem>
-                                            <SelectItem value="5">5</SelectItem>
-                                            <SelectItem value="5_5">5.5</SelectItem>
-                                            <SelectItem value="6">6</SelectItem>
+                                        <SelectItem value="1">1</SelectItem>
+                                        <SelectItem value="1_5">1.5</SelectItem>
+                                        <SelectItem value="2">2</SelectItem>
+                                        <SelectItem value="2_5">2.5</SelectItem>
+                                        <SelectItem value="3">3</SelectItem>
+                                        <SelectItem value="3_5">3.5</SelectItem>
+                                        <SelectItem value="4">4</SelectItem>
+                                        <SelectItem value="4_5">4.5</SelectItem>
+                                        <SelectItem value="5">5</SelectItem>
+                                        <SelectItem value="5_5">5.5</SelectItem>
+                                        <SelectItem value="6">6</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>
