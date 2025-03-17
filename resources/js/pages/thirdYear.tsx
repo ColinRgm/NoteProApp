@@ -1,7 +1,7 @@
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import GradesTables from '@/components/ui/grade-table';
 import Tables from '@/components/ui/grade-table';
@@ -14,6 +14,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function ThirdYear() {
+
+    const pageProps = usePage().props;
+
+    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="1ère année" />
@@ -23,6 +28,7 @@ export default function ThirdYear() {
                     <CardTitle size="xxl" margin="big">3ème année</CardTitle>
                     <CardContent>
                         <GradesTables
+                            grades={grades ?? []}
                         />
                     </CardContent>
                 </Card>

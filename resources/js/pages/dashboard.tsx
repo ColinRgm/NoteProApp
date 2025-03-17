@@ -15,7 +15,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Dashboard() {
     const pageProps = usePage().props;
 
-    const { grades } = pageProps as { grades?: Array<{ id: number; name: string; grade: number }> };
+    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

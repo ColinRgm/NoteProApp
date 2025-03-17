@@ -14,37 +14,40 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     /* Dashboard page */
-    /*Route::get('dashboard', function () {
+    Route::get('dashboard', function () {
         return Inertia::render('dashboard');
-    })->name('dashboard');*/
+    })->name('Home_Page');
 
-    Route::get('dashboard', [GradeController::class, 'index'])->name('dashboard');
+    Route::get('dashboard',
+        [GradeController::class, 'dashboardGrade'])
+        ->name('LastFiveGrades');
 
-    Route::get('addGrade', [BrancheController::class, 'index'])->name('addGrade');
+    /* Add Grade */
+    Route::get('addGrade',
+        [BrancheController::class, 'index'])
+        ->name('addGrade');
 
 
     /* First year page */
-    Route::get('firstYear', function () {
-        return Inertia::render('firstYear');
-    })->name('firstYear');
+    Route::get('firstYear',
+        [GradeController::class, 'firstYearGrade'])
+        ->name('FirstYearGrades');
 
 
     /* Second year page */
-    Route::get('secondYear', function () {
-        return Inertia::render('secondYear');
-    })->name('secondYear');
-
+    Route::get('secondYear',
+        [GradeController::class, 'secondYearGrade'])
+        ->name('SecondYearGrades');
 
     /* Third year page */
-    Route::get('thirdYear', function () {
-        return Inertia::render('thirdYear');
-    })->name('thirdYear');
-
+    Route::get('thirdYear',
+        [GradeController::class, 'thirdYearGrade'])
+        ->name('ThirdYearGrades');
 
     /* Fourth year page */
-    Route::get('fourthYear', function () {
-        return Inertia::render('fourthYear');
-    })->name('fourthYear');
+    Route::get('fourthYear',
+        [GradeController::class, 'fourthYearGrade'])
+        ->name('FourthYearGrades');
 
 
     /* Student page */

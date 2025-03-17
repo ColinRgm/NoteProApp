@@ -22,10 +22,73 @@ class GradeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function dashboardGrade()
     {
-        return Grade::all();
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        return Inertia::render('dashboard', [
+            'grades' => $grades
+        ]);
     }
+
+    public function firstYearGrade()
+    {
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->orderBy('created_at', 'desc')
+            ->whereIn('semester', [1, 2])
+            ->get();
+
+        return Inertia::render('dashboard', [
+            'grades' => $grades
+        ]);
+    }
+
+    public function secondYearGrade()
+    {
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->orderBy('created_at', 'desc')
+            ->whereIn('semester', [3, 4])
+            ->get();
+
+        return Inertia::render('dashboard', [
+            'grades' => $grades
+        ]);
+    }
+
+    public function thirdYearGrade()
+    {
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->orderBy('created_at', 'desc')
+            ->whereIn('semester', [5, 6])
+            ->get();
+
+        return Inertia::render('dashboard', [
+            'grades' => $grades
+        ]);
+    }
+
+    public function fourthYearGrade()
+    {
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->orderBy('created_at', 'desc')
+            ->whereIn('semester', [7, 8])
+            ->get();
+
+        return Inertia::render('dashboard', [
+            'grades' => $grades
+        ]);
+    }
+
+
+
 
     /**
      * Store a newly created resource in storage.

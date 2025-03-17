@@ -1,7 +1,7 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import GradeTable from '@/components/ui/grade-table';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -14,6 +14,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 export default function FirstYear() {
+
+    const pageProps = usePage().props;
+
+    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="1ère année" />
@@ -25,6 +31,7 @@ export default function FirstYear() {
                     </CardTitle>
                     <CardContent>
                         <GradeTable
+                            grades={grades ?? []}
 
                         />
                     </CardContent>
