@@ -19,7 +19,6 @@ export default function FirstYear() {
 
     const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
 
-
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="1ère année" />
@@ -32,7 +31,6 @@ export default function FirstYear() {
                     <CardContent>
                         <GradeTable
                             grades={grades ?? []}
-
                         />
                     </CardContent>
                 </Card>

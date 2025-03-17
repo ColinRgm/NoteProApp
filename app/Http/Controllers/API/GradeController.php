@@ -13,7 +13,6 @@ use Inertia\Response;
 class GradeController extends Controller
 {
 
-
     public function create()
     {
         //
@@ -43,7 +42,7 @@ class GradeController extends Controller
             ->whereIn('semester', [1, 2])
             ->get();
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('firstYear', [
             'grades' => $grades
         ]);
     }
@@ -56,7 +55,7 @@ class GradeController extends Controller
             ->whereIn('semester', [3, 4])
             ->get();
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('secondYear', [
             'grades' => $grades
         ]);
     }
@@ -69,7 +68,7 @@ class GradeController extends Controller
             ->whereIn('semester', [5, 6])
             ->get();
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('thirdYear', [
             'grades' => $grades
         ]);
     }
@@ -82,7 +81,7 @@ class GradeController extends Controller
             ->whereIn('semester', [7, 8])
             ->get();
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('fourthYear', [
             'grades' => $grades
         ]);
     }
