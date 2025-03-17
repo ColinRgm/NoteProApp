@@ -13,9 +13,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function SecondYear() {
 
-    const pagePropsSecondYear = usePage().props;
+    const pageProps = usePage().props;
 
-    const { grades } = pagePropsSecondYear as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

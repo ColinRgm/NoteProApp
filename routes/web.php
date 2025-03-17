@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard',
         [GradeController::class, 'dashboardGrade'])
-        ->name('LastFiveGrades');
+        ->name('Last_Five_Grades');
 
     /* Add Grade */
     Route::get('addGrade',
@@ -31,29 +31,29 @@ Route::middleware(['auth'])->group(function () {
     /* First year page */
     Route::get('firstYear',
         [GradeController::class, 'firstYearGrade'])
-        ->name('FirstYearGrades');
+        ->name('First_Year_Grades');
 
 
     /* Second year page */
     Route::get('secondYear',
         [GradeController::class, 'secondYearGrade'])
-        ->name('SecondYearGrades');
+        ->name('Second_Year_Grades');
 
     /* Third year page */
     Route::get('thirdYear',
         [GradeController::class, 'thirdYearGrade'])
-        ->name('ThirdYearGrades');
+        ->name('Third_Year_Grades');
 
     /* Fourth year page */
     Route::get('fourthYear',
         [GradeController::class, 'fourthYearGrade'])
-        ->name('FourthYearGrades');
+        ->name('Fourth_Year_Grades');
 
 
     /* Student page */
     Route::get('students',
         [RegisteredUserController::class, 'getStudents'])
-        ->name('students.getStudents');
+        ->name('All_Students');
 
 });
 
