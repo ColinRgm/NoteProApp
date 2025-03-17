@@ -1,9 +1,8 @@
-import GradesTables from '@/components/ui/table';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
-import Tables from '@/components/ui/table';
+import GradeTable from '@/components/ui/grade-table';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -25,13 +24,8 @@ export default function FirstYear() {
                         1ère année
                     </CardTitle>
                     <CardContent>
-                        <Tables
-                            col_one_title="Branche / modules"
-                            col_two_title="PDF"
-                            col_three_title="Note"
-                            col_one_content="Module 231"
-                            col_two_content="test.pdf"
-                            col_three_content="5"
+                        <GradeTable
+
                         />
                     </CardContent>
                 </Card>

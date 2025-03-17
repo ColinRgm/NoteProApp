@@ -1,4 +1,4 @@
-export default function Tables() {
+export default function GradeTable() {
 
         return (
             <>

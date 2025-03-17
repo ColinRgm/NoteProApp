@@ -4,8 +4,8 @@ import { Head, Link } from '@inertiajs/react';
 
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
-import { Separator } from '@radix-ui/react-separator';
 import { IoAddCircleOutline } from 'react-icons/io5';
+import StudentTable from '@/components/ui/student-table';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -14,15 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-interface Props {
-    students: {
-        id: number;
-        first_name: string;
-        last_name: string
-    }
-}
-
-export default function Students({students}: Props) {
+export default function Students() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -35,13 +27,9 @@ export default function Students({students}: Props) {
                         </CardTitle>
 
                         <CardContent>
-                            <ul>
-                                {students.map((student) => (
-                                    <li>
-                                        {student.first_name}
-                                    </li>
-                                ))}
-                            </ul>
+
+                            <StudentTable />
+
                         </CardContent>
                     </Card>
                 </div>

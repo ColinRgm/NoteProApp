@@ -1,10 +1,8 @@
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import GradesTables from '@/components/ui/table';
-import Tables from '@/components/ui/table';
+import GradesTables from '@/components/ui/grade-table';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -22,13 +20,8 @@ export default function SecondYear() {
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">2ème année</CardTitle>
                     <CardContent>
-                       <Tables
-                            col_one_title="Branche / modules"
-                            col_two_title="PDF"
-                            col_three_title="Note"
-                            col_one_content="Module 231"
-                            col_two_content="test.pdf"
-                            col_three_content="5"
+                       <GradesTables
+
                         />
                     </CardContent>
                 </Card>
