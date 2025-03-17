@@ -28,11 +28,11 @@ class RegisteredUserController extends Controller
 
 
     /**
-     * Get all the users that have ID 1 on column role_id
+     * Get all the users that are 'Apprenti'
      */
     public function getStudents(): Response
     {
-        return Inertia::render('Students', [
+        return Inertia::render('students', [
             'users' => User::select('first_name', 'last_name', 'id')->where('role_id', 1)->get()
         ]);
     }

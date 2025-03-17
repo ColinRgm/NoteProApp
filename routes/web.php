@@ -45,10 +45,6 @@ Route::middleware(['auth'])->group(function () {
 
 
     /* Student page */
-    Route::get('students', function () {
-        return Inertia::render('students');
-    })->name('students');
-
     Route::get('students', [RegisteredUserController::class, 'getStudents'])->name('students');
 
 

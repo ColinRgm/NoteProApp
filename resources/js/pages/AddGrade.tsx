@@ -124,6 +124,13 @@ export default function AddGrade({ branches }: RegisterProps) {
                                 </div>
                             </div>
 
+                            <div>
+                                <div className="flex flex-col">
+                                    <Label>Ajout d'un PDF</Label>
+                                    <Input type="file" className="w-[400px]" />
+                                </div>
+                            </div>
+
                             <Button
                                 type="submit"
                                 className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"

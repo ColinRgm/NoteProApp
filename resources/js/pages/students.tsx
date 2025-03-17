@@ -45,7 +45,7 @@ export default function Students({students}: Props) {
                         </CardContent>
                     </Card>
                 </div>
-                <Link href="addStudent" prefetch>
+                <Link href="/addStudent" prefetch>
                     <IoAddCircleOutline className="hover:[h-40 w-40] h-10 w-10" />
                 </Link>
             </div>
