@@ -1,9 +1,9 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import GradeTable from '@/components/ui/grade-table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { IoAddCircleOutline } from 'react-icons/io5';
-import GradeTable from '@/components/ui/grade-table';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -13,6 +13,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
+    const pageProps = usePage().props;
+
+    const { grades } = pageProps as { grades?: Array<{ id: number; name: string; grade: number }> };
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -52,7 +56,7 @@ export default function Dashboard() {
                      * Limiter le nombre de lignes
                      */}
                     <CardContent>
-                        <GradeTable />
+                        <GradeTable grades={grades ?? []} />
                     </CardContent>
                 </Card>
 

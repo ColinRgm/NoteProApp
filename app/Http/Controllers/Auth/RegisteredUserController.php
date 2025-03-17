@@ -32,8 +32,20 @@ class RegisteredUserController extends Controller
      */
     public function getStudents(): Response
     {
+        $users = User::select(
+                'id',
+                'last_name',
+                'first_name',
+                'email')
+                ->where(
+                    'role_id',
+                    1)
+                ->get();
+
+        // dd($users);
+
         return Inertia::render('students', [
-            'users' => User::select('last_name', 'first_name', 'email')->where('role_id', 1)->get()
+            'users' => $users
         ]);
     }
 
@@ -47,7 +59,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:50',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role_id' => 'required|integer',
         ]);

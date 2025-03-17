@@ -1,6 +1,6 @@
 import { type BreadcrumbItem } from '@/types';
 
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
@@ -15,6 +15,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Students() {
+
+    const pageProps = usePage().props;
+
+    const { users } = pageProps as { users?: Array<{ id: number; last_name: string; first_name: string; email: string }> };
+
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -27,7 +33,7 @@ export default function Students() {
                         </CardTitle>
 
                         <CardContent>
-                            <StudentTable students={[]} />
+                            <StudentTable users={users ?? []} />
                         </CardContent>
                     </Card>
                 </div>

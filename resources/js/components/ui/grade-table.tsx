@@ -1,4 +1,15 @@
-export default function GradeTable() {
+
+interface Props {
+    grades: {
+        id: number;
+        name: string;
+        grade: number;
+    }[];
+}
+
+export default function GradeTable({grades}: Props) {
+
+    console.log(grades);
 
         return (
             <>
@@ -20,11 +31,26 @@ export default function GradeTable() {
                                 <tr className="h-15 text-center">
 
                                     <td className="tg-0lax text-left"></td>
-                                    <td className="tg-0lax">
-                                        <a href="" target="_blank">Ouvrir</a>
-                                    </td>
+                                    <td className="tg-0lax"><a href="" target="_blank">Ouvrir</a></td>
                                     <td className="tg-0lax"></td>
                                 </tr>
+
+
+                    {grades.length > 0 ? (
+                        grades.map((grade) => (
+                            <tr className="h-15 text-center" key={grade.id}>
+                                <td className="tg-0lax text-left">{grade.name}</td>
+                                <td className="tg-0lax"><a href="" target="_blank">Ouvrir</a></td>
+                                <td className="tg-0lax">{grade.grade}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={2} className="text-center p-4">
+                                Aucune note trouvée..
+                            </td>
+                        </tr>
+                    )}
                     </tbody>
                 </table>
             </>

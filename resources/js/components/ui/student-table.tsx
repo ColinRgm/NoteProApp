@@ -1,12 +1,14 @@
 interface Props {
-    students: {
+    users: {
         id: number;
+        last_name: string;
         first_name: string;
-        last_name: string
+        email: string;
     }[];
 }
 
-export default function StudentTable({ students }: Props) {
+export default function userTable({ users }: Props) {
+
 
 
     return (
@@ -25,15 +27,20 @@ export default function StudentTable({ students }: Props) {
                 <tbody className="divide-y divide-gray-300">
                 {/* ----- Condition d'ajout pour chaque ligne du tableau ----- */}
 
-                {students.map((student) => (
-                    <tr className="h-15 text-center">
-                        <td className="tg-0lax text-left">
-                            {student.last_name && student.last_name}
-                        </td>
-                        <td className="tg-0lax">
+                {users.length > 0 ? (
+                    users.map((user) => (
+                        <tr className="h-15 text-center" key={user.id}>
+                            <td className="tg-0lax text-left">{user.last_name} {user.first_name}</td>
+                            <td className="tg-0lax">{user.email}</td>
+                        </tr>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan={2} className="text-center p-4">
+                            Aucun apprenti trouvé..
                         </td>
                     </tr>
-                ))}
+                )}
                 </tbody>
             </table>
         </>

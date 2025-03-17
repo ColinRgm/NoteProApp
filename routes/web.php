@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\Database\BranchController;
 use App\Http\Controllers\API\BrancheController;
+use App\Http\Controllers\API\GradeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,9 +14,11 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     /* Dashboard page */
-    Route::get('dashboard', function () {
+    /*Route::get('dashboard', function () {
         return Inertia::render('dashboard');
-    })->name('dashboard');
+    })->name('dashboard');*/
+
+    Route::get('dashboard', [GradeController::class, 'index'])->name('dashboard');
 
     Route::get('addGrade', [BrancheController::class, 'index'])->name('addGrade');
 
@@ -45,8 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     /* Student page */
-    Route::get('students', [RegisteredUserController::class, 'getStudents'])->name('students');
-
+    Route::get('students',
+        [RegisteredUserController::class, 'getStudents'])
+        ->name('students.getStudents');
 
 });
 
