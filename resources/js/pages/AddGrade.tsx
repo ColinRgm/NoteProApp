@@ -62,8 +62,8 @@ export default function AddGrade({ branches }: RegisterProps) {
                              *
                              */}
                             <div>
-                                <Label htmlFor="grade">Choix de la branche</Label>
-                                <Select name="grade" onValueChange={(value) => setData('branch_id', value)}>
+                                <Label htmlFor="branch">Choix de la branche</Label>
+                                <Select name="branch" onValueChange={(value) => setData('branch_id', value)}>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>
@@ -87,8 +87,8 @@ export default function AddGrade({ branches }: RegisterProps) {
                              *
                              */}
                             <div className="flex flex-col">
-                                <Label>Choix de la note</Label>
-                                <Input type="number" min="1" max="6" step="0.5" className="w-[400px]" placeholder="Choix de la note" />
+                                <Label htmlFor="grade">Choix de la note</Label>
+                                <Input name="grade" type="number" min="1" max="6" step="0.5" className="w-[400px]" placeholder="Choix de la note" />
                             </div>
 
                             {/*
@@ -112,8 +112,9 @@ export default function AddGrade({ branches }: RegisterProps) {
                              */}
                             <div>
                                 <div className="flex flex-col">
-                                    <Label>Choix du semestre</Label>
+                                    <Label htmlFor="semester">Choix du semestre</Label>
                                     <Input
+                                        name="semester"
                                         type="number"
                                         min="1"
                                         max="8"
@@ -126,8 +127,8 @@ export default function AddGrade({ branches }: RegisterProps) {
 
                             <div>
                                 <div className="flex flex-col">
-                                    <Label>Ajout d'un PDF</Label>
-                                    <Input type="file" className="w-[400px]" />
+                                    <Label htmlFor="pdf">Ajout d'un PDF</Label>
+                                    <Input name="pdf" type="file" className="w-[400px]" />
                                 </div>
                             </div>
 

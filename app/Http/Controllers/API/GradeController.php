@@ -15,7 +15,15 @@ class GradeController extends Controller
 
     public function create()
     {
-        //
+        /**
+         * Récupérer la valeur du select 'branch'
+         * Récupérer la valeur du select 'grade'
+         * Récupérer la valeur du select 'semester'
+         * -> Les ajouter dans la base de données dans la table 'Grades'
+         *
+         * Récupérer le nom du fichier pdf
+         * -> Ajouter le chemin du ficher dans la base de donnée dans la table 'Grades'
+         */
     }
 
     /**
