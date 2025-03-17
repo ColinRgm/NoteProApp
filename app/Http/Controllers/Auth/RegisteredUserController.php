@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
     public function getStudents(): Response
     {
         return Inertia::render('students', [
-            'users' => User::select('first_name', 'last_name', 'id')->where('role_id', 1)->get()
+            'users' => User::select('last_name', 'first_name', 'email')->where('role_id', 1)->get()
         ]);
     }
 

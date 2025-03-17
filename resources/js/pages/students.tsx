@@ -27,9 +27,7 @@ export default function Students() {
                         </CardTitle>
 
                         <CardContent>
-
-                            <StudentTable />
-
+                            <StudentTable students={[]} />
                         </CardContent>
                     </Card>
                 </div>
