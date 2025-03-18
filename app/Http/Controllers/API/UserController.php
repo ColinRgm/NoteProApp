@@ -9,6 +9,7 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -18,7 +19,7 @@ class UserController extends Controller
     }
 
 
-        /**
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

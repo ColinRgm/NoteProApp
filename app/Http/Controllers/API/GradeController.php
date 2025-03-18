@@ -31,16 +31,59 @@ class GradeController extends Controller
      */
     public function dashboardGrade()
     {
-        $grades = Grade::with('branch:id,name')
+        /*$grades = Grade::with('branch:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
             ->orderBy('created_at', 'desc')
             ->limit(5)
+            ->get();*/
+
+        $grades = Grade::select(
+            'branches.name as branch_name',
+            'branches.weight as branch_weight',
+            'branches.rounding as branch_rounding',
+            'grades.grade',
+            'groups.name as group_name',
+            'groups.weight as group_weight',
+            'groups.rounding as group_rounding'
+        )
+            ->join('branches', 'branches.id', '=', 'grades.branch_id')
+            ->join('groups', 'groups.id', '=', 'branches.groupe_id')
             ->get();
 
+        /**
+         * Get columns in branches
+         *
+         * id
+         * groupe_id
+         * weight
+         * rounding
+         */
+        $ecgAvg = 5;
+        $baseElargieAvg = 5;
+        $informatiqueAvg = 4.5;
+        $tpiAvg = 4;
+
+        /**
+         * Get columns in groups
+         *
+         * id
+         * weight
+         * rounding
+         */
+        // $generalAvg = ($ecgAvg + $baseElargieAvg + $informatiqueAvg + $tpiAvg) / 4;
+
         return Inertia::render('dashboard', [
-            'grades' => $grades
+            'grades' => $grades,
+            /*'averages' => [
+                'general' => $generalAvg,
+                'ecg' => $ecgAvg,
+                'baseElargie' => $baseElargieAvg,
+                'informatique' => $informatiqueAvg,
+                'tpi' => $tpiAvg,
+            ]*/
         ]);
     }
+
 
     public function gradesPerYear($year)
     {
@@ -61,60 +104,6 @@ class GradeController extends Controller
             'grades' => $grades
         ]);
     }
-
-    /*public function firstYearGrade()
-    {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
-            ->orderBy('created_at', 'desc')
-            ->whereIn('semester', [1, 2])
-            ->get();
-
-        return Inertia::render('firstYear', [
-            'grades' => $grades
-        ]);
-    }
-
-    public function secondYearGrade()
-    {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
-            ->orderBy('created_at', 'desc')
-            ->whereIn('semester', [3, 4])
-            ->get();
-
-        return Inertia::render('secondYear', [
-            'grades' => $grades
-        ]);
-    }
-
-    public function thirdYearGrade()
-    {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
-            ->orderBy('created_at', 'desc')
-            ->whereIn('semester', [5, 6])
-            ->get();
-
-        return Inertia::render('thirdYear', [
-            'grades' => $grades
-        ]);
-    }
-
-    public function fourthYearGrade()
-    {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
-            ->orderBy('created_at', 'desc')
-            ->whereIn('semester', [7, 8])
-            ->get();
-
-        return Inertia::render('fourthYear', [
-            'grades' => $grades
-        ]);
-    }*/
-
-
 
 
     /**

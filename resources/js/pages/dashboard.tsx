@@ -14,10 +14,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Dashboard() {
 
-    const pageProps = usePage().props;
-    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+    const { grades, averages } = usePage().props;
 
-    // console.log('Moyenne: ', average)
+    console.log('Moyenne: ', averages)
+    console.log('Information des notes: ', grades)
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -30,7 +30,7 @@ export default function Dashboard() {
                     */}
                     <Card className="p-5">
                         <CardTitle size="xl">Moyenne</CardTitle>
-                        <CardContent className="text-5xl">6</CardContent>
+                        <CardContent className="text-5xl"></CardContent>
                     </Card>
 
                     {/*
@@ -38,7 +38,7 @@ export default function Dashboard() {
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Culture générale</CardTitle>
-                        <CardContent className="text-4xl">5</CardContent>
+                        <CardContent className="text-4xl"></CardContent>
                     </Card>
 
                     {/*
@@ -46,7 +46,7 @@ export default function Dashboard() {
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Base élargie</CardTitle>
-                        <CardContent className="text-4xl">5</CardContent>
+                        <CardContent className="text-4xl"></CardContent>
                     </Card>
 
                     {/*
@@ -54,7 +54,7 @@ export default function Dashboard() {
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Informatique</CardTitle>
-                        <CardContent className="text-4xl">5</CardContent>
+                        <CardContent className="text-4xl"></CardContent>
                     </Card>
 
                     {/*
@@ -62,7 +62,7 @@ export default function Dashboard() {
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Travail pratique</CardTitle>
-                        <CardContent className="text-4xl">5</CardContent>
+                        <CardContent className="text-4xl"></CardContent>
                     </Card>
                 </div>
 
@@ -72,7 +72,8 @@ export default function Dashboard() {
                     </CardTitle>
 
                     <CardContent>
-                        <GradeTable grades={grades ?? []} />
+
+                        {/*<GradeTable />*/}
                     </CardContent>
                 </Card>
 

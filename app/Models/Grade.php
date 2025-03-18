@@ -47,4 +47,10 @@ class Grade extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+
+
+    public function avg()
+    {
+        return $this->branch()->avg('grade');
+    }
 }

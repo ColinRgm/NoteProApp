@@ -15,9 +15,6 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
 
-    Route::get('dashboard', [UserController::class, 'average'])->name('dashboard');
-
-
     /**
      * Get the last five grades and add them to the table on the dashboard
      */
