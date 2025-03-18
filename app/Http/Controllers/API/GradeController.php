@@ -42,7 +42,27 @@ class GradeController extends Controller
         ]);
     }
 
-    public function firstYearGrade()
+    public function gradesPerYear($year)
+    {
+        $semester = [
+            'first' => [1, 2],
+            'second' => [3, 4],
+            'third' => [5, 6],
+            'fourth' => [7, 8],
+        ];
+
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->orderBy('created_at', 'desc')
+            ->whereIn('semester', $semester[$year])
+            ->get();
+
+        return Inertia::render("{$year}Year", [
+            'grades' => $grades
+        ]);
+    }
+
+    /*public function firstYearGrade()
     {
         $grades = Grade::with('branch:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
@@ -92,7 +112,7 @@ class GradeController extends Controller
         return Inertia::render('fourthYear', [
             'grades' => $grades
         ]);
-    }
+    }*/
 
 
 

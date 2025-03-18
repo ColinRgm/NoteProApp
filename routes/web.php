@@ -27,27 +27,31 @@ Route::middleware(['auth'])->group(function () {
         [BrancheController::class, 'index'])
         ->name('addGrade');
 
+    /* For each year */
+    Route::get('{year}Year', [GradeController::class, 'gradesPerYear'])
+        ->where('Grades_Per_Year', '[first, second, third, fourth]');
 
-    /* First year page */
+    /**
+    // First year page
     Route::get('firstYear',
         [GradeController::class, 'firstYearGrade'])
         ->name('First_Year_Grades');
 
-
-    /* Second year page */
+     // Second year page
     Route::get('secondYear',
         [GradeController::class, 'secondYearGrade'])
         ->name('Second_Year_Grades');
 
-    /* Third year page */
-    Route::get('thirdYear',
+    // Third year page
+   Route::get('thirdYear',
         [GradeController::class, 'thirdYearGrade'])
         ->name('Third_Year_Grades');
 
-    /* Fourth year page */
+    // Fourth year page
     Route::get('fourthYear',
         [GradeController::class, 'fourthYearGrade'])
         ->name('Fourth_Year_Grades');
+    */
 
 
     /* Student page */
