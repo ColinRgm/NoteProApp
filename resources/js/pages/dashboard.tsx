@@ -22,38 +22,36 @@ export default function Dashboard() {
             <Head title="Dashboard" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
-                <div className="grid w-[70%] auto-rows-min gap-20 md:grid-cols-3">
-                    <Card className="p-5 col-end-3">
-                        <CardTitle size="xxl">
+                <div className="grid w-[85%] auto-rows-min gap-20 md:grid-cols-5">
+                    <Card className="p-5">
+                        <CardTitle size="xl">
                             Moyenne
                         </CardTitle>
-                        <CardContent className="text-4xl">5</CardContent>
+                        <CardContent className="text-5xl">5</CardContent>
                     </Card>
-                </div>
-                <div className="grid w-[70%] auto-rows-min gap-20 md:grid-cols-4">
                     <Card className="p-5">
-                        <CardTitle size="lg">
+                        <CardTitle size="md">
                             Culture générale
                         </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
                     <Card className="p-5">
-                        <CardTitle size="lg">
+                        <CardTitle size="md">
                             Base élargie
                         </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
                     <Card className="p-5">
-                        <CardTitle size="lg" margin="small">
+                        <CardTitle size="md">
                             Informatique
                         </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
                     <Card className="p-5">
-                        <CardTitle size="lg">
+                        <CardTitle size="md">
                             Travail pratique
                         </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
