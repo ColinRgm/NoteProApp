@@ -65,6 +65,19 @@ class User extends Authenticatable
     }
 
     /**
+     * Calcul des moyennes
+     */
+    public function weightedAverage()
+    {
+        return $this->grades()
+            ->join('branches', 'grades.branch_id', '=', 'branches.id')
+            ->join('groups', 'branches.group_id', '=', 'groups.id')
+            ->select('SUM(grades.grade * branches.weight * groups.weight) / SUM(branches.weight * groups.weight) AS weighted_average')
+            ->value('weighted_average');
+    }
+
+
+    /**
      * Un User peut avoir un Role
      *
      * @return BelongsTo

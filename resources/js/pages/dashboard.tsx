@@ -22,14 +22,26 @@ export default function Dashboard() {
             <Head title="Dashboard" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
+                <div className="grid w-[70%] auto-rows-min gap-20 md:grid-cols-3">
+                    <Card className="p-5 col-end-3">
+                        <CardTitle size="xxl">
+                            Moyenne
+                        </CardTitle>
+                        <CardContent className="text-4xl">5</CardContent>
+                    </Card>
+                </div>
                 <div className="grid w-[70%] auto-rows-min gap-20 md:grid-cols-4">
                     <Card className="p-5">
-                        <CardTitle size="lg">Culture générale</CardTitle>
+                        <CardTitle size="lg">
+                            Culture générale
+                        </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
                     <Card className="p-5">
-                        <CardTitle size="lg">Base élargie</CardTitle>
+                        <CardTitle size="lg">
+                            Base élargie
+                        </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
@@ -41,7 +53,9 @@ export default function Dashboard() {
                     </Card>
 
                     <Card className="p-5">
-                        <CardTitle size="lg">Culture générale</CardTitle>
+                        <CardTitle size="lg">
+                            Travail pratique
+                        </CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
                 </div>

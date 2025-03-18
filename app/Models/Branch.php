@@ -10,6 +10,14 @@ use Illuminate\Http\JsonResponse;
 
 class Branch extends Model
 {
+
+    protected $fillable = [
+        'groupe_id',
+        'name',
+        'weight',
+        'rounding'
+    ];
+
     /**
      * Une Branch peut avoir un ou plusieurs Grade
      *

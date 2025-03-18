@@ -3,6 +3,7 @@
 // use App\Http\Controllers\Database\BranchController;
 use App\Http\Controllers\API\BrancheController;
 use App\Http\Controllers\API\GradeController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -58,6 +59,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('students',
         [RegisteredUserController::class, 'getStudents'])
         ->name('All_Students');
+
+
+
+    // Route::get('dashboard', [UserController::class, 'average']);
 
 });
 

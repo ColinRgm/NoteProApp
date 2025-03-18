@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class Grade extends Model
 {
 
+    protected $fillable = [
+        'branch_id',
+        'user_id',
+        'grade',
+        'pdf',
+        'semester'
+    ];
+
     /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**
      * Un User peut ajouter plusieurs Grades
