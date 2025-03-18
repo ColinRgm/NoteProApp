@@ -36,18 +36,7 @@ class BrancheController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
-        /*$request->validate([
-            'branche_id' => 'required|integer'
-        ]);
-
-        $grade = Grade::create([
-            'branche_id' => $request->branche_id
-        ]);
-
-        event(new Branch($grade));
-
-        return to_route('dashboard');*/
+        //
     }
 
     /**
@@ -55,10 +44,7 @@ class BrancheController extends Controller
      */
     public function show()
     {
-        // $branche = Branch::where('name', 'LIKE', '%CIE%')->get(['id', 'name']);
-
-        /*$branche = Branch::first();
-        return $branche;*/
+        //
     }
 
     /**

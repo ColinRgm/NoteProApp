@@ -3,7 +3,6 @@
 // use App\Http\Controllers\Database\BranchController;
 use App\Http\Controllers\API\BrancheController;
 use App\Http\Controllers\API\GradeController;
-use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,10 +13,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    /* Dashboard page */
+/*    /* Dashboard page
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
-    })->name('Home_Page');
+    })->name('dashboard');*/
 
     Route::get('dashboard',
         [GradeController::class, 'dashboardGrade'])
