@@ -13,9 +13,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const pageProps = usePage().props;
 
+    const pageProps = usePage().props;
     const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+
+    // console.log('Moyenne: ', average)
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -23,37 +25,43 @@ export default function Dashboard() {
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid w-[85%] auto-rows-min gap-20 md:grid-cols-5">
+                    {/*
+                        Moyenne de tout les groupes
+                    */}
                     <Card className="p-5">
-                        <CardTitle size="xl">
-                            Moyenne
-                        </CardTitle>
-                        <CardContent className="text-5xl">5</CardContent>
+                        <CardTitle size="xl">Moyenne</CardTitle>
+                        <CardContent className="text-5xl">6</CardContent>
                     </Card>
+
+                    {/*
+                        Moyenne des notes aillant le groupe_id 1
+                    */}
                     <Card className="p-5">
-                        <CardTitle size="md">
-                            Culture générale
-                        </CardTitle>
+                        <CardTitle size="md">Culture générale</CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
+                    {/*
+                        Moyenne des notes aillant le groupe_id 2
+                    */}
                     <Card className="p-5">
-                        <CardTitle size="md">
-                            Base élargie
-                        </CardTitle>
+                        <CardTitle size="md">Base élargie</CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
+                    {/*
+                        Moyenne des notes aillant le groupe_id 3
+                    */}
                     <Card className="p-5">
-                        <CardTitle size="md">
-                            Informatique
-                        </CardTitle>
+                        <CardTitle size="md">Informatique</CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
 
+                    {/*
+                        Moyenne des notes aillant le groupe_id 4
+                    */}
                     <Card className="p-5">
-                        <CardTitle size="md">
-                            Travail pratique
-                        </CardTitle>
+                        <CardTitle size="md">Travail pratique</CardTitle>
                         <CardContent className="text-4xl">5</CardContent>
                     </Card>
                 </div>
@@ -63,10 +71,6 @@ export default function Dashboard() {
                         5 dernière notes
                     </CardTitle>
 
-                    {/*
-                     * Récupérer les 5 dernières notes (en fonction de la date)
-                     * Limiter le nombre de lignes
-                     */}
                     <CardContent>
                         <GradeTable grades={grades ?? []} />
                     </CardContent>

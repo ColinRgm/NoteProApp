@@ -13,7 +13,7 @@ use Inertia\Response;
 class BrancheController extends Controller
 {
 
-    public function create(): Response
+    public function create()
     {
         /*return Inertia::render('AddGrade', [
             'branches' => Branch::all()->toArray()
@@ -34,7 +34,7 @@ class BrancheController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //
     }

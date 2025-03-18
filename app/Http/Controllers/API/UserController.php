@@ -12,7 +12,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function average($userId)
+    public function groupeAverage()
     {
 
     }

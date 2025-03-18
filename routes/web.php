@@ -3,6 +3,7 @@
 // use App\Http\Controllers\Database\BranchController;
 use App\Http\Controllers\API\BrancheController;
 use App\Http\Controllers\API\GradeController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,55 +14,39 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-/*    /* Dashboard page
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');*/
 
+    Route::get('dashboard', [UserController::class, 'average'])->name('dashboard');
+
+
+    /**
+     * Get the last five grades and add them to the table on the dashboard
+     */
     Route::get('dashboard',
         [GradeController::class, 'dashboardGrade'])
         ->name('Last_Five_Grades');
 
-    /* Add Grade */
+
+    /**
+     * Get the branches name and add them to the select on the page to add grade
+     */
     Route::get('addGrade',
         [BrancheController::class, 'index'])
         ->name('addGrade');
 
-    /* For each year */
+
+    /**
+     * Get all the grades and add them to the right table by year
+     */
     Route::get('{year}Year', [GradeController::class, 'gradesPerYear'])
         ->where('Grades_Per_Year', '[first, second, third, fourth]');
 
+
     /**
-    // First year page
-    Route::get('firstYear',
-        [GradeController::class, 'firstYearGrade'])
-        ->name('First_Year_Grades');
-
-     // Second year page
-    Route::get('secondYear',
-        [GradeController::class, 'secondYearGrade'])
-        ->name('Second_Year_Grades');
-
-    // Third year page
-   Route::get('thirdYear',
-        [GradeController::class, 'thirdYearGrade'])
-        ->name('Third_Year_Grades');
-
-    // Fourth year page
-    Route::get('fourthYear',
-        [GradeController::class, 'fourthYearGrade'])
-        ->name('Fourth_Year_Grades');
-    */
-
-
-    /* Student page */
+     * Get all the students and add them to the list in the page students
+     */
     Route::get('students',
         [RegisteredUserController::class, 'getStudents'])
         ->name('All_Students');
-
-
-
-    // Route::get('dashboard', [UserController::class, 'average']);
 
 });
 

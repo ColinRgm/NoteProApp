@@ -18,6 +18,9 @@ class Grade extends Model
         'semester'
     ];
 
+
+
+
     /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**
      * Un User peut ajouter plusieurs Grades
@@ -29,6 +32,9 @@ class Grade extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+
 
     /* ----------------------------------- Fonction de relation avec les branches ----------------------------------- */
     /**

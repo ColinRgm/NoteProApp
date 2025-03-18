@@ -65,6 +65,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Un User peut avoir un Role
+     *
+     * @return BelongsTo
+     *
+     */
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class);
+    }
+
+
+
+    /**
      * Calcul des moyennes
      */
     public function weightedAverage()
@@ -74,17 +86,6 @@ class User extends Authenticatable
             ->join('groups', 'branches.group_id', '=', 'groups.id')
             ->select('SUM(grades.grade * branches.weight * groups.weight) / SUM(branches.weight * groups.weight) AS weighted_average')
             ->value('weighted_average');
-    }
-
-
-    /**
-     * Un User peut avoir un Role
-     *
-     * @return BelongsTo
-     *
-     */
-    public function role(): BelongsTo {
-        return $this->belongsTo(Role::class);
     }
 }
 
