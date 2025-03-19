@@ -16,7 +16,7 @@ export default function Dashboard() {
 
     const { grades } = usePage().props;
 
-    console.log('Moyenne: ')
+    // console.log('Moyenne: ')
     console.log('Information des notes: ', grades)
 
     return (
@@ -73,7 +73,10 @@ export default function Dashboard() {
 
                     <CardContent>
 
-                        <GradeTable grades={grades} maxRows={5}/>
+                        <GradeTable
+                            grades={grades}
+                            maxRows={5}
+                        />
                     </CardContent>
                 </Card>
 

@@ -10,16 +10,7 @@ use Inertia\Inertia;
 class UserController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function groupeAverage()
-    {
-
-    }
-
-
-    /**
+        /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

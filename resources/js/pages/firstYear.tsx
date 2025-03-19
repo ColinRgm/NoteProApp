@@ -15,9 +15,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function FirstYear() {
 
-    const pageProps = usePage().props;
-
-    const { grades } = pageProps as { grades?: Array<{ id: number; grade: number; semester: number; branch: {name: string;} }> };
+    const { grades } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -30,7 +28,7 @@ export default function FirstYear() {
                     </CardTitle>
                     <CardContent>
                         <GradeTable
-                            grades={grades ?? []}
+                            grades={grades}
                         />
                     </CardContent>
                 </Card>

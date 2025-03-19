@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Grade;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -49,7 +50,7 @@ class GradeController extends Controller
         )
             ->join('branches', 'branches.id', '=', 'grades.branch_id')
             ->join('groups', 'groups.id', '=', 'branches.groupe_id')
-            // ->groupBy('groups.id', 'groups.name', 'groups.weight', 'groups.rounding')
+
             ->get();
 
         /**
@@ -86,14 +87,12 @@ class GradeController extends Controller
         ]);
     }
 
-    public function averages()
-    {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
-            ->get();
-    }
-
-
+    /**
+     * @param $year
+     * @return Response
+     *
+     * Get the grades for each years and add them to the right page
+     */
     public function gradesPerYear($year)
     {
         $semester = [
@@ -118,9 +117,24 @@ class GradeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        // dd(123);
+
+        $request->validate([
+            'branch_name' => 'required',
+            'grade' => 'required',
+            'semester' => 'required',
+            // 'pdf' => 'mimes:pdf',
+        ]);
+
+        $newGrade = Grade::create($request->only('branch_name', 'grade', 'semester'));
+
+        if (!$newGrade) {
+            return back()->with('error', 'Une erreur est survenue');
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Note ajoutée avec succès');
     }
 
     /**

@@ -34,11 +34,14 @@ interface RegisterProps {
 export default function AddGrade({ branches }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branch_id: '',
+        grade: '',
+        semester: '',
+        // pdf: null
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('dashboard'));
+        post(route('newGrade'));
     };
 
     return (
@@ -88,7 +91,17 @@ export default function AddGrade({ branches }: RegisterProps) {
                              */}
                             <div className="flex flex-col">
                                 <Label htmlFor="grade">Choix de la note</Label>
-                                <Input name="grade" type="number" min="1" max="6" step="0.5" className="w-[400px]" placeholder="Choix de la note" />
+                                <Input
+                                    name="grade"
+                                    type="number"
+                                    min="1"
+                                    max="6"
+                                    step="0.5"
+                                    className="w-[400px]"
+                                    placeholder="Choix de la note"
+                                    onChange={(e) =>setData('grade', e.target.value)}
+                                    // value={data.grade}
+                                />
                             </div>
 
                             {/*
@@ -121,16 +134,18 @@ export default function AddGrade({ branches }: RegisterProps) {
                                         step="1"
                                         className="w-[400px]"
                                         placeholder="Choix du semestre"
+                                        onChange={(e) => setData('semester', e.target.value)}
+                                        // value={data.semester}
                                     />
                                 </div>
                             </div>
 
-                            <div>
+                            {/*<div>
                                 <div className="flex flex-col">
                                     <Label htmlFor="pdf">Ajout d'un PDF</Label>
                                     <Input name="pdf" type="file" className="w-[400px]" />
                                 </div>
-                            </div>
+                            </div>*/}
 
                             <Button
                                 type="submit"
