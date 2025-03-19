@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
      */
     Route::get('dashboard',
         [GradeController::class, 'dashboardGrade'])
-        ->name('Last_Five_Grades');
+        ->name('Grades_and_Averages');
 
 
     /**

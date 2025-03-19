@@ -42,12 +42,14 @@ class GradeController extends Controller
             'branches.weight as branch_weight',
             'branches.rounding as branch_rounding',
             'grades.grade',
+            'groups.id as group_id',
             'groups.name as group_name',
             'groups.weight as group_weight',
             'groups.rounding as group_rounding'
         )
             ->join('branches', 'branches.id', '=', 'grades.branch_id')
             ->join('groups', 'groups.id', '=', 'branches.groupe_id')
+            // ->groupBy('groups.id', 'groups.name', 'groups.weight', 'groups.rounding')
             ->get();
 
         /**
@@ -82,6 +84,13 @@ class GradeController extends Controller
                 'tpi' => $tpiAvg,
             ]*/
         ]);
+    }
+
+    public function averages()
+    {
+        $grades = Grade::with('branch:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester')
+            ->get();
     }
 
 

@@ -7,13 +7,15 @@ interface Props {
         branch: {
             name: string;
         }
-    }[]
+    }[];
+    maxRows?: number;
 }
 
-export default function GradeTable({grades}: Props) {
+export default function GradeTable({grades, maxRows}: Props) {
 
     console.log(grades);
 
+    const displayGrades = maxRows ? grades.slice(0, maxRows) : grades;
 
         return (
             <>
@@ -32,8 +34,8 @@ export default function GradeTable({grades}: Props) {
                     <tbody className="divide-y divide-gray-300">
                     {/* ----- Condition d'ajout pour chaque ligne du tableau ----- */}
 
-                    {grades.length > 0 ? (
-                        grades.map((grade) => (
+                    {displayGrades.length > 0 ? (
+                        displayGrades.map((grade) => (
                             <tr className="h-15 text-center" key={grade.id}>
                                 <td className="tg-0lax text-left">{grade.branch.name}</td>
                                 <td className="tg-0lax"><a href="" target="_blank">Ouvrir</a></td>

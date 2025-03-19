@@ -14,9 +14,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Dashboard() {
 
-    const { grades, averages } = usePage().props;
+    const { grades } = usePage().props;
 
-    console.log('Moyenne: ', averages)
+    console.log('Moyenne: ')
     console.log('Information des notes: ', grades)
 
     return (
@@ -73,7 +73,7 @@ export default function Dashboard() {
 
                     <CardContent>
 
-                        {/*<GradeTable />*/}
+                        <GradeTable grades={grades} maxRows={5}/>
                     </CardContent>
                 </Card>
 
