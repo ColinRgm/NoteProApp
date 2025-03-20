@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\API\DashboardController;
-use App\Http\Controllers\API\GradeController;
-use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\GradesController;
+use App\Http\Controllers\API\UsersController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,18 +15,22 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/', function () {
+        return Inertia::render('dashboard');
+    })->name('dashboard');
+
     /* -- Dashboard -------------------------------------------------------------------------------------------- */
-    Route::resource('dashboard', DashboardController::class);
+    Route::resource('dashboard', DashboardController::class)->only('index');
 
 
 
     /* -- Grades ---------------------------------------------------------------------------------------------------- */
-    Route::resource('grades', GradeController::class);
+    Route::resource('grades', GradesController::class)->except('show');
 
 
 
     /* -- Student Page ---------------------------------------------------------------------------------------------- */
-    Route::resource('users', UserController::class);
+    Route::resource('users', UsersController::class)->except('show');
 
 });
 

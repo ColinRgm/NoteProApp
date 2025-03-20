@@ -8,7 +8,7 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: 'dashboard',
     },
 ];
 
