@@ -12,10 +12,10 @@ class DashboardController extends Controller
     public function index()
     {
         $grades = Grade::with('branch:id,name')
-    ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
-    ->orderBy('created_at', 'desc')
-    ->limit(5)
-    ->get();
+            ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
 
         /*$grades = Grade::select(
             'branches.name as branch_name',
@@ -32,13 +32,6 @@ class DashboardController extends Controller
             ->get();*/
 
         /**
-         * Get columns in branches
-         *
-         * id
-         * groupe_id
-         * weight
-         * rounding
-         *
          * $ecgAvg = 5;
          * $baseElargieAvg = 5;
          * $informatiqueAvg = 4.5;
