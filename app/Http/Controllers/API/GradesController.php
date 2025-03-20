@@ -20,7 +20,6 @@ class GradesController extends Controller
         $grades = Grade::with('branch:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
             ->orderBy('created_at', 'desc')
-            ->where('semester', 1 && 2)
             ->get();
 
         return Inertia::render('grades', [
@@ -45,6 +44,17 @@ class GradesController extends Controller
      * Add grade in the database
      */
     public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * @param $id
+     * @return void
+     *
+     * Show a preview of the grade
+     */
+    public function show($id)
     {
         //
     }
