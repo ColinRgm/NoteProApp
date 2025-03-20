@@ -10,7 +10,7 @@ import StudentTable from '@/components/ui/student-table';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Apprentis',
-        href: 'students',
+        href: 'users',
     },
 ];
 

@@ -26,29 +26,6 @@ class RegisteredUserController extends Controller
         ]);
     }
 
-
-    /**
-     * Get all the users that are 'Apprenti'
-     */
-    public function getStudents(): Response
-    {
-        $users = User::select(
-                'id',
-                'last_name',
-                'first_name',
-                'email')
-                ->where(
-                    'role_id',
-                    1)
-                ->get();
-
-        // dd($users);
-
-        return Inertia::render('students', [
-            'users' => $users
-        ]);
-    }
-
     /**
      * Handle an incoming registration request.
      *
@@ -63,7 +40,6 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role_id' => 'required|integer',
         ]);
-
 
         $user = User::create([
             'first_name' => $request->first_name,

@@ -20,6 +20,7 @@ interface RegisterForm {
     // Get the grade
     // Get the semester
     branch_id: string;
+    user_id: number;
     grade: string;
     semester: string;
 }
@@ -34,9 +35,12 @@ interface RegisterProps {
 export default function AddGrade({ branches }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branch_id: '',
+        user_id: '',
         grade: '',
+        pdf: 'test.pdf',
         semester: '',
-        // pdf: null
+        created_at: '',
+        updated_at: ''
     });
 
     const submit: FormEventHandler = (e) => {
@@ -55,15 +59,7 @@ export default function AddGrade({ branches }: RegisterProps) {
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-                            {/*
-                             *
-                             * Récupérer le nom des branches et les ajouter dans le select
-                             *
-                             * Puis récupérer la valeur du choix selectionné (ID) et l'ajouter dans la table grade
-                             *
-                             * branch_id
-                             *
-                             */}
+
                             <div>
                                 <Label htmlFor="branch">Choix de la branche</Label>
                                 <Select name="branch" onValueChange={(value) => setData('branch_id', value)}>
@@ -82,13 +78,6 @@ export default function AddGrade({ branches }: RegisterProps) {
                                 </Select>
                             </div>
 
-                            {/*
-                             *
-                             * Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
-                             *
-                             * grade
-                             *
-                             */}
                             <div className="flex flex-col">
                                 <Label htmlFor="grade">Choix de la note</Label>
                                 <Input
@@ -99,30 +88,11 @@ export default function AddGrade({ branches }: RegisterProps) {
                                     step="0.5"
                                     className="w-[400px]"
                                     placeholder="Choix de la note"
+                                    value={data.grade}
                                     onChange={(e) =>setData('grade', e.target.value)}
-                                    // value={data.grade}
                                 />
                             </div>
 
-                            {/*
-                             *
-                             * Gestion du PDF à mettre au clair
-                             *
-                             * Probablement le chemin vers le pdf
-                             *
-                            *
-                            <div>
-
-                            </div>
-                            */}
-
-                            {/*
-                             *
-                             * Puis récupérer la valeur du choix selectionné et l'ajouter dans la table grade
-                             *
-                             * semestre
-                             *
-                             */}
                             <div>
                                 <div className="flex flex-col">
                                     <Label htmlFor="semester">Choix du semestre</Label>
@@ -134,8 +104,8 @@ export default function AddGrade({ branches }: RegisterProps) {
                                         step="1"
                                         className="w-[400px]"
                                         placeholder="Choix du semestre"
+                                        value={data.semester}
                                         onChange={(e) => setData('semester', e.target.value)}
-                                        // value={data.semester}
                                     />
                                 </div>
                             </div>

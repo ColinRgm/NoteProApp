@@ -9,34 +9,43 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::select(
+            'id',
+            'last_name',
+            'first_name',
+            'email')
+            ->where(
+                'role_id',
+                1)
+            ->get();
 
-        /**
-     * Store a newly created resource in storage.
-     */
+        return Inertia::render('students', [
+            'users' => $users
+        ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('students/create');
+    }
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show()
+    public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

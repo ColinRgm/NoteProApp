@@ -5,7 +5,8 @@ import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { HouseIcon } from 'lucide-react';
 import AppLogo from './app-logo';
-import { PiNumberSquareOneBold, PiNumberSquareTwoBold, PiNumberSquareThreeBold, PiNumberSquareFourBold, PiUsersThree} from "react-icons/pi";
+import { PiUsersThree} from "react-icons/pi";
+import { LuGraduationCap } from "react-icons/lu";
 import { NavFooter } from '@/components/nav-footer';
 
 
@@ -16,6 +17,11 @@ const mainNavItems: NavItem[] = [
         icon: HouseIcon,
     },
     {
+        title: 'Notes',
+        url: 'grades',
+        icon: LuGraduationCap
+    }
+    /*{
         title: '1ère année',
         url: '/firstYear',
         icon: PiNumberSquareOneBold
@@ -34,7 +40,7 @@ const mainNavItems: NavItem[] = [
         title: '4ème année',
         url: '/fourthYear',
         icon: PiNumberSquareFourBold
-    },
+    },*/
 
 ];
 
@@ -47,7 +53,7 @@ const mainNavItems: NavItem[] = [
 const footerNavItems: NavItem[] = [
         {
         title: 'Apprentis',
-        url: '/students',
+        url: '/users',
         icon: PiUsersThree
     }
 ]

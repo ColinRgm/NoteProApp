@@ -14,8 +14,9 @@ class Grade extends Model
         'branch_id',
         'user_id',
         'grade',
-        'pdf',
-        'semester'
+        'semester',
+        'created_at',
+        'updated_at',
     ];
 
 

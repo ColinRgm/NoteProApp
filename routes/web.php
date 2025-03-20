@@ -1,9 +1,7 @@
 <?php
-
-// use App\Http\Controllers\Database\BranchController;
-use App\Http\Controllers\API\BrancheController;
+use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\GradeController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,57 +15,18 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    /* -- Dashboard Page -------------------------------------------------------------------------------------------- */
-    /**
-     * Get the last five grades and add them to the table
-     */
-    Route::get('dashboard',
-        [GradeController::class, 'dashboardGrade'])
-        ->name('dashboard');
+    /* -- Dashboard -------------------------------------------------------------------------------------------- */
+    Route::resource('dashboard', DashboardController::class);
 
 
 
-
-    /* -- AddGrade Page --------------------------------------------------------------------------------------------- */
-    /**
-     * Get the branches name and add them to the select on the page
-     */
-    Route::get('addGrade',
-        [BrancheController::class, 'index']
-    )->name('getBranche');
-
-
-    /**
-     * Add a new grade in the database
-     */
-    Route::post('addGrade',
-        [GradeController::class, 'store']
-    )->name('newGrade');
-
-
-
-
-    /* -- Year's pages ---------------------------------------------------------------------------------------------- */
-    /**
-     * Get all the grades and add them to the right table by year
-     */
-    Route::get('{year}Year',
-        [GradeController::class, 'gradesPerYear'])
-        ->where(
-            'Grades_Per_Year',
-            '[first, second, third, fourth]'
-        );
-
+    /* -- Grades ---------------------------------------------------------------------------------------------------- */
+    Route::resource('grades', GradeController::class);
 
 
 
     /* -- Student Page ---------------------------------------------------------------------------------------------- */
-    /**
-     * Get all the students and add them to the list
-     */
-    Route::get('students',
-        [RegisteredUserController::class, 'getStudents'])
-        ->name('All_Students');
+    Route::resource('users', UserController::class);
 
 });
 
