@@ -49,41 +49,34 @@ export default function Table({ users, grades, maxRows }: Props) {
                 <table className="w-[100%] divide-y-1 divide-gray-300">
 
                     <thead className="h-20">
-                        <tr>
-                            {
-                                tableConfig.headers.map((header, index) => (
-                                    <th key={index} className={`tg-0lax ${index === 0 ? 'text-left' : 'text-center'}`}>{header}</th>
-                                ))
-                            }
-                        </tr>
+                    <tr>
+                        {tableConfig.headers.map((header, index) => (
+                            <th key={index}
+                                className={`tg-0lax ${index === 0 ? 'text-left' : 'text-center'}`}>{header}</th>
+                        ))}
+                    </tr>
                     </thead>
 
 
                     <tbody className="divide-y divide-gray-300">
-                    {
-                        tableConfig.rows.length > 0 ? (
-                            tableConfig.rows.map((row, index) => (
+                    {tableConfig.rows.length > 0 ? (
+                        tableConfig.rows.map((row, index) => (
 
-                                <tr
-                                    className="h-15 text-left"
-                                    key={index}>
-                                    {row.map((cell, i) => (
-                                        <td
-                                            key={i}
-                                            className={`tg-0lax ${i === 0 ? 'text-left' : 'text-center'}`}>{cell}</td>
-                                    ))}
-                                </tr>
-
-                            ))
-                        ) : (
-
-                            <tr>
-                                <td colSpan={tableConfig.headers.length} className="text-center p-4">
-                                    {tableConfig.noDataMessage}
-                                </td>
+                            <tr className="h-15 text-left" key={index}>
+                                {row.map((cell, i) => (
+                                    <td key={i}
+                                        className={`tg-0lax ${i === 0 ? 'text-left' : 'text-center'}`}>{cell}</td>
+                                ))}
                             </tr>
 
-                        )
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={tableConfig.headers.length} className="text-center p-4">
+                                {tableConfig.noDataMessage}
+                            </td>
+                        </tr>
+                    )
                     }
                     </tbody>
                 </table>

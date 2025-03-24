@@ -17,13 +17,17 @@ class GradesController extends Controller
      */
     public function index(Request $request): Response
     {
-        $grades = Grade::with('branch:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'created_at')
-            ->orderBy('created_at', 'desc')
+        $grades = Grade::with('branch:id,name', 'user')
+        ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
             ->get();
 
+        $organizedGrades = $grades->groupBy(function($grade) {
+            $year = floor(($grade->semester - 1) / 2) + 1;
+            return "{$year}ère année";
+        });
+
         return Inertia::render('grades', [
-            'grades' => $grades
+            'grades' => $organizedGrades
         ]);
     }
 
