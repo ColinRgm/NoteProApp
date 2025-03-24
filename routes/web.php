@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     /* -- Grades ---------------------------------------------------------------------------------------------------- */
     Route::resource('grades', GradesController::class)->except('show');
 
+    Route::resource('addGrade', GradesController::class)->only('create');
+
 
 
     /* -- Student Page ---------------------------------------------------------------------------------------------- */
