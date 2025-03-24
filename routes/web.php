@@ -15,11 +15,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
 
-    /* -- Dashboard -------------------------------------------------------------------------------------------- */
+
+    /* -- Dashboard ------------------------------------------------------------------------------------------------- */
     Route::resource('dashboard', DashboardController::class)->only('index');
 
 
