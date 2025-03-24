@@ -4,14 +4,14 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 import GradeTable from '@/components/ui/grade-table';
 
+import {useLocation} from 'react-router'
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Notes',
         href: '/grades',
     },
 ];
-
-
 
 export default function Grades() {
 

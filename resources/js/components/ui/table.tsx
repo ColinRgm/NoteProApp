@@ -44,7 +44,9 @@ export default function userTable({ users, grades, maxRows }: Props) {
                  *
                  */}
 
-                {users.length > 0 ? (
+
+
+                {/*{users.length > 0 ? (
                     users.map((user) => (
                         <tr className="h-15 text-center" key={user.id}>
                             <td className="tg-0lax text-left">{user.last_name} {user.first_name}</td>
@@ -57,7 +59,7 @@ export default function userTable({ users, grades, maxRows }: Props) {
                             Aucun apprenti trouvé..
                         </td>
                     </tr>
-                )}
+                )}*/}
                 </tbody>
             </table>
         </>
