@@ -1,5 +1,5 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import GradeTable from '@/components/ui/grade-table';
+import Table from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
@@ -72,11 +72,7 @@ export default function Dashboard() {
                     </CardTitle>
 
                     <CardContent>
-
-                        <GradeTable
-                            grades={grades}
-                            maxRows={5}
-                        />
+                        <Table grades={grades} maxRows={5} />
                     </CardContent>
                 </Card>
 

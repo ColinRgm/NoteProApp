@@ -2,9 +2,8 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import GradeTable from '@/components/ui/grade-table';
+import Table from '@/components/ui/table';
 
-import {useLocation} from 'react-router'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -27,9 +26,7 @@ export default function Grades() {
                         1ère année
                     </CardTitle>
                     <CardContent>
-                        <GradeTable
-                            grades={grades}
-                        />
+                        <Table grades={grades} />
                     </CardContent>
                 </Card>
             </div>

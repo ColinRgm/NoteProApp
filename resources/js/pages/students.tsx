@@ -5,7 +5,7 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { IoAddCircleOutline } from 'react-icons/io5';
-import StudentTable from '@/components/ui/student-table';
+import Table from '@/components/ui/table';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -33,7 +33,8 @@ export default function Students() {
                         </CardTitle>
 
                         <CardContent>
-                            <StudentTable users={users ?? []} />
+                            {/*<StudentTable users={users ?? []} />*/}
+                            <Table users={users}/>
                         </CardContent>
                     </Card>
                 </div>
