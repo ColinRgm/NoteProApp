@@ -58,7 +58,7 @@ class Grade extends Model
             'id',
             'id',
             'branch_id',
-            'groupe_id'
+            'group_id'
         );
     }
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('groupe_id');
+            $table->unsignedInteger('group_id');
             $table->string('name');
             $table->float('weight');
             $table->float('rounding');

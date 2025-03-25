@@ -13,7 +13,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { grades, averages } = usePage().props;
+    const { grades, byGroup } = usePage().props;
+
+    console.log(byGroup);
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -30,7 +32,7 @@ export default function Dashboard() {
                     </Card>
 
                     {/*
-                        Moyenne des notes aillant le groupe_id 1
+                        Moyenne des notes aillant le group_id 1
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Culture générale</CardTitle>
@@ -38,7 +40,7 @@ export default function Dashboard() {
                     </Card>
 
                     {/*
-                        Moyenne des notes aillant le groupe_id 2
+                        Moyenne des notes aillant le group_id 2
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Base élargie</CardTitle>
@@ -46,7 +48,7 @@ export default function Dashboard() {
                     </Card>
 
                     {/*
-                        Moyenne des notes aillant le groupe_id 3
+                        Moyenne des notes aillant le group_id 3
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Informatique</CardTitle>
@@ -54,7 +56,7 @@ export default function Dashboard() {
                     </Card>
 
                     {/*
-                        Moyenne des notes aillant le groupe_id 4
+                        Moyenne des notes aillant le group_id 4
                     */}
                     <Card className="p-5">
                         <CardTitle size="md">Travail pratique</CardTitle>

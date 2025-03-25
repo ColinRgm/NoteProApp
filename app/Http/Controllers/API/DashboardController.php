@@ -23,7 +23,7 @@ class DashboardController extends Controller
                 $query->select(
                     'branches.id',
                     'branches.name',
-                    'branches.groupe_id'
+                    'branches.group_id'
                 );
             },
             'group' => function ($query) {
@@ -35,16 +35,35 @@ class DashboardController extends Controller
         ])
             ->get();
 
+
         $byGroup = Group::select(
-            'branches.rounding',
-        )->get();
+            'groups.name',
+            'groups.rounding',
+        )->with([
+            'grades' => function ($query) {
+                $query->select(
+                    'grades.id',
+                    'grades.grade',
+                );
+            },
+            'branches' => function ($query) {
+                $query->select(
+                    'branches.group_id',
+                    'branches.weight',
+                    'branches.rounding',
+                );
+            }
+        ])
+            ->get()->toArray();
+
+        dd($byGroup);
 
         /**
          * $averageGrade = $grades->avg('grade')
-         * ->where('groups.id', '=', 'branches.groupe_id');
+         * ->where('groups.id', '=', 'branches.group_id');
          *
          * $byGroup = $grades->groupBy(function ($grade) {
-         * return $grade->branch->groupe_id;
+         * return $grade->branch->group_id;
          * });
          *
          * $averageByGroup = $byGroup->map(function ($groupGrades) {
@@ -59,6 +78,7 @@ class DashboardController extends Controller
 
         return Inertia::render('dashboard', [
             'grades' => $grades,
+            'byGroup' => $byGroup,
             /*'averages' => [
                 'general' => $avgGeneral,
                 'ecg' => $ecgAvg,

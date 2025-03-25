@@ -12,7 +12,7 @@ class Branch extends Model
 {
 
     protected $fillable = [
-        'groupe_id',
+        'group_id',
         'name',
         'weight',
         'rounding'
