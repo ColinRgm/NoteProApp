@@ -36,8 +36,8 @@ class DashboardController extends Controller
             ->get();
 
         $byGroup = Group::select(
-            ''
-        )
+            'branches.rounding',
+        )->get();
 
         /**
          * $averageGrade = $grades->avg('grade')
