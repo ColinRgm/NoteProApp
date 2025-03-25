@@ -13,7 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { grades } = usePage().props;
+    const { grades, averages } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

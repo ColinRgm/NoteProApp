@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Support\Facades\Auth;
 
 class Grade extends Model
@@ -47,6 +48,18 @@ class Grade extends Model
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);
+    }
+
+    public function group(): HasOneThrough
+    {
+        return $this->hasOneThrough(
+            Group::class,
+            Branch::class,
+            'id',
+            'id',
+            'branch_id',
+            'groupe_id'
+        );
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Grade;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,50 +13,59 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $grades = Grade::with(
-            'branch:id,name'
-        )
-            ->select(
-                'grades.id',
-                'grades.branch_id',
-                'grades.grade',
-
-                'branches.id as b_id',
-                'branches.name as b_name',
-                'branches.weight as b_weight',
-                'branches.rounding as b_rounding',
-
-                'groups.id as g_id',
-                'groups.name as g_name',
-                'groups.weight as g_weight',
-                'groups.rounding as g_rounding'
-            )
-            ->join(
-                'branches',
-                'branches.id',
-                '=',
-                'grades.branch_id'
-            )
-            ->join(
-                'groups',
-                'groups.id',
-                '=',
-                'branches.groupe_id'
-            )
+        $grades = Grade::select(
+            'grades.id',
+            'grades.branch_id',
+            'grades.user_id',
+            'grades.grade'
+        )->with([
+            'branch' => function ($query) {
+                $query->select(
+                    'branches.id',
+                    'branches.name',
+                    'branches.groupe_id'
+                );
+            },
+            'group' => function ($query) {
+                $query->select(
+                    'groups.id',
+                    'groups.name'
+                );
+            }
+        ])
             ->get();
 
+        $byGroup = Group::select(
+            ''
+        )
 
-        // $generalAvg = ($ecgAvg + $baseElargieAvg + $informatiqueAvg + $tpiAvg) / 4;
+        /**
+         * $averageGrade = $grades->avg('grade')
+         * ->where('groups.id', '=', 'branches.groupe_id');
+         *
+         * $byGroup = $grades->groupBy(function ($grade) {
+         * return $grade->branch->groupe_id;
+         * });
+         *
+         * $averageByGroup = $byGroup->map(function ($groupGrades) {
+         * return $groupGrades->avg('grade');
+         * });
+         *
+         * foreach ($averageByGroup as $groupeId => $averageGrade) {
+         * echo "Groupe $groupeId : Moyenne des grades = $averageGrade";
+         * }
+         *
+         */
 
         return Inertia::render('dashboard', [
             'grades' => $grades,
-//            'averages' => [
-//                'general' => $generalAvg,
-//                'ecg' => $ecgAvg,
-//                'baseElargie' => $baseElargieAvg,
-//                'informatique' => $informatiqueAvg,
-//                'tpi' => $tpiAvg,
-//            ]
+            /*'averages' => [
+                'general' => $avgGeneral,
+                'ecg' => $ecgAvg,
+                'baseElargie' => $baseElargieAvg,
+                'informatique' => $informatiqueAvg,
+                'tpi' => $tpiAvg,
+            ]*/
         ]);
     }
 }

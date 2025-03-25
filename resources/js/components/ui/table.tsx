@@ -76,8 +76,7 @@ export default function Table({ users, grades, maxRows }: Props) {
                                 {tableConfig.noDataMessage}
                             </td>
                         </tr>
-                    )
-                    }
+                    )}
                     </tbody>
                 </table>
             </>
