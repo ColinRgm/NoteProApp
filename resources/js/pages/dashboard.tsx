@@ -13,28 +13,30 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { grades, byGroup } = usePage().props;
+    const { grades, byGroup, generalAvg } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
-                <div className="grid w-[85%] auto-rows-min gap-20 md:grid-cols-5">
-                    {/*
-                        Moyenne de tout les groupes
-                    */}
-                    <Card className="p-5">
-                        <CardTitle size="xl">Moyenne</CardTitle>
-                        <CardContent className="text-5xl"></CardContent>
-                    </Card>
-
-                    {byGroup.map((group) => (
-                        <Card key={group.id} className="p-5">
-                            <CardTitle size="md">{group.name}</CardTitle>
-                            <CardContent className="text-4xl">{group.moyenne_branche}</CardContent>
+                <div className="grid auto-rows-min gap-20 md:grid-cols-1">
+                    <div>
+                        <Card className="p-5">
+                            <CardTitle size="xxl">Moyenne générale</CardTitle>
+                            <CardContent className="text-5xl">{generalAvg}</CardContent>
                         </Card>
-                    ))}
+                    </div>
+
+                    <div  className="grid auto-rows-min gap-20 md:grid-cols-2">
+                        {byGroup.map((group) => (
+                            <Card key={group.id} className="p-5">
+                                <CardTitle size="lg">{group.name}</CardTitle>
+                                <CardContent className="text-4xl">{group.moyenne_branche}</CardContent>
+                            </Card>
+                        ))}
+                    </div>
+
                 </div>
 
                 <Card className="w-[70%] p-5">

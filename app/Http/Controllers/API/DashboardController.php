@@ -60,18 +60,25 @@ class DashboardController extends Controller
             ->get()
             ->toArray();
 
+        $totalMoyenne = 0;
+        $totalGroups = 0;
+
+        foreach ($byGroup as $group) {
+            if (isset($group['moyenne_branche']) && $group['moyenne_branche'] !== null) {
+                $totalMoyenne += $group['moyenne_branche'];
+                $totalGroups++;
+            }
+        }
+
+// Calcul de la moyenne globale
+        $globalAverage = $totalGroups > 0 ? $totalMoyenne / $totalGroups : 0;
+
         // dd($byGroup);
 
         return Inertia::render('dashboard', [
             'grades' => $grades,
             'byGroup' => $byGroup,
-            /*'averages' => [
-                'general' => $avgGeneral,
-                'ecg' => $ecgAvg,
-                'baseElargie' => $baseElargieAvg,
-                'informatique' => $informatiqueAvg,
-                'tpi' => $tpiAvg,
-            ]*/
+            'generalAvg' => $globalAverage,
         ]);
     }
 }
