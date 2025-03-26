@@ -13,7 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { grades } = usePage().props;
+    const { grades, byGroup } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -29,37 +29,12 @@ export default function Dashboard() {
                         <CardContent className="text-5xl"></CardContent>
                     </Card>
 
-                    {/*
-                        Moyenne des notes aillant le group_id 1
-                    */}
-                    <Card className="p-5">
-                        <CardTitle size="md">Culture générale</CardTitle>
-                        <CardContent className="text-4xl"></CardContent>
-                    </Card>
-
-                    {/*
-                        Moyenne des notes aillant le group_id 2
-                    */}
-                    <Card className="p-5">
-                        <CardTitle size="md">Base élargie</CardTitle>
-                        <CardContent className="text-4xl"></CardContent>
-                    </Card>
-
-                    {/*
-                        Moyenne des notes aillant le group_id 3
-                    */}
-                    <Card className="p-5">
-                        <CardTitle size="md">Informatique</CardTitle>
-                        <CardContent className="text-4xl"></CardContent>
-                    </Card>
-
-                    {/*
-                        Moyenne des notes aillant le group_id 4
-                    */}
-                    <Card className="p-5">
-                        <CardTitle size="md">Travail pratique</CardTitle>
-                        <CardContent className="text-4xl"></CardContent>
-                    </Card>
+                    {byGroup.map((group) => (
+                        <Card key={group.id} className="p-5">
+                            <CardTitle size="md">{group.name}</CardTitle>
+                            <CardContent className="text-4xl">{group.moyenne_branche}</CardContent>
+                        </Card>
+                    ))}
                 </div>
 
                 <Card className="w-[70%] p-5">

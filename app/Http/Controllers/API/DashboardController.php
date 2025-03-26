@@ -60,7 +60,7 @@ class DashboardController extends Controller
             ->get()
             ->toArray();
 
-        dd($byGroup);
+        // dd($byGroup);
 
         return Inertia::render('dashboard', [
             'grades' => $grades,
