@@ -36,6 +36,11 @@ class DashboardController extends Controller
             ->get()->toArray();
 
 
+        /**
+         * Calcule de la moyenne de chaque groupe
+         *
+         * Trouver comment faire l'arrondi et comment utiliser les pondérations
+         */
         $byGroup = Group::select(
             'groups.id',
             'groups.name',
@@ -58,8 +63,20 @@ class DashboardController extends Controller
         ])
             ->withAvg('grades as moyenne_branche', 'grades.grade')
             ->get()
+            ->map(function ($groupAvg) {
+                $groupAvg->moyenne_branche = round($groupAvg->moyenne_branche, $groupAvg->rounding);
+                return $groupAvg;
+            })
             ->toArray();
 
+
+
+
+        /**
+         * Calcule de la moyenne générale
+         *
+         * Trouver comment faire l'arrondi et comment utiliser les pondérations
+         */
         $totalMoyenne = 0;
         $totalGroups = 0;
 
@@ -70,7 +87,6 @@ class DashboardController extends Controller
             }
         }
 
-// Calcul de la moyenne globale
         $globalAverage = $totalGroups > 0 ? $totalMoyenne / $totalGroups : 0;
 
         // dd($byGroup);
