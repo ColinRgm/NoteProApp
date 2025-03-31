@@ -55,13 +55,27 @@ class GradesController extends Controller
 
     /**
      * @param $id
-     * @return void
+     * @return Response
      *
      * Show a preview of the grade
+     *
+     *  Récupérer :
+     *      -- Table branches --
+     *          Nom de la branche (via ID)
+     *
+     *      -- Table grades --
+     *          Note (via ID)
+     *          PDF de le note (via ID)
      */
     public function show($id)
     {
+        $gradeInfo = Grade::with('branch:id,name', 'user')
+            ->select('id', 'branch_id', 'pdf', 'grade')
+            ->get();
 
+        return Inertia::render('grades', [
+            'grades' => $gradeInfo
+        ]);
     }
 
     /**
