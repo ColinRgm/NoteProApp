@@ -2,16 +2,19 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
+import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Notes',
-        href: 'grades/{1}',
+        href: 'grades/{id}',
     },
 ];
 
 export default function GradeDetail() {
-    const { gradesInfo } = usePage().props;
+    const {grades} = usePage().props;
+
+
 
     /**
      *
@@ -32,11 +35,13 @@ export default function GradeDetail() {
                 <div className="grid auto-rows-min gap-20 md:grid-cols-1">
                     <div className="grid auto-rows-min gap-20 md:grid-cols-2">
                         <Card className="p-5">
-                            <CardTitle size="xxl" margin="big">Nom de la branche</CardTitle>
+                            <CardTitle size="xxl" margin="big">
+                                {grades.branch.name}
+                            </CardTitle>
                             <CardContent>
                                 <Card>
                                     <CardTitle>Note</CardTitle>
-                                    <CardContent>5</CardContent>
+                                    <CardContent>{grades.grade}</CardContent>
                                 </Card>
                             </CardContent>
                         </Card>

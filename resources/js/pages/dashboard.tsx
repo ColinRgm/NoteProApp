@@ -49,7 +49,7 @@ export default function Dashboard() {
                     </CardContent>
                 </Card>
 
-                <Link href="/addGrade" prefetch>
+                <Link href="/grades" prefetch>
                     <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
                 </Link>
             </div>
