@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     /* -- Dashboard ------------------------------------------------------------------------------------------------- */
-    Route::resource('dashboard', DashboardController::class)->only('index');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 
