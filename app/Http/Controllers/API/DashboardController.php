@@ -39,7 +39,7 @@ class DashboardController extends Controller
         /**
          * Calcule de la moyenne de chaque groupe
          *
-         * Trouver comment faire l'arrondi et comment utiliser les pondérations
+         * Trouver comment utiliser les pondérations
          */
         $byGroup = Group::select(
             'groups.id',
@@ -75,7 +75,7 @@ class DashboardController extends Controller
         /**
          * Calcule de la moyenne générale
          *
-         * Trouver comment faire l'arrondi et comment utiliser les pondérations
+         * Trouver comment utiliser les pondérations
          */
         $totalMoyenne = 0;
         $totalGroups = 0;
