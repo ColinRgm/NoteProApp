@@ -5,8 +5,8 @@ import { Head, usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
-        href: 'dashboard',
+        title: 'Notes',
+        href: 'grades/{1}',
     },
 ];
 
@@ -26,7 +26,7 @@ export default function GradeDetail() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
+            <Head title="Notes" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid auto-rows-min gap-20 md:grid-cols-1">

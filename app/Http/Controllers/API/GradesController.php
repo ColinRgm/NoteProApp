@@ -74,7 +74,7 @@ class GradesController extends Controller
             ->get();
 
         return Inertia::render('grades', [
-            'grades' => $gradeInfo
+            'gradesInfo' => $gradeInfo
         ]);
     }
 
