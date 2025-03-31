@@ -1,3 +1,5 @@
+import { Link } from '@inertiajs/react';
+
 interface Props {
     users: {
         id: number;
@@ -34,7 +36,13 @@ export default function Table({ users, grades, maxRows }: Props) {
         } else if (window.location.href.includes(gradesURL) || window.location.href.includes(dashboardURL)) {
             return {
                 headers: ['Branches / modules', 'Note'],
-                rows: displayGrades.map(grade => [grade.branch.name, grade.grade]),
+                rows: displayGrades.map(grade => [
+                    <Link
+                        href={`/grades/${grade.id}`} key={grade.id}>
+                        {grade.branch.name}
+                    </Link>,
+                    grade.grade
+                ]),
                 noDataMessage: 'Aucune note trouvée..'
             };
         }
