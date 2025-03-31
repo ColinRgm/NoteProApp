@@ -61,7 +61,7 @@ class GradesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
