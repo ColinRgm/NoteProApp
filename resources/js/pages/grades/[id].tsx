@@ -2,7 +2,6 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -12,9 +11,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function GradeDetail() {
-    const {grades} = usePage().props;
-
-
+    const { grades } = usePage().props;
 
     /**
      *
@@ -32,21 +29,20 @@ export default function GradeDetail() {
             <Head title="Notes" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
-                <div className="grid auto-rows-min gap-20 md:grid-cols-1">
-                    <div className="grid">
-                        <Card className="p-5">
-                            <CardTitle size="xxl" margin="big">
-                                Nom de la branche
-                            </CardTitle>
-                            <CardContent>
-                                <Card>
-                                    <CardTitle>Note</CardTitle>
-                                    <CardContent>5</CardContent>
-                                </Card>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
+                <Card className="w-[70%] p-5">
+                    <CardTitle size="xxl" margin="big">
+                        Nom de la branche
+                    </CardTitle>
+
+                    <CardContent>
+                        <div className="grid auto-rows-min">
+                            <Card className="p-5">
+                                <CardTitle size="lg">Note</CardTitle>
+                                <CardContent className="text-4xl">5.5</CardContent>
+                            </Card>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
         </AppLayout>
     );
