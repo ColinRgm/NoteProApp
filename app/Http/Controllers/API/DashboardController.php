@@ -87,7 +87,7 @@ class DashboardController extends Controller
             }
         }
 
-        $globalAverage = $totalGroups > 0 ? $totalMoyenne / $totalGroups : 0;
+        $globalAverage = $totalGroups > 0 ? round(($totalMoyenne / $totalGroups) * 2) / 2 : 0;
 
         // dd($byGroup);
 
