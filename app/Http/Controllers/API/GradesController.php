@@ -78,7 +78,7 @@ class GradesController extends Controller
             ->toArray();
 
 
-        return Inertia::render('grades/[id]', [
+        return Inertia::render('grades/{id}', [
             'id' => $id,
             'grade' => $grade
         ]);
