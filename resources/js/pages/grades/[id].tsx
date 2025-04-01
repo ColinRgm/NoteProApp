@@ -33,15 +33,15 @@ export default function GradeDetail() {
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid auto-rows-min gap-20 md:grid-cols-1">
-                    <div className="grid auto-rows-min gap-20 md:grid-cols-2">
+                    <div className="grid">
                         <Card className="p-5">
                             <CardTitle size="xxl" margin="big">
-                                {grades.branch.name}
+                                Nom de la branche
                             </CardTitle>
                             <CardContent>
                                 <Card>
                                     <CardTitle>Note</CardTitle>
-                                    <CardContent>{grades.grade}</CardContent>
+                                    <CardContent>5</CardContent>
                                 </Card>
                             </CardContent>
                         </Card>
