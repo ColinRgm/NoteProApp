@@ -18,30 +18,9 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Notes',
-        url: 'grades',
+        url: '/grades',
         icon: LuGraduationCap
     }
-    /*{
-        title: '1ère année',
-        url: '/firstYear',
-        icon: PiNumberSquareOneBold
-    },
-    {
-        title: '2ème année',
-        url: '/secondYear',
-        icon: PiNumberSquareTwoBold
-    },
-    {
-        title: '3ème année',
-        url: '/thirdYear',
-        icon: PiNumberSquareThreeBold
-    },
-    {
-        title: '4ème année',
-        url: '/fourthYear',
-        icon: PiNumberSquareFourBold
-    },*/
-
 ];
 
 

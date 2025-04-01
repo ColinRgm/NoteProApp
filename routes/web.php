@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     /* -- Grades ---------------------------------------------------------------------------------------------------- */
     Route::resource('grades', GradesController::class);
 
-    Route::resource('grades/{id}', GradesController::class)->only('show');
+    Route::resource('grades/show', GradesController::class)->only('show');
 
 
 
