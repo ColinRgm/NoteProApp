@@ -31,7 +31,7 @@ export default function GradeDetail() {
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">
-
+                        {grades.id}
                     </CardTitle>
 
                     <CardContent>

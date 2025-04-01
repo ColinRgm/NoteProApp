@@ -72,13 +72,15 @@ class GradesController extends Controller
     public function show($id)
     {
 
-        //$grades = Grade::with('branch:id,name', 'user')
-        //    ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
-        //    ->get();
+        $grade = Grade::with('branch:id,name', 'user')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
+            ->get()
+            ->toArray();
+
 
         return Inertia::render('grades/[id]', [
             'id' => $id,
-            // 'grades' => $grades
+            'grade' => $grade
         ]);
 
     }
