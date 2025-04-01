@@ -71,18 +71,14 @@ class GradesController extends Controller
      */
     public function show($id)
     {
+        $uniqueGrade = Grade::with('branch')
+            ->where('id', $id)
+            ->firstOrFail();
 
-        $grade = Grade::with('branch:id,name', 'user')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
-            ->get()
-            ->toArray();
-
-
-        return Inertia::render('grades/{id}', [
+        return Inertia::render('grades/show', [
             'id' => $id,
-            'grade' => $grade
+            'uniqueGrade' => $uniqueGrade
         ]);
-
     }
 
 

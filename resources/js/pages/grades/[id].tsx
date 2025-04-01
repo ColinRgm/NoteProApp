@@ -11,7 +11,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function GradeDetail() {
-    const { grades } = usePage().props;
+
+    const { uniqueGrade } = usePage().props;
 
     /**
      *
@@ -31,14 +32,14 @@ export default function GradeDetail() {
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">
-                        {grades.id}
+                        {uniqueGrade.branch?.name} - {uniqueGrade.grade}
                     </CardTitle>
 
                     <CardContent>
                         <div className="grid auto-rows-min">
                             <Card className="p-5">
                                 <CardTitle size="lg">Note</CardTitle>
-                                <CardContent className="text-4xl">5.5</CardContent>
+                                <CardContent className="text-4xl">{uniqueGrade.grade}</CardContent>
                             </Card>
                         </div>
                     </CardContent>
