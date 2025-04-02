@@ -14,25 +14,13 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-
-    /* -- Dashboard ------------------------------------------------------------------------------------------------- */
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('dashboard', DashboardController::class);
 
 
-
-    /* -- Grades ---------------------------------------------------------------------------------------------------- */
-    Route::resource('grades', GradesController::class)->only(['index']);
-
-    Route::resource('grades/show', GradesController::class)->only('show');
-
-    Route::resource('grades/create', GradesController::class)->only('create');
+    Route::resource('grades', GradesController::class);
 
 
-
-
-
-    /* -- Student Page ---------------------------------------------------------------------------------------------- */
-    Route::resource('users', UsersController::class)->except('show');
+    Route::resource('users', UsersController::class);
 
 });
 
