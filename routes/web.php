@@ -21,9 +21,11 @@ Route::middleware(['auth'])->group(function () {
 
 
     /* -- Grades ---------------------------------------------------------------------------------------------------- */
-    Route::resource('grades', GradesController::class);
+    Route::resource('grades', GradesController::class)->only(['index']);
 
     Route::resource('grades/show', GradesController::class)->only('show');
+
+    Route::resource('grades/create', GradesController::class)->only('create');
 
 
 

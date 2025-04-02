@@ -48,10 +48,6 @@ export default function Dashboard() {
                         <Table grades={grades} maxRows={5} />
                     </CardContent>
                 </Card>
-
-                <Link href="/grades" prefetch>
-                    <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
-                </Link>
             </div>
         </AppLayout>
     );
