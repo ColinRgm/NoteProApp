@@ -17,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Grades({ grades }) {
 
-    const [activeYear, setActiveYear] = useState(Object.keys(grades)[0]);
+/*    const [activeYear, setActiveYear] = useState(Object.keys(grades)[0]);
 
     const years = Object.keys(grades);
     const activeGrades = grades[activeYear];
@@ -32,29 +32,29 @@ export default function Grades({ grades }) {
         const currentIndex = years.indexOf(activeYear);
         const nextIndex = currentIndex < years.length - 1 ? currentIndex + 1 : 0;
         setActiveYear(years[nextIndex]);
-    };
+    };*/
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title={activeYear} />
+            <Head title="Année" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-10 rounded-xl">
                 <div className="flex flex-row items-center justify-center gap-10 rounded-xl p-4 w-[100%]">
-                    <SlArrowLeftCircle className="cursor-pointer text-2xl" onClick={previousTable} />
+                    <SlArrowLeftCircle className="cursor-pointer text-2xl" />
                     <Card className="w-[70%] p-5">
                         <CardTitle size="xxl" margin="big">
-                            {activeYear}
+                            {}
                         </CardTitle>
 
                         <CardContent className="flex flex-col">
-                            <Table grades={activeGrades} />
+                            <Table grades={grades} />
                         </CardContent>
                     </Card>
-                    <SlArrowRightCircle className="cursor-pointer text-2xl" onClick={nextTable} />
+                    <SlArrowRightCircle className="cursor-pointer text-2xl" />
                 </div>
 
 
-                <Link href="/create">
+                <Link href="grades/create">
                     <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
                 </Link>
             </div>

@@ -10,25 +10,15 @@ use Inertia\Response;
 
 class GradesController extends Controller
 {
-    /**
-     * @return Response
-     *
-     * List of the grades
-     */
     public function index(Request $request): Response
     {
         $grades = Grade::with('branch:id,name', 'user')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
             ->get();
 
-        /* Regroupement des notes par semestre et les ajouter à la bonne année */
-        $organizedGrades = $grades->groupBy(function ($grade) {
-            $year = floor(($grade->semester - 1) / 2) + 1;
-            return "{$year}ère année";
-        });
 
         return Inertia::render('grades', [
-            'grades' => $organizedGrades
+            'grades' => $grades
         ]);
     }
 
