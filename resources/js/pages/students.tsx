@@ -23,7 +23,7 @@ export default function Students() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
+            <Head title="Liste des apprentis" />
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid w-[70%] auto-rows-min">
