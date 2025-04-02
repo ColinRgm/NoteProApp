@@ -35,7 +35,10 @@ export default function GradeDetail() {
                         {uniqueGrade.branch?.name}
                     </CardTitle>
 
-                    <CardContent>
+                    <CardContent /* Aligner le contenu en haut */>
+                        <div>
+                            <p>{uniqueGrade.pdf}</p>
+                        </div>
                         <div className="grid auto-rows-min">
                             <Card className="p-5">
                                 <CardTitle size="lg">Note</CardTitle>

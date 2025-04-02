@@ -7,6 +7,7 @@ use App\Models\Grade;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use function React\Promise\all;
 
 class GradesController extends Controller
 {
@@ -14,7 +15,8 @@ class GradesController extends Controller
     {
         $grades = Grade::with('branch:id,name', 'user')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
-            ->get();
+            ->orderBy('semester', 'desc')
+            ->paginate(12); // Pagination par semestre
 
 
         return Inertia::render('grades', [
@@ -43,22 +45,6 @@ class GradesController extends Controller
         //
     }
 
-
-    /**
-     * @param $id
-     * @return Response
-     *
-     * Show a preview of the grade
-     *
-     *  Récupérer :
-     *
-     *      -- Table branches --
-     *          Nom de la branche (via ID)
-     *
-     *      -- Table grades --
-     *          Note (via ID)
-     *          PDF de le note (via ID)
-     */
     public function show($id)
     {
         $uniqueGrade = Grade::with('branch')
@@ -67,10 +53,10 @@ class GradesController extends Controller
 
         return Inertia::render('grades/show', [
             'id' => $id,
+            'pdf' => $uniqueGrade->pdf,
             'uniqueGrade' => $uniqueGrade
         ]);
     }
-
 
     /**
      * @param Grade $grade
