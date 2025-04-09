@@ -32,9 +32,8 @@ export default function Grades({ grades }) {
                     </Card>
                 </div>
 
-                {/* Pagination Component */}
                 <div>
-                    <Pagination links={grades.links} /> {/* Utilisation des liens de la pagination ici */}
+                    <Pagination links={grades.links} />
                 </div>
 
                 <Link href="grades/create">

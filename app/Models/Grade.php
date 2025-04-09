@@ -21,9 +21,6 @@ class Grade extends Model
     ];
 
 
-
-
-    /* ------------------------------------- Fonction de relation avec le user -------------------------------------- */
     /**
      * Un User peut ajouter plusieurs Grades
      *
@@ -36,9 +33,6 @@ class Grade extends Model
     }
 
 
-
-
-    /* ----------------------------------- Fonction de relation avec les branches ----------------------------------- */
     /**
      * Une Grade appartient à une seule Branch
      *
@@ -48,6 +42,11 @@ class Grade extends Model
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);
+    }
+
+    public function module(): BelongsTo
+    {
+        return $this->belongsTo(Module::class);
     }
 
     public function group(): HasOneThrough
@@ -62,6 +61,13 @@ class Grade extends Model
         );
     }
 
+
+    protected function casts(): array
+    {
+        return [
+            'grade' => 'double',
+        ];
+    }
 
     public function avg()
     {

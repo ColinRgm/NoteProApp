@@ -19,13 +19,4 @@ class Group extends Model
     {
         return $this->hasMany(Branch::class);
     }
-
-
-    public function grades(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            Grade::class,
-            Branch::class,
-        );
-    }
 }

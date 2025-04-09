@@ -60,8 +60,9 @@ class User extends Authenticatable
      * @return HasMany
      *
      */
-    public function grades(): HasMany {
-        return $this->hasMany(Grade::class);
+    public function grades(): HasMany
+    {
+        return $this->hasMany(Grade::class, 'user_id');
     }
 
     /**
@@ -70,23 +71,23 @@ class User extends Authenticatable
      * @return BelongsTo
      *
      */
-    public function role(): BelongsTo {
+    public function role(): BelongsTo
+    {
         return $this->belongsTo(Role::class);
     }
 
 
+    /*
+         * Calcul des moyennes
 
-    /**
-     * Calcul des moyennes
-     */
-    public function weightedAverage()
-    {
-        return $this->grades()
-            ->join('branches', 'grades.branch_id', '=', 'branches.id')
-            ->join('groups', 'branches.group_id', '=', 'groups.id')
-            ->select('SUM(grades.grade * branches.weight * groups.weight) / SUM(branches.weight * groups.weight) AS weighted_average')
-            ->value('weighted_average');
-    }
+        public function weightedAverage()
+        {
+            return $this->grades()
+                ->join('branches', 'grades.branch_id', '=', 'branches.id')
+                ->join('groups', 'branches.group_id', '=', 'groups.id')
+                ->select('SUM(grades.grade * branches.weight * groups.weight) / SUM(branches.weight * groups.weight) AS weighted_average')
+                ->value('weighted_average');
+        }*/
 }
 
 

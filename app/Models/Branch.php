@@ -34,10 +34,10 @@ class Branch extends Model
     /**
      * Une Branch peut appartenir à un seul Group
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function group(): HasOne
+    public function group(): BelongsTo
     {
-        return $this->hasOne(Group::class);
+        return $this->belongsTo(Group::class);
     }
 }

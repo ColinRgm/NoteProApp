@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('branches', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('groupe_id')->constrained();
+        Schema::create('modules', function (Blueprint $table) {
+            $table->integer('id')->primary();
             $table->string('name');
-            $table->integer('weight');
-            $table->decimal('rounding', total: 2, places: 1);
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('modules');
     }
 };

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('branch_id');
-            $table->unsignedInteger('user_id');
-            $table->float('grade');
-            $table->string('pdf');
+            $table->foreignId('branche_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('module_id')->nullable()->constrained();
+            $table->decimal('grade', total: 2, places: 1);
+            $table->text('pdf')->nullable();
             $table ->integer('semester');
             $table->timestamps();
         });

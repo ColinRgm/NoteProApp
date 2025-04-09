@@ -43,7 +43,7 @@ function PaginationItem({ active, label, url }: PaginationItem) {
             'focus:outline-none focus:border-indigo-700 focus:text-indigo-700'
         ],
         {
-            'bg-[#141e66]]': active
+            'bg-white': active
         }
     );
 
