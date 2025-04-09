@@ -12,30 +12,19 @@ class Branch extends Model
 {
 
     protected $fillable = [
-        'group_id',
+        'groupe_id',
         'name',
         'weight',
         'rounding'
     ];
 
-    /**
-     * Une Branch peut avoir un ou plusieurs Grade
-     *
-     * @return HasMany
-     *
-     */
+
     public function grades(): HasMany
     {
         return $this->hasMany(Grade::class);
     }
 
 
-
-    /**
-     * Une Branch peut appartenir à un seul Group
-     *
-     * @return BelongsTo
-     */
     public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class);

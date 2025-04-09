@@ -9,12 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Group extends Model
 {
     use HasFactory;
-    /**
-     * Un Group peut contenir une ou plusieurs Branch
-     *
-     * @return HasMany
-     *
-     */
     public function branches(): HasMany
     {
         return $this->hasMany(Branch::class);

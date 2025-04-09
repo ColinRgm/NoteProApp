@@ -11,16 +11,9 @@ use function React\Promise\all;
 
 class GradesController extends Controller
 {
-    public function index(Request $request): Response
+    public function index()
     {
-        $grades = Grade::with('branch:id,name', 'user')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id')
-            ->orderBy('semester', 'desc')
-            ->paginate(5); // Pagination par semestre
-
-        return Inertia::render('grades', [
-            'grades' => $grades
-        ]);
+        dump('test');
     }
 
     /**
@@ -46,15 +39,7 @@ class GradesController extends Controller
 
     public function show($id)
     {
-        $uniqueGrade = Grade::with('branch')
-            ->where('id', $id)
-            ->firstOrFail();
-
-        return Inertia::render('grades/show', [
-            'id' => $id,
-            'pdf' => $uniqueGrade->pdf,
-            'uniqueGrade' => $uniqueGrade
-        ]);
+        //
     }
 
     /**

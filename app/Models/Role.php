@@ -7,12 +7,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Role extends Model
 {
-    /**
-     * Un Role peut avoir un ou plusieurs User
-     *
-     * @return HasMany
-     *
-     */
     public function users(): HasMany {
         return $this->hasMany(User::class);
     }

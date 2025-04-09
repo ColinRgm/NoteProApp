@@ -21,33 +21,23 @@ class Grade extends Model
     ];
 
 
-    /**
-     * Un User peut ajouter plusieurs Grades
-     *
-     * @return BelongsTo
-     *
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
 
-    /**
-     * Une Grade appartient à une seule Branch
-     *
-     * @return BelongsTo
-     *
-     */
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);
     }
 
+
     public function module(): BelongsTo
     {
         return $this->belongsTo(Module::class);
     }
+
 
     public function group(): HasOneThrough
     {
@@ -56,8 +46,8 @@ class Grade extends Model
             Branch::class,
             'id',
             'id',
-            'branch_id',
-            'group_id'
+            'branche_id',
+            'groupe_id'
         );
     }
 
@@ -68,6 +58,7 @@ class Grade extends Model
             'grade' => 'double',
         ];
     }
+
 
     public function avg()
     {
