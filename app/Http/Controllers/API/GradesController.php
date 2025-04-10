@@ -36,7 +36,7 @@ class GradesController extends Controller
 
     public function show($id)
     {
-        $uniqueGrade = Grade::with('branch, module');
+        $uniqueGrade = Grade::with('branch:id,name', 'module:id,name')->findOrFail($id);
 
         return Inertia::render('grades/show', [
             'id' => $id,

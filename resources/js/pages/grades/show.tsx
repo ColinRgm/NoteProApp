@@ -14,17 +14,6 @@ export default function GradeDetail() {
 
     const { uniqueGrade } = usePage().props;
 
-    /**
-     *
-     * --------------------------------------
-     *
-     *  Afficher le nom de la branche en titre
-     *  Afficher la note à droite du nom
-     *
-     *  Afficher le pdf en grand dans la page
-     *
-     */
-
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Notes" />
@@ -32,7 +21,7 @@ export default function GradeDetail() {
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">
-                        {uniqueGrade.branch?.name}
+                        {uniqueGrade.module?.name || uniqueGrade.branch?.name}
                     </CardTitle>
 
                     <CardContent /* Aligner le contenu en haut */ className="w-5/5">
