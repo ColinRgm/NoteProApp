@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Grade;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,7 +26,14 @@ class GradesController extends Controller
 
     public function create()
     {
-        //
+        $branches = Branch::all();
+
+        $modules = Module::all();
+
+        return inertia('grades/create', [
+            'branches' => $branches,
+            'modules' => $modules,
+        ]);
     }
 
 

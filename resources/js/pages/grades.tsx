@@ -36,7 +36,7 @@ export default function Grades({ grades }) {
                     <Pagination links={grades.links} />
                 </div>
 
-                <Link href="grades/create">
+                <Link href="/grades/create">
                     <IoAddCircleOutline className="hover:[h-20 w-20] h-10 w-10" />
                 </Link>
             </div>

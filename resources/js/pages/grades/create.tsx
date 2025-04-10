@@ -29,10 +29,14 @@ interface RegisterProps {
     branches: {
         id: number;
         name: string;
+    };
+    modules: {
+        id: number;
+        name: string;
     }[];
 }
 
-export default function Create({ branches }: RegisterProps) {
+export default function Create({ branches, modules }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branche_id: '',
         user_id: '',
@@ -40,7 +44,7 @@ export default function Create({ branches }: RegisterProps) {
         pdf: 'test.pdf',
         semester: '',
         created_at: '',
-        updated_at: ''
+        updated_at: '',
     });
 
     const submit: FormEventHandler = (e) => {
@@ -59,7 +63,6 @@ export default function Create({ branches }: RegisterProps) {
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-
                             <div>
                                 <Label htmlFor="branch">Choix de la branche</Label>
                                 <Select name="branch" onValueChange={(value) => setData('branche_id', value)}>
@@ -71,6 +74,11 @@ export default function Create({ branches }: RegisterProps) {
                                             {branches.map((branche) => (
                                                 <SelectItem key={branche.id} value={branche.id.toString()}>
                                                     {branche.name}
+                                                </SelectItem>
+                                            ))}
+                                            {modules.map((module) => (
+                                                <SelectItem key={module.id} value={module.id.toString()}>
+                                                    {module.name}
                                                 </SelectItem>
                                             ))}
                                         </SelectGroup>
@@ -89,7 +97,7 @@ export default function Create({ branches }: RegisterProps) {
                                     className="w-[400px]"
                                     placeholder="Choix de la note"
                                     value={data.grade}
-                                    onChange={(e) =>setData('grade', e.target.value)}
+                                    onChange={(e) => setData('grade', e.target.value)}
                                 />
                             </div>
 
