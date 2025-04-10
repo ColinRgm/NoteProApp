@@ -14,7 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Students() {
+export default function Users() {
 
     const pageProps = usePage().props;
 
@@ -38,7 +38,7 @@ export default function Students() {
                         </CardContent>
                     </Card>
                 </div>
-                <Link href="/addStudent" prefetch>
+                <Link href="users/create" prefetch>
                     <IoAddCircleOutline className="hover:[h-40 w-40] h-10 w-10" />
                 </Link>
             </div>

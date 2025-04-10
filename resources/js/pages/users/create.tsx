@@ -10,11 +10,11 @@ import { Button } from '@/components/ui/button';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter un apprenti',
-        href: '/addStudent',
+        href: 'users/create',
     },
 ];
 
-export default function AddStudent() {
+export default function Create() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Ajouter un apprenti" />

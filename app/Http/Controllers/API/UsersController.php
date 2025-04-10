@@ -21,14 +21,14 @@ class UsersController extends Controller
                 1)
             ->get();
 
-        return Inertia::render('students', [
+        return Inertia::render('users', [
             'users' => $users
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('students/create');
+        return Inertia::render('users/create');
     }
 
     public function store(Request $request)
