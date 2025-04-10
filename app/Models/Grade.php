@@ -58,10 +58,4 @@ class Grade extends Model
             'grade' => 'double',
         ];
     }
-
-
-    public function avg()
-    {
-        return $this->branch()->avg('grade');
-    }
 }

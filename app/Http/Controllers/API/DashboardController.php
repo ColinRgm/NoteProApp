@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Grade;
 use App\Models\Group;
 use Inertia\Inertia;
 
@@ -10,13 +11,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id', 'module_id')
+            ->orderBy('semester', 'desc')
+            ->paginate();
+
+
         $data = Group::with(['branches.grades' => function ($query) {
             $query->where('user_id', 1);
         }])->get();
 
         $finalWeightedSum = 0;
         $finalWeight = 0;
-        $groupAveragesRounded = [];
+
+        $groupeAverages = [];
 
         foreach ($data as $group) {
             $branchesAveragesRounded = [];
@@ -25,7 +33,7 @@ class DashboardController extends Controller
             $groupWeightSum = 0;
 
             /**
-             * Moyennes par branches
+             * Moyenne par branches
              */
             foreach ($group->branches as $branch) {
                 if ($branch->grades->count() > 0) {
@@ -35,28 +43,28 @@ class DashboardController extends Controller
 
                     $groupWeightedSum += $brancheAvg * $branch->weight;
                     $groupWeightSum += $branch->weight;
+
                 } else {
                     dump("Aucune note pour la branche {$branch->name}");
                 }
             }
 
             /**
-             * Moyennes par groupe
+             * Moyenne par groupe
              */
             if ($groupWeightSum > 0) {
                 $groupeAvg = $groupWeightedSum / $groupWeightSum;
                 $groupeAvgRounded = round($groupeAvg / $group->rounding) * $group->rounding;
 
-                // Ajout dans le tableau
-                $groupAveragesRounded[] = $groupeAvgRounded;
+                $groupeAverages[] = [
+                    'groupe_name' => $group->name,
+                    'average' => $groupeAvgRounded
+                ];
 
                 // Calcul pour la moyenne finale
                 $finalWeightedSum += $groupeAvg * $group->weight;
                 $finalWeight += $group->weight;
 
-                // dump("Groupe : $group->name", [$groupeAvgRounded]);
-            } else {
-                dump("Aucune moyenne de branche disponible pour le groupe {$group->name}");
             }
         }
 
@@ -66,14 +74,13 @@ class DashboardController extends Controller
          */
         if ($finalWeight > 0) {
             $finalGrade = round($finalWeightedSum / $finalWeight, 1);
-            // dump("Moyenne générale", $finalGrade);
-        } else {
-            dump("Moyenne finale impossible à calculer");
+
         }
 
         return Inertia::render('dashboard', [
-            'finalAverage' => $finalGrade,
-            'groupeAvg' => $groupeAvgRounded,
+            'groupeAvg' => $groupeAverages,
+            'generalAvg' => $finalGrade,
+            'grades' => $grades,
         ]);
     }
 }

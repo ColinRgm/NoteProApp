@@ -2,8 +2,7 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import Table from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
-import { IoAddCircleOutline } from 'react-icons/io5';
+import { Head, usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -13,7 +12,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { groupeAvg, finalAverage } = usePage().props;
+
+    const { generalAvg, groupeAvg, grades } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -21,19 +21,23 @@ export default function Dashboard() {
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid auto-rows-min gap-20 md:grid-cols-1">
-                    <div>
+                    {/* Première carte avec une largeur de 40% et centrée */}
+                    <div className="w-[40%] mx-auto">
                         <Card className="p-5">
                             <CardTitle size="xxl">Moyenne générale</CardTitle>
-                            <CardContent className="text-5xl">{finalAverage}</CardContent>
+                            <CardContent className="text-5xl">{generalAvg}</CardContent>
                         </Card>
                     </div>
 
-                    <div  className="grid auto-rows-min gap-20 md:grid-cols-2">
-                        {groupeAvg.map((group) => (
-                            <Card key={group.id} className="p-5">
-                                <CardTitle size="lg">{group.name}</CardTitle>
-                                <CardContent className="text-4xl">{group.moyenne_branche}</CardContent>
-                            </Card>
+                    {/* Cartes pour les moyennes des groupes */}
+                    <div className="grid auto-rows-min gap-10 md:grid-cols-2 lg:grid-cols-4">
+                        {groupeAvg.map((group, index) => (
+                            <div key={index}>
+                                <Card className="p-5">
+                                    <CardTitle size="xl">{group.groupe_name}</CardTitle>
+                                    <CardContent className="text-4xl">{group.average}</CardContent>
+                                </Card>
+                            </div>
                         ))}
                     </div>
 
@@ -45,7 +49,7 @@ export default function Dashboard() {
                     </CardTitle>
 
                     <CardContent>
-                        <Table grades={grades} maxRows={5} />
+                        <Table grades={grades.data} maxRows={5} />
                     </CardContent>
                 </Card>
             </div>
