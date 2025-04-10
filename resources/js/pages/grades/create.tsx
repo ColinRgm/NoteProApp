@@ -78,7 +78,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                                             ))}
                                             {modules.map((module) => (
                                                 <SelectItem key={module.id} value={module.id.toString()}>
-                                                    {module.name}
+                                                    {module.id} - {module.name}
                                                 </SelectItem>
                                             ))}
                                         </SelectGroup>

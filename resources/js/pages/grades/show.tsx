@@ -20,15 +20,15 @@ export default function GradeDetail() {
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <Card className="w-[70%] p-5">
-                    <CardTitle size="xxl" margin="big">
+                    <CardTitle size="xl" margin="big">
                         {uniqueGrade.module?.name || uniqueGrade.branch?.name}
                     </CardTitle>
 
-                    <CardContent /* Aligner le contenu en haut */ className="w-5/5">
-                        <div className="w-3/5">
-                            <p>{uniqueGrade.pdf}</p>
+                    <CardContent className="gap-20 flex-3">
+                        <div className="w-2/3 flex flex-col items-center justify-center border-2">
+                            <p>Le PDF</p>
                         </div>
-                        <div className="grid">
+                        <div className="flex-1/3">
                             <Card className="p-5">
                                 <CardTitle size="lg">Note</CardTitle>
                                 <CardContent className="text-4xl">{uniqueGrade.grade}</CardContent>
