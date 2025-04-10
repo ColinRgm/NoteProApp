@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Grade;
 use App\Models\Group;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $data = Group::with(['branches.grades' => function (Builder $query) {
-
+        $data = Group::with(['branches.grades' => function ($query) {
+            $query->where('user_id', 1);
         }])->get();
 
         $finalWeightedSum = 0;
@@ -57,7 +54,7 @@ class DashboardController extends Controller
                 $finalWeightedSum += $groupeAvg * $group->weight;
                 $finalWeight += $group->weight;
 
-                dump("Groupe : $group->name", [$groupeAvgRounded]);
+                // dump("Groupe : $group->name", [$groupeAvgRounded]);
             } else {
                 dump("Aucune moyenne de branche disponible pour le groupe {$group->name}");
             }
@@ -69,9 +66,14 @@ class DashboardController extends Controller
          */
         if ($finalWeight > 0) {
             $finalGrade = round($finalWeightedSum / $finalWeight, 1);
-            dump("Moyenne générale", $finalGrade);
+            // dump("Moyenne générale", $finalGrade);
         } else {
             dump("Moyenne finale impossible à calculer");
         }
+
+        return Inertia::render('dashboard', [
+            'finalAverage' => $finalGrade,
+            'groupeAvg' => $groupeAvgRounded,
+        ]);
     }
 }

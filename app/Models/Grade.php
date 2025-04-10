@@ -12,7 +12,7 @@ class Grade extends Model
 {
 
     protected $fillable = [
-        'branch_id',
+        'branche_id',
         'user_id',
         'grade',
         'semester',

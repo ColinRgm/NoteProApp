@@ -13,6 +13,10 @@ interface Props {
         semester: number;
         branch: {
             name: string;
+        },
+        module: {
+            id: number
+            name: string
         }
     }[];
     maxRows?: number;
@@ -39,7 +43,7 @@ export default function Table({ users, grades, maxRows }: Props) {
                 rows: displayGrades.map(grade => [
                     <Link
                         href={`/grades/${grade.id}`} key={grade.id}>
-                        {grade.branch.name}
+                        {`${grade.module?.id ?? ''} ${grade.module?.name || grade.branch.name}`}
                     </Link>,
                     grade.grade
                 ]),

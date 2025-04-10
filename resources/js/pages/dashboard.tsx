@@ -13,7 +13,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-    const { grades, byGroup, generalAvg } = usePage().props;
+    const { groupeAvg, finalAverage } = usePage().props;
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -24,12 +24,12 @@ export default function Dashboard() {
                     <div>
                         <Card className="p-5">
                             <CardTitle size="xxl">Moyenne générale</CardTitle>
-                            <CardContent className="text-5xl">{generalAvg}</CardContent>
+                            <CardContent className="text-5xl">{finalAverage}</CardContent>
                         </Card>
                     </div>
 
                     <div  className="grid auto-rows-min gap-20 md:grid-cols-2">
-                        {byGroup.map((group) => (
+                        {groupeAvg.map((group) => (
                             <Card key={group.id} className="p-5">
                                 <CardTitle size="lg">{group.name}</CardTitle>
                                 <CardContent className="text-4xl">{group.moyenne_branche}</CardContent>
