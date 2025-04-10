@@ -34,7 +34,7 @@ export default function Dashboard() {
                         {groupeAvg.map((group, index) => (
                             <div key={index}>
                                 <Card className="p-5">
-                                    <CardTitle size="xl">{group.groupe_name}</CardTitle>
+                                    <CardTitle size="l">{group.groupe_name}</CardTitle>
                                     <CardContent className="text-4xl">{group.average}</CardContent>
                                 </Card>
                             </div>
