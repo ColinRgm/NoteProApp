@@ -12,7 +12,7 @@ import { FormEventHandler } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter une note',
-        href: 'grades/store',
+        href: 'grades/create',
     },
 ];
 
@@ -20,7 +20,7 @@ interface RegisterForm {
     // Get the grade
     // Get the semester
     branche_id: string;
-    user_id: number;
+    module_id: string;
     grade: string;
     semester: string;
 }
@@ -39,6 +39,7 @@ interface RegisterProps {
 export default function Create({ branches, modules }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branche_id: '',
+        module_id: '',
         grade: '',
         pdf: 'test.pdf',
         semester: '',
@@ -62,7 +63,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             <div>
                                 <Label htmlFor="branch">Choix de la branche</Label>
-                                <Select name="branch" onValueChange={(value) => setData('branche_id', value)}>
+                                <Select onValueChange={(value) => setData('branche_id', value)}>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>

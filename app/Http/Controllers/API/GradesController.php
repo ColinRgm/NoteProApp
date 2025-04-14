@@ -41,25 +41,26 @@ class GradesController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'branche_id' => 'required|exists:branches,id',
-            'user_id' => 'required|exists:users,id',
+            'module_id' => 'required|exists:modules,id',
+            // 'user_id' => 'required|exists:users,id',
             'grade' => 'required|numeric|min:1|max:6',
             'semester' => 'required|integer|min:1|max:8',
             // 'pdf' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
-
-
         Grade::create([
             'branche_id' => $validated['branche_id'],
+            'module_id' => $validated['module_id'],
             'user_id' => auth()->id(),
             'grade' => $validated['grade'],
             'semester' => $validated['semester'],
             'pdf' => 'test.pdf',
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'Note ajoutée avec succès');
+        return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
     }
 
 
