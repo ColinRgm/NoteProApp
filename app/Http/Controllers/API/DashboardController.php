@@ -44,8 +44,6 @@ class DashboardController extends Controller
                     $groupWeightedSum += $brancheAvg * $branch->weight;
                     $groupWeightSum += $branch->weight;
 
-                } else {
-                    dump("Aucune note pour la branche {$branch->name}");
                 }
             }
 

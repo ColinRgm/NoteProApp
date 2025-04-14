@@ -12,7 +12,7 @@ import { FormEventHandler } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter une note',
-        href: 'grades/create',
+        href: 'grades/store',
     },
 ];
 
@@ -39,17 +39,14 @@ interface RegisterProps {
 export default function Create({ branches, modules }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branche_id: '',
-        user_id: '',
         grade: '',
         pdf: 'test.pdf',
         semester: '',
-        created_at: '',
-        updated_at: '',
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('grades.create'));
+        post(route('grades.store'));
     };
 
     return (

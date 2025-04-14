@@ -16,8 +16,6 @@ class Grade extends Model
         'user_id',
         'grade',
         'semester',
-        'created_at',
-        'updated_at',
     ];
 
 
