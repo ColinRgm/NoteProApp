@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id', 'module_id')
-            ->orderBy('semester', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate();
 
 

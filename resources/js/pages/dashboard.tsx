@@ -21,17 +21,14 @@ export default function Dashboard() {
 
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <div className="grid auto-rows-min gap-20 md:grid-cols-1">
-                    {/* Première carte avec une largeur de 40% et centrée */}
+
                     <div className="w-[40%] mx-auto">
                         <Card className="p-5">
                             <CardTitle size="xxl">Moyenne générale</CardTitle>
-                            <CardContent className="text-5xl">{
-                                generalAvg
-                            }</CardContent>
+                            <CardContent className="text-5xl">{generalAvg}</CardContent>
                         </Card>
                     </div>
 
-                    {/* Cartes pour les moyennes des groupes */}
                     <div className="grid auto-rows-min gap-10 md:grid-cols-2 lg:grid-cols-4">
                         {groupeAvg.map((group, index) => (
                             <div key={index}>
@@ -42,14 +39,12 @@ export default function Dashboard() {
                             </div>
                         ))}
                     </div>
-
                 </div>
 
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">
                         5 dernière notes
                     </CardTitle>
-
                     <CardContent>
                         <Table grades={grades.data} maxRows={5} />
                     </CardContent>

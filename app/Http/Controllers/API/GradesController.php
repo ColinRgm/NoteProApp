@@ -15,8 +15,8 @@ class GradesController extends Controller
     {
         $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id', 'module_id')
-            ->orderBy('semester', 'desc')
-            ->paginate(6);
+            ->orderBy('semester', 'asc')
+            ->paginate(8);
 
         return Inertia::render('grades', [
             'grades' => $grades,
