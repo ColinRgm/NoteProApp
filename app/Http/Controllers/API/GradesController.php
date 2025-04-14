@@ -43,8 +43,8 @@ class GradesController extends Controller
     {
 
         $validated = $request->validate([
-            'branche_id' => 'required|exists:branches,id',
-            'module_id' => 'required|exists:modules,id',
+            'branch_id' => 'nullable|exists:branches,id',
+            'module_id' => 'nullable|exists:modules,id',
             // 'user_id' => 'required|exists:users,id',
             'grade' => 'required|numeric|min:1|max:6',
             'semester' => 'required|integer|min:1|max:8',
@@ -52,7 +52,7 @@ class GradesController extends Controller
         ]);
 
         Grade::create([
-            'branche_id' => $validated['branche_id'],
+            'branch_id' => $validated['branch_id'],
             'module_id' => $validated['module_id'],
             'user_id' => auth()->id(),
             'grade' => $validated['grade'],

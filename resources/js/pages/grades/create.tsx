@@ -19,8 +19,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 interface RegisterForm {
     // Get the grade
     // Get the semester
-    branche_id: string;
-    module_id: string;
+    branch_id: number;
+    module_id: number;
     grade: string;
     semester: string;
 }
@@ -38,7 +38,7 @@ interface RegisterProps {
 
 export default function Create({ branches, modules }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
-        branche_id: '',
+        branch_id: '',
         module_id: '',
         grade: '',
         pdf: 'test.pdf',
@@ -63,7 +63,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             <div>
                                 <Label htmlFor="branch">Choix de la branche</Label>
-                                <Select onValueChange={(value) => setData('branche_id', value)}>
+                                <Select onValueChange={(value) => setData('branch_id', value)}>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>

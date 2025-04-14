@@ -12,7 +12,7 @@ class Grade extends Model
 {
 
     protected $fillable = [
-        'branche_id',
+        'branch_id',
         'user_id',
         'grade',
         'semester',
@@ -44,7 +44,7 @@ class Grade extends Model
             Branch::class,
             'id',
             'id',
-            'branche_id',
+            'branch_id',
             'groupe_id'
         );
     }
