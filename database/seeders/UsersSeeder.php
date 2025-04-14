@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
         User::insert([
             'first_name' => "Admin",
             'last_name' => "Admin",
-            'email' => 'admin@jobtrek.com',
+            'email' => 'admin@jobtrek.ch',
             'password' => Hash::make('admin'),
             'role_id' => 1,
         ]);

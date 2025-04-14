@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->constrained();
+            $table->foreignId('branch_id')->nullable()->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('module_id')->nullable()->constrained();
             $table->decimal('grade', total: 2, places: 1);

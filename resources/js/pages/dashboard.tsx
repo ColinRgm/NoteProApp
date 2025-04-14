@@ -25,7 +25,9 @@ export default function Dashboard() {
                     <div className="w-[40%] mx-auto">
                         <Card className="p-5">
                             <CardTitle size="xxl">Moyenne générale</CardTitle>
-                            <CardContent className="text-5xl">{generalAvg}</CardContent>
+                            <CardContent className="text-5xl">{
+                                generalAvg
+                            }</CardContent>
                         </Card>
                     </div>
 

@@ -7,19 +7,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FormEventHandler } from 'react';
+import { FormEventHandler, useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter une note',
-        href: 'grades/create',
-    },
+        href: 'grades/create'
+    }
 ];
 
 interface RegisterForm {
     // Get the grade
     // Get the semester
-    branch_id: number;
+    branch_id: string;
     module_id: number;
     grade: string;
     semester: string;
@@ -27,11 +27,11 @@ interface RegisterForm {
 
 interface RegisterProps {
     branches: {
-        id: number;
+        id: string;
         name: string;
     };
     modules: {
-        id: number;
+        id: string;
         name: string;
     }[];
 }
@@ -42,8 +42,10 @@ export default function Create({ branches, modules }: RegisterProps) {
         module_id: '',
         grade: '',
         pdf: 'test.pdf',
-        semester: '',
+        semester: ''
     });
+
+    const [branchId, setBranchId] = useState(null)
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
@@ -63,26 +65,59 @@ export default function Create({ branches, modules }: RegisterProps) {
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             <div>
                                 <Label htmlFor="branch">Choix de la branche</Label>
-                                <Select onValueChange={(value) => setData('branch_id', value)}>
+                                <Select onValueChange={(value) => {
+                                    setBranchId(parseInt(value));
+                                    setData('branch_id', value);
+                                }}>
                                     <SelectTrigger className="w-[400px]">
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {branches.map((branche) => (
-                                                <SelectItem key={branche.id} value={branche.id.toString()}>
-                                                    {branche.name}
-                                                </SelectItem>
-                                            ))}
-                                            {modules.map((module) => (
-                                                <SelectItem key={module.id} value={module.id.toString()}>
-                                                    {module.id} - {module.name}
-                                                </SelectItem>
-                                            ))}
+                                            {
+                                                branches.map((branche) => (
+                                                    <SelectItem key={branche.id} value={branche.id.toString()}>
+                                                        {branche.name}
+                                                    </SelectItem>
+                                                ))
+                                            }
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
                             </div>
+
+                            {
+                                (branchId === 4 || branchId === 5)  && (
+                                    <div>
+                                        <Label htmlFor="branch">Choix du module</Label>
+                                        <Select onValueChange={(value) => setData('module_id', value)}>
+                                            <SelectTrigger className="w-[400px]">
+                                                <SelectValue placeholder="Choix du module" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    {modules.map((module) => (
+                                                        <SelectItem key={module.id} value={module.id.toString()}>
+                                                            {module.id} - {module.name}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                )
+                            }
+                            {/*
+                            {
+                                (branchId === 1 || branchId === 2 || branchId === 3) && (
+                                    <div>
+                                        <Label htmlFor="branch">Titre du test</Label>
+                                        <Input></Input>
+                                    </div>
+                                )
+                            }
+                            */}
+
 
                             <div className="flex flex-col">
                                 <Label htmlFor="grade">Choix de la note</Label>

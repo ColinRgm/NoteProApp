@@ -13,6 +13,7 @@ class Grade extends Model
 
     protected $fillable = [
         'branch_id',
+        'module_id',
         'user_id',
         'grade',
         'semester',
