@@ -12,8 +12,8 @@ import { FormEventHandler, useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter un utilisateur',
-        href: 'users/create'
-    }
+        href: 'users/create',
+    },
 ];
 
 interface RegisterForm {
@@ -22,6 +22,8 @@ interface RegisterForm {
     email: string;
     password: string;
     role_id: string;
+    formateur_id: string;
+    coach_id: string;
 }
 
 interface RegisterProps {
@@ -31,10 +33,11 @@ interface RegisterProps {
         last_name: string;
         email: string;
         password: string;
-        manager_id: number;
-    }[];
+        formateur_id: string;
+        coach_id: string;
+    },
     roles: {
-        id: number;
+        id: string;
         name: string;
     }[];
 }
@@ -46,8 +49,8 @@ export default function Create({ users, roles }: RegisterProps) {
         email: '',
         password: '',
         role_id: '',
-        formateur: '',
-        manager_id: ''
+        formateur_id: '',
+        coach_id: '',
     });
 
     const [roleId, setRoleId] = useState(null);
@@ -56,6 +59,8 @@ export default function Create({ users, roles }: RegisterProps) {
         e.preventDefault();
         post(route('users.store'));
     };
+
+    console.log(roles);
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -70,29 +75,28 @@ export default function Create({ users, roles }: RegisterProps) {
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
                             <div className="flex w-[400px] flex-col">
                                 <Label htmlFor="firstName">Prénom</Label>
-                                <Input id="firstName" placeholder="Prénom" type="text"
-                                       onChange={(e) => setData('first_name', e.target.value)} />
+                                <Input id="firstName" placeholder="Prénom" type="text" onChange={(e) => setData('first_name', e.target.value)} />
                             </div>
 
                             <div className="flex w-[400px] flex-col">
-                                <Label htmlFor="firstName">Nom</Label>
-                                <Input id="lastname" placeholder="Nom" type="text"
-                                       onChange={(e) => setData('last_name', e.target.value)} />
+                                <Label htmlFor="lastName">Nom</Label>
+                                <Input id="lastName" placeholder="Nom" type="text" onChange={(e) => setData('last_name', e.target.value)} />
                             </div>
 
                             <div className="flex w-[400px] flex-col">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" placeholder="Email" type="email"
-                                       onChange={(e) => setData('email', e.target.value)} />
+                                <Input id="email" placeholder="Email" type="email" onChange={(e) => setData('email', e.target.value)} />
                             </div>
 
                             <div className="flex w-[400px] flex-col">
                                 <Label htmlFor="password">Mot de passe</Label>
-                                <Input id="password" placeholder="***********" type="password"
-                                       onChange={(e) => setData('password', e.target.value)} />
+                                <Input
+                                    id="password"
+                                    placeholder="***********"
+                                    type="password"
+                                    onChange={(e) => setData('password', e.target.value)}
+                                />
                             </div>
-
-
 
                             <div className="flex w-[400px] flex-col">
                                 <Label htmlFor="coach">Rôle</Label>
@@ -120,30 +124,56 @@ export default function Create({ users, roles }: RegisterProps) {
                             {/*
                                 Afficher uniquement si le rôle est Apprenti -> ID 2
                             */}
-                            {/*{roleId === 2 && (
-                                <div className="flex w-[400px] flex-col">
-                                    <Label htmlFor="coach">Formateur</Label>
-                                    <Select>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Formateur" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectGroup>
-                                                {
-                                                    users.map((user) => (
+                            {roleId === 2 && (
+                                <>
+                                    <div className="flex w-[400px] flex-col">
+                                        <Label htmlFor="formateur">Formateur</Label>
+                                        <Select
+                                            onValueChange={(value) => {
+                                                setData('formateur_id', value);
+                                            }}
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Formateur" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    {users?.map((user) => (
                                                         <SelectItem key={user.id} value={user.id.toString()}>
                                                             {user.first_name} {user.last_name}
                                                         </SelectItem>
-                                                    ))
-                                                }
-                                            </SelectGroup>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            )}*/}
 
-                            <Button
-                                className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]">
+                                                    ))}
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
+                                    <div className="flex w-[400px] flex-col">
+                                        <Label htmlFor="coach">Coach</Label>
+                                        <Select
+                                            onValueChange={(value) => {
+                                                setData('coach_id', value);
+                                            }}
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Coach" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    {users?.map((user) => (
+                                                        <SelectItem key={user.id} value={user.id.toString()}>
+                                                            {user.first_name} {user.last_name}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                </>
+                            )}
+
+                            <Button className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]">
                                 Ajouter
                             </Button>
                         </form>

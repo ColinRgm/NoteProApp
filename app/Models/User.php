@@ -20,7 +20,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'manager_id'
+        'formateur_id',
+        'coach_id',
     ];
 
 

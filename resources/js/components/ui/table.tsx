@@ -34,7 +34,6 @@ export default function Table({ users, grades, maxRows }: Props) {
 
     const getTableConfig = () => {
 
-        console.log(grades)
 
         if (window.location.href.includes(studentsURL)) {
             return {
