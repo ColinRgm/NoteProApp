@@ -27,22 +27,23 @@ interface RegisterForm {
 }
 
 interface RegisterProps {
-    users: {
+    formateurs: {
         id: string;
         first_name: string;
         last_name: string;
-        email: string;
-        password: string;
-        formateur_id: string;
-        coach_id: string;
     },
+    coachs: {
+        id: string;
+        first_name: string;
+        last_name: string;
+    }
     roles: {
         id: string;
         name: string;
     }[];
 }
 
-export default function Create({ users, roles }: RegisterProps) {
+export default function Create({ formateurs, coachs, roles }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         first_name: '',
         last_name: '',
@@ -138,9 +139,9 @@ export default function Create({ users, roles }: RegisterProps) {
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
-                                                    {users?.map((user) => (
-                                                        <SelectItem key={user.id} value={user.id.toString()}>
-                                                            {user.first_name} {user.last_name}
+                                                    {formateurs?.map((formateur) => (
+                                                        <SelectItem key={formateur.id} value={formateur.id.toString()}>
+                                                            {formateur.first_name} {formateur.last_name}
                                                         </SelectItem>
 
                                                     ))}
@@ -161,9 +162,9 @@ export default function Create({ users, roles }: RegisterProps) {
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
-                                                    {users?.map((user) => (
-                                                        <SelectItem key={user.id} value={user.id.toString()}>
-                                                            {user.first_name} {user.last_name}
+                                                    {coachs?.map((coach) => (
+                                                        <SelectItem key={coach.id} value={coach.id.toString()}>
+                                                            {coach.first_name} {coach.last_name}
                                                         </SelectItem>
                                                     ))}
                                                 </SelectGroup>

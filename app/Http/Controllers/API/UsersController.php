@@ -26,13 +26,18 @@ class UsersController extends Controller
     {
         $roles = Role::all();
 
-        $users = User::select('id', 'last_name', 'first_name')
-        ->where('role_id', 1)
+        $formateur = User::select('id', 'last_name', 'first_name')
+            ->where('role_id', 3)
         ->get();
+
+        $coach = User::select('id', 'last_name', 'first_name')
+            ->where('role_id', 4)
+            ->get();
 
         return Inertia::render('users/create', [
             'roles' => $roles,
-            'users' => $users
+            'formateurs' => $formateur,
+            'coachs' => $coach
         ]);
     }
 
@@ -45,7 +50,7 @@ class UsersController extends Controller
             'password' => 'required|string|max:255',
             'role_id' => 'required|integer|exists:roles,id',
             'formateur_id' => 'nullable|integer|exists:formateurs,id',
-            'coach_id' => 'nullable|integer|exists:coaches,id'
+            'coach_id' => 'nullable|integer|exists:coachs,id'
         ]);
 
         User::create([
