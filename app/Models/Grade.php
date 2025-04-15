@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -19,6 +20,8 @@ class Grade extends Model
         'semester',
         'test_name'
     ];
+
+    protected $appends = ['title'];
 
 
     public function user(): BelongsTo
@@ -57,5 +60,16 @@ class Grade extends Model
         return [
             'grade' => 'double',
         ];
+    }
+
+    protected function title(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => match ($this->branch_id) {
+                1, 2, 3 => $this->branch->name . ' - ' . $this->test_name,
+                default => null,
+            },
+
+        );
     }
 }

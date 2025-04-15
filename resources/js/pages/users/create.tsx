@@ -1,7 +1,7 @@
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import type { BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -17,15 +17,17 @@ const breadcrumbs: BreadcrumbItem[] = [
 interface RegisterProps {
     users: {
         id: string;
-        name: string;
-    };
-    modules: {
-        id: string;
-        name: string;
+        first_name: string;
+        last_name: string;
+
     }[];
 }
 
 export default function Create() {
+    /*const {newUsers, setNewUsers} = useForm<RegisterForm>({
+
+    })*/
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Ajouter un apprenti" />
@@ -48,7 +50,9 @@ export default function Create() {
 
                         <div className="flex flex-row items-center justify-center gap-5">
                             <label htmlFor="firstName">Email:</label>
-                            <Input id="email" placeholder="Email" type="email" className="w-130" />
+                            <Input id="email" placeholder="Email" type="email" className="w-130"
+                                   /*onChange={(e) => setData('grade', e.target.value)}*/
+                            />
                         </div>
 
                         <div className="flex flex-row items-center justify-center gap-5">
@@ -63,13 +67,13 @@ export default function Create() {
                                          * Récupérer les coachs depuis la DB
                                          */}
                                         <SelectLabel>Coach</SelectLabel>
-                                        {
+                                        {/*{
                                             users.map((user) => (
                                                 <SelectItem key={user.id} value={user.id.toString()}>
                                                     {user.name}
                                                 </SelectItem>
                                             ))
-                                        }
+                                        }*/}
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>

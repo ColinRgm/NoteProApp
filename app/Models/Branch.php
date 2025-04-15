@@ -26,6 +26,11 @@ class Branch extends Model
         return $this->hasMany(Grade::class);
     }
 
+    public function modules(): HasMany
+    {
+        return $this->hasMany(Module::class);
+    }
+
 
     public function group(): BelongsTo
     {

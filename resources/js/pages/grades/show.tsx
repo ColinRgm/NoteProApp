@@ -21,7 +21,7 @@ export default function GradeDetail() {
             <div className="flex flex-1 flex-col items-center justify-center gap-20 rounded-xl p-4">
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xl" margin="big">
-                        {uniqueGrade.module?.name || uniqueGrade.branch?.name}
+                        {uniqueGrade.title || uniqueGrade.titleModule}
                     </CardTitle>
 
                     <CardContent className="gap-20 flex-3">

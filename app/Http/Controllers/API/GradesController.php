@@ -14,7 +14,7 @@ class GradesController extends Controller
     public function index()
     {
         $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
-            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id', 'module_id')
+            ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'test_name', 'created_at', 'user_id', 'module_id')
             ->orderBy('semester', 'asc')
             ->paginate(8);
 
@@ -34,8 +34,6 @@ class GradesController extends Controller
             'branches' => $branches,
             'modules' => $modules,
         ]);
-
-
     }
 
 
