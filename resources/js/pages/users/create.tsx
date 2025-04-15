@@ -14,6 +14,17 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
+interface RegisterProps {
+    users: {
+        id: string;
+        name: string;
+    };
+    modules: {
+        id: string;
+        name: string;
+    }[];
+}
+
 export default function Create() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -52,7 +63,13 @@ export default function Create() {
                                          * Récupérer les coachs depuis la DB
                                          */}
                                         <SelectLabel>Coach</SelectLabel>
-                                        <SelectItem value="1">Sophie Heim</SelectItem>
+                                        {
+                                            users.map((user) => (
+                                                <SelectItem key={user.id} value={user.id.toString()}>
+                                                    {user.name}
+                                                </SelectItem>
+                                            ))
+                                        }
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>

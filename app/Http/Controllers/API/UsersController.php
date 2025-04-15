@@ -33,7 +33,20 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'coach' => 'required|exists:users,id',
+        ]);
+
+        User::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'coach' => $validated['coach'],
+        ]);
+
     }
 
     public function edit(string $id)
