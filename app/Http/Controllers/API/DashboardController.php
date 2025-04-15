@@ -78,8 +78,8 @@ class DashboardController extends Controller
 
 
         return Inertia::render('dashboard', [
-            'groupeAvg' => $groupeAverages,
-            'generalAvg' => $finalGrade,
+            'groupeAvg' => !empty($groupeAverages) ? $groupeAverages : [],
+            'generalAvg' => !empty($finalGrade) ? $finalGrade : [],
             'grades' => $grades,
         ]);
     }

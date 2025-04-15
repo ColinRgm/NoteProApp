@@ -25,6 +25,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         last_name: auth.user.last_name,
         first_name: auth.user.first_name,
+        role: auth.user.role_id,
         email: auth.user.email,
     });
 
@@ -46,7 +47,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
 
                     <div className="flex gap-4">
                         <p className="text-sm font-medium">Rôle</p>
-                        <p className={"text-sm font-medium"}>Récupérer le role</p>
+                        <p className="text-sm font-medium">{data.role}</p>
 
                     </div>
 

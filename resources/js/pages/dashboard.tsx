@@ -43,7 +43,7 @@ export default function Dashboard() {
 
                 <Card className="w-[70%] p-5">
                     <CardTitle size="xxl" margin="big">
-                        5 dernière notes
+                        5 dernières notes
                     </CardTitle>
                     <CardContent>
                         <Table grades={grades.data} maxRows={5} />

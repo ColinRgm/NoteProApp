@@ -39,7 +39,9 @@ export default function Table({ users, grades, maxRows }: Props) {
         if (window.location.href.includes(studentsURL)) {
             return {
                 headers: ['Nom Prénom', 'Email'],
-                rows: users.map(user => [user.last_name + ' ' + user.first_name, user.email]),
+                rows: users.map(user => [
+                    user.last_name + ' ' + user.first_name, user.email
+                ]),
                 noDataMessage: 'Aucun apprenti trouvé..'
             };
         } else if (window.location.href.includes(gradesURL) || window.location.href.includes(dashboardURL)) {

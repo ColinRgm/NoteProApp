@@ -65,58 +65,54 @@ export default function Create({ branches, modules }: RegisterProps) {
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
                         <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-                            <div>
+                            <div className="w-[400px]">
                                 <Label htmlFor="branch">Choix de la branche</Label>
-                                <Select onValueChange={(value) => {
-                                    setBranchId(parseInt(value));
-                                    setData('branch_id', value);
-                                }}>
-                                    <SelectTrigger className="w-[400px]">
+                                <Select
+                                    onValueChange={(value) => {
+                                        setBranchId(parseInt(value));
+                                        setData('branch_id', value);
+                                    }}
+                                >
+                                    <SelectTrigger>
                                         <SelectValue placeholder="Choix de la branche" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {
-                                                branches.map((branche) => (
-                                                    <SelectItem key={branche.id} value={branche.id.toString()}>
-                                                        {branche.name}
-                                                    </SelectItem>
-                                                ))
-                                            }
+                                            {branches.map((branche) => (
+                                                <SelectItem key={branche.id} value={branche.id.toString()}>
+                                                    {branche.name}
+                                                </SelectItem>
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
                             </div>
 
-                            {
-                                (branchId === 4 || branchId === 5)  && (
-                                    <div>
-                                        <Label htmlFor="branch">Choix du module</Label>
-                                        <Select onValueChange={(value) => setData('module_id', value)}>
-                                            <SelectTrigger className="w-[400px]">
-                                                <SelectValue placeholder="Choix du module" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectGroup>
-                                                    {modules.map((module) => (
-                                                        <SelectItem key={module.id} value={module.id.toString()}>
-                                                            {module.id} - {module.name}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectGroup>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                )
-                            }
-                            {
-                                (branchId === 1 || branchId === 2 || branchId === 3) && (
-                                    <div className="w-[400px]">
-                                        <Label htmlFor="branch">Titre du test</Label>
-                                        <Input onChange={(value) => setData('test_name', value.target.value)}></Input>
-                                    </div>
-                                )
-                            }
+                            {(branchId === 4 || branchId === 5) && (
+                                <div>
+                                    <Label htmlFor="branch">Choix du module</Label>
+                                    <Select onValueChange={(value) => setData('module_id', value)}>
+                                        <SelectTrigger className="w-[400px]">
+                                            <SelectValue placeholder="Choix du module" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                {modules.map((module) => (
+                                                    <SelectItem key={module.id} value={module.id.toString()}>
+                                                        {module.id} - {module.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            )}
+                            {(branchId === 1 || branchId === 2 || branchId === 3) && (
+                                <div className="w-[400px]">
+                                    <Label htmlFor="branch">Titre du test</Label>
+                                    <Input onChange={(value) => setData('test_name', value.target.value)}></Input>
+                                </div>
+                            )}
 
                             <div className="flex flex-col">
                                 <Label htmlFor="grade">Choix de la note</Label>

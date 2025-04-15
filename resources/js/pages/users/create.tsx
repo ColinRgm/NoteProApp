@@ -21,8 +21,7 @@ interface RegisterForm {
     last_name: string;
     email: string;
     password: string;
-    role_id: number;
-    manager_id: number;
+    role_id: string;
 }
 
 interface RegisterProps {
@@ -108,7 +107,7 @@ export default function Create({ users, roles }: RegisterProps) {
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {roles.map((role) => (
+                                            {roles?.map((role) => (
                                                 <SelectItem key={role.id} value={role.id.toString()}>
                                                     {role.name}
                                                 </SelectItem>
