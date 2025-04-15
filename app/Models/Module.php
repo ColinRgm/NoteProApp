@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Module extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
-    protected $appends = ['titleModule'];
+    protected $appends = ['title'];
 
     public function grades(): HasMany
     {
@@ -24,13 +24,10 @@ class Module extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    protected function titleModule(): Attribute
+    protected function title(): Attribute
     {
         return Attribute::make(
-            get: fn() => match ($this->branch_id) {
-                4, 5 => $this->module->id . ' - ' . $this->module->name,
-                default => null
-            },
+            get: fn() => $this->id . ' - ' . $this->name
         );
     }
 

@@ -11,11 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
+        $grades = Grade::with('branch:id,name', 'user', 'module')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'created_at', 'user_id', 'module_id', 'test_name')
             ->orderBy('created_at', 'desc')
             ->paginate();
-
 
         $data = Group::with(['branches.grades' => function ($query) {
             $query->where('user_id', 1);
@@ -74,6 +73,7 @@ class DashboardController extends Controller
             $finalGrade = round($finalWeightedSum / $finalWeight, 1);
 
         }
+
 
         return Inertia::render('dashboard', [
             'groupeAvg' => !empty($groupeAverages) ? $groupeAverages : [],

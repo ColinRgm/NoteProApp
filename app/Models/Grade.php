@@ -66,10 +66,9 @@ class Grade extends Model
     {
         return Attribute::make(
             get: fn() => match ($this->branch_id) {
-                1, 2, 3 => $this->branch->name . ' - ' . $this->test_name,
-                default => null,
+                4, 5 => $this->module->title,
+                default => $this->branch->name . ' - ' . $this->test_name,
             },
-
         );
     }
 }

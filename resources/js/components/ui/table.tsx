@@ -14,7 +14,9 @@ interface Props {
         test_name: string;
         title: string;
         module: {
-            titleModule: string
+            id: number;
+            name: string;
+            title: string
         }
     }[];
     maxRows?: number;
@@ -28,7 +30,12 @@ export default function Table({ users, grades, maxRows }: Props) {
     const dashboardURL = 'dashboard';
     const studentsURL = 'users';
 
+
+
     const getTableConfig = () => {
+
+        console.log(grades)
+
         if (window.location.href.includes(studentsURL)) {
             return {
                 headers: ['Nom Prénom', 'Email'],
@@ -41,7 +48,7 @@ export default function Table({ users, grades, maxRows }: Props) {
                 rows: displayGrades.map(grade => [
                     <Link
                         href={`/grades/${grade.id}`} key={grade.id}>
-                        {grade.title || grade.module.titleModule}
+                        {grade.title}
                     </Link>,
                     grade.grade
                 ]),
