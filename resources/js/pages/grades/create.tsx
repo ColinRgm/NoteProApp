@@ -23,6 +23,7 @@ interface RegisterForm {
     module_id: number;
     grade: string;
     semester: string;
+    test_name: string;
 }
 
 interface RegisterProps {
@@ -42,7 +43,8 @@ export default function Create({ branches, modules }: RegisterProps) {
         module_id: '',
         grade: '',
         pdf: 'test.pdf',
-        semester: ''
+        semester: '',
+        test_name: ''
     });
 
     const [branchId, setBranchId] = useState(null)
@@ -107,17 +109,14 @@ export default function Create({ branches, modules }: RegisterProps) {
                                     </div>
                                 )
                             }
-                            {/*
                             {
                                 (branchId === 1 || branchId === 2 || branchId === 3) && (
-                                    <div>
+                                    <div className="w-[400px]">
                                         <Label htmlFor="branch">Titre du test</Label>
-                                        <Input></Input>
+                                        <Input onChange={(value) => setData('test_name', value)}></Input>
                                     </div>
                                 )
                             }
-                            */}
-
 
                             <div className="flex flex-col">
                                 <Label htmlFor="grade">Choix de la note</Label>

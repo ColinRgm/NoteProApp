@@ -45,9 +45,9 @@ class GradesController extends Controller
         $validated = $request->validate([
             'branch_id' => 'nullable|exists:branches,id',
             'module_id' => 'nullable|exists:modules,id',
-            // 'user_id' => 'required|exists:users,id',
             'grade' => 'required|numeric|min:1|max:6',
             'semester' => 'required|integer|min:1|max:8',
+            'test_name' => 'nullable|text'
             // 'pdf' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
@@ -57,6 +57,7 @@ class GradesController extends Controller
             'user_id' => auth()->id(),
             'grade' => $validated['grade'],
             'semester' => $validated['semester'],
+            'test_name' => $validated['test_name'],
             'pdf' => 'test.pdf',
         ]);
 
