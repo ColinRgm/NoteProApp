@@ -17,6 +17,7 @@ class Grade extends Model
         'user_id',
         'grade',
         'semester',
+        'test_name'
     ];
 
 

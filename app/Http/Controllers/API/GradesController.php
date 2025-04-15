@@ -47,7 +47,7 @@ class GradesController extends Controller
             'module_id' => 'nullable|exists:modules,id',
             'grade' => 'required|numeric|min:1|max:6',
             'semester' => 'required|integer|min:1|max:8',
-            'test_name' => 'nullable|text'
+            'test_name' => 'nullable|string'
             // 'pdf' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 

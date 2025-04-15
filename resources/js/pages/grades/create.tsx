@@ -113,7 +113,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                                 (branchId === 1 || branchId === 2 || branchId === 3) && (
                                     <div className="w-[400px]">
                                         <Label htmlFor="branch">Titre du test</Label>
-                                        <Input onChange={(value) => setData('test_name', value)}></Input>
+                                        <Input onChange={(value) => setData('test_name', value.target.value)}></Input>
                                     </div>
                                 )
                             }
