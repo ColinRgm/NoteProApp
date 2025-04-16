@@ -168,7 +168,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                                     />
                                 </div>
                             </div>
-                            {console.log(data.pdf)}
+
                             <Button
                                 type="submit"
                                 className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"

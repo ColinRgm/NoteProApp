@@ -28,7 +28,7 @@ export default function GradeDetail() {
                         <div className="w-2/3 flex flex-col items-center justify-center border-2">
                             <p className="mb-4 font-semibold">Aperçu du PDF</p>
                             <iframe
-                                src={`/storage/${uniqueGrade.pdf_path}`}
+                                src={`/storage/${uniqueGrade.pdf}`}
                                 className="w-full h-[600px] border"
                                 title="Aperçu du test"
                             ></iframe>

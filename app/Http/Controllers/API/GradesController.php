@@ -53,6 +53,8 @@ class GradesController extends Controller
             $validated['pdf'] = $path;
         }
 
+        $validated['user_id'] = auth()->id();
+
 
         Grade::create($validated);
 
