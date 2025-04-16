@@ -31,12 +31,12 @@ interface RegisterProps {
         id: string;
         first_name: string;
         last_name: string;
-    },
+    };
     coachs: {
         id: string;
         first_name: string;
         last_name: string;
-    }
+    };
     roles: {
         id: string;
         name: string;
@@ -73,23 +73,43 @@ export default function Create({ formateurs, coachs, roles }: RegisterProps) {
                         Ajouter un utilisateur
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
-                        <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-                            <div className="flex w-[400px] flex-col">
-                                <Label htmlFor="firstName">Prénom</Label>
-                                <Input id="firstName" placeholder="Prénom" type="text" onChange={(e) => setData('first_name', e.target.value)} />
+                        <form className="flex flex-col items-center justify-center gap-y-12" onSubmit={submit}>
+                            <div className="flex w-[500px] flex-col">
+                                <div className="flex flex-row items-center justify-center space-x-7">
+                                    {roles?.map((role) => (
+                                        <label key={role.id} className="flex items-center space-x-2">
+                                            <input
+                                                type="radio"
+                                                name="role"
+                                                value={role.id}
+                                                onChange={(e) => {
+                                                    setRoleId(parseInt(e.target.value));
+                                                    setData('role_id', e.target.value);
+                                                }}
+                                                className="accent-[#141e66]"
+                                            />
+                                            <span className="text-sm">{role.name}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="flex w-[500px] flex-row gap-6">
+                                <div className="flex w-[50%] flex-col gap-1">
+                                    <Label htmlFor="firstName">Nom</Label>
+                                    <Input id="firstName" placeholder="Prénom" type="text" onChange={(e) => setData('first_name', e.target.value)} />
+                                </div>
+
+                                <div className="flex w-[50%] flex-col justify-end">
+                                    <Input id="lastName" placeholder="Nom" type="text" onChange={(e) => setData('last_name', e.target.value)} />
+                                </div>
                             </div>
 
-                            <div className="flex w-[400px] flex-col">
-                                <Label htmlFor="lastName">Nom</Label>
-                                <Input id="lastName" placeholder="Nom" type="text" onChange={(e) => setData('last_name', e.target.value)} />
-                            </div>
-
-                            <div className="flex w-[400px] flex-col">
+                            <div className="flex w-[500px] flex-col gap-1">
                                 <Label htmlFor="email">Email</Label>
                                 <Input id="email" placeholder="Email" type="email" onChange={(e) => setData('email', e.target.value)} />
                             </div>
 
-                            <div className="flex w-[400px] flex-col">
+                            <div className="flex w-[500px] flex-col gap-1">
                                 <Label htmlFor="password">Mot de passe</Label>
                                 <Input
                                     id="password"
@@ -99,35 +119,12 @@ export default function Create({ formateurs, coachs, roles }: RegisterProps) {
                                 />
                             </div>
 
-                            <div className="flex w-[400px] flex-col">
-                                <Label htmlFor="role">Rôle</Label>
-                                <Select
-                                    onValueChange={(value) => {
-                                        setRoleId(parseInt(value));
-                                        setData('role_id', value);
-                                    }}
-                                >
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Rôle" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            {roles?.map((role) => (
-                                                <SelectItem key={role.id} value={role.id.toString()}>
-                                                    {role.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-
                             {/*
                                 Afficher uniquement si le rôle est Apprenti -> ID 2
                             */}
                             {roleId === 2 && (
                                 <>
-                                    <div className="flex w-[400px] flex-col">
+                                    <div className="flex w-[500px] flex-col gap-2">
                                         <Label htmlFor="formateur">Formateur</Label>
                                         <Select
                                             onValueChange={(value) => {
@@ -143,14 +140,13 @@ export default function Create({ formateurs, coachs, roles }: RegisterProps) {
                                                         <SelectItem key={formateur.id} value={formateur.id.toString()}>
                                                             {formateur.first_name} {formateur.last_name}
                                                         </SelectItem>
-
                                                     ))}
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>
                                     </div>
 
-                                    <div className="flex w-[400px] flex-col">
+                                    <div className="flex w-[500px] flex-col gap-2">
                                         <Label htmlFor="coach">Coach</Label>
                                         <Select
                                             onValueChange={(value) => {

@@ -12,8 +12,8 @@ import { FormEventHandler, useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Ajouter une note',
-        href: 'grades/create'
-    }
+        href: 'grades/create',
+    },
 ];
 
 interface RegisterForm {
@@ -44,10 +44,10 @@ export default function Create({ branches, modules }: RegisterProps) {
         grade: '',
         pdf: 'test.pdf',
         semester: '',
-        test_name: ''
+        test_name: '',
     });
 
-    const [branchId, setBranchId] = useState(null)
+    const [branchId, setBranchId] = useState(null);
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
@@ -64,8 +64,8 @@ export default function Create({ branches, modules }: RegisterProps) {
                         Ajouter une note
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
-                        <form className="flex flex-col items-center justify-center gap-6" onSubmit={submit}>
-                            <div className="w-[400px]">
+                        <form className="flex flex-col items-center justify-center gap-12" onSubmit={submit}>
+                            <div className="flex w-[500px] flex-col gap-2">
                                 <Label htmlFor="branch">Choix de la branche</Label>
                                 <Select
                                     onValueChange={(value) => {
@@ -89,10 +89,10 @@ export default function Create({ branches, modules }: RegisterProps) {
                             </div>
 
                             {(branchId === 4 || branchId === 5) && (
-                                <div>
+                                <div className="flex w-[500px] flex-col gap-2">
                                     <Label htmlFor="branch">Choix du module</Label>
                                     <Select onValueChange={(value) => setData('module_id', value)}>
-                                        <SelectTrigger className="w-[400px]">
+                                        <SelectTrigger className="w-[500px]">
                                             <SelectValue placeholder="Choix du module" />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -108,48 +108,56 @@ export default function Create({ branches, modules }: RegisterProps) {
                                 </div>
                             )}
                             {(branchId === 1 || branchId === 2 || branchId === 3) && (
-                                <div className="w-[400px]">
+                                <div className="w-[500px] gap-1">
                                     <Label htmlFor="branch">Titre du test</Label>
                                     <Input onChange={(value) => setData('test_name', value.target.value)}></Input>
                                 </div>
                             )}
 
-                            <div className="flex flex-col">
+                            <div className="flex flex-col gap-2">
                                 <Label htmlFor="grade">Choix de la note</Label>
-                                <Input
-                                    name="grade"
-                                    type="number"
-                                    min="1"
-                                    max="6"
-                                    step="0.5"
-                                    className="w-[400px]"
-                                    placeholder="Choix de la note"
-                                    value={data.grade}
-                                    onChange={(e) => setData('grade', e.target.value)}
-                                />
+                                <div className="flex flex-row w-[500px] gap-2 items-center justify-center">
+                                    {[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6].map((value) => (
+                                        <button
+                                            key={value}
+                                            type="button"
+                                            onClick={() => setData('grade', value)}
+                                            className={`rounded-lg border w-full h-10 text-sm font-medium transition ${
+                                                data.grade == value
+                                                    ? 'border-[#141e66] bg-[#141e66] text-white'
+                                                    : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-100'
+                                            }`}
+                                        >
+                                            {value}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div>
-                                <div className="flex flex-col">
-                                    <Label htmlFor="semester">Choix du semestre</Label>
-                                    <Input
-                                        name="semester"
-                                        type="number"
-                                        min="1"
-                                        max="8"
-                                        step="1"
-                                        className="w-[400px]"
-                                        placeholder="Choix du semestre"
-                                        value={data.semester}
-                                        onChange={(e) => setData('semester', e.target.value)}
-                                    />
+                            <div className="flex flex-col gap-2">
+                                <Label htmlFor="semester">Choix du semestre</Label>
+                                <div className="grid grid-cols-4 gap-2 w-[500px]">
+                                    {[1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
+                                        <button
+                                            key={value}
+                                            type="button"
+                                            onClick={() => setData('semester', value)}
+                                            className={`rounded-lg border px-4 py-2 text-sm font-medium transition ${
+                                                data.semester == value
+                                                    ? 'border-[#141e66] bg-[#141e66] text-white'
+                                                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                                            }`}
+                                        >
+                                            {value}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
 
                             {/*<div>
                                 <div className="flex flex-col">
                                     <Label htmlFor="pdf">Ajout d'un PDF</Label>
-                                    <Input name="pdf" type="file" className="w-[400px]" />
+                                    <Input name="pdf" type="file" className="w-[500px]" />
                                 </div>
                             </div>*/}
 
