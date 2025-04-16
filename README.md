@@ -4,27 +4,25 @@ Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur 
 
 ## — 🚀 Fonctionnalités —
 ### Globale
-
 - ✅ Calcule des moyennes par groupes
 - ✅ Calcule de la moyenne générale
+- ✅ Vue individuelle pour chaque note
 
 ### Pour les apprentis
 - ✅ Ajout de notes
+  - Envoit un mail au formateur et au coach
 - ✅ Ajout PDF (si existant)
 - ✅ Modification de notes
 - ✅ Ajout de bulletin
-- ✅ 
 
 ### Pour les formateurs / coach
 - ✅ Création de compte d'un apprenti
-  - Ce qui enverra un mail à l'apprenti en question
+  - Envoie un mail à l'apprenti en question
 - ✅ Suppression de compte d'un apprenti
-  - Supprimera toutes ses données
+  - Supprime toutes ses données
 - ✅ Enregistrement des PDF
 - ✅ Affichage des notes de l'apprenti souhaité
 - ✅ Partage d'accès avec un formateur / coach
-- ✅ 
-- ✅ 
 
 ## — 🛠️ Technologies utilisées —
 
