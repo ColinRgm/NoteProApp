@@ -100,7 +100,7 @@ export default function Create({ formateurs, coachs, roles }: RegisterProps) {
                             </div>
 
                             <div className="flex w-[400px] flex-col">
-                                <Label htmlFor="coach">Rôle</Label>
+                                <Label htmlFor="role">Rôle</Label>
                                 <Select
                                     onValueChange={(value) => {
                                         setRoleId(parseInt(value));

@@ -49,8 +49,8 @@ class UsersController extends Controller
             'email' => 'required|string|max:255',
             'password' => 'required|string|max:255',
             'role_id' => 'required|integer|exists:roles,id',
-            'formateur_id' => 'nullable|integer|exists:formateurs,id',
-            'coach_id' => 'nullable|integer|exists:coachs,id'
+            'formateur_id' => 'nullable|integer',
+            'coach_id' => 'nullable|integer'
         ]);
 
         User::create([
