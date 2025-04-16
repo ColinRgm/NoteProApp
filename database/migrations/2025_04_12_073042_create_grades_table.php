@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('module_id')->nullable()->constrained();
             $table->decimal('grade', total: 2, places: 1);
             $table->text('pdf')->nullable();
+            $table->text('test_name')->nullable();
             $table ->integer('semester');
             $table->timestamps();
         });
