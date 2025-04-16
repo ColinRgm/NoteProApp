@@ -3,10 +3,15 @@
 Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur le quel ils pourraient avoir une vue d’ensemble de leurs notes, moyennes, tests, etc…
 
 ## 🚀 Fonctionnalités
+### Globale
 
 - ✅ Ajout de notes + PDF (si existant)
 - ✅ Calcule des moyennes par groupes
 - ✅ Calcule de la moyenne générale
+
+### Pour les apprentis
+
+### Pour les formateurs / coach
 
 ## 🛠️ Technologies utilisées
 
@@ -19,13 +24,22 @@ Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur 
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/ton-utilisateur/nom-du-projet.git
+git clone https://github.com/ColinRgm/NoteProApp
 
 # Se déplacer dans le dossier
-cd nom-du-projet
+cd NoteProApp
 
 # Installer les dépendances
-npm install   # ou composer install, ou autre
+npm install
+
+# Installer Laravel
+composer install
 
 # Lancer le projet
-npm run dev   # ou php artisan serve, ou autre
+composer run dev
+
+# Créer une clé de cryptage
+php artisan key:generate
+
+```
+
