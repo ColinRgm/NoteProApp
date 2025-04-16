@@ -24,9 +24,14 @@ export default function GradeDetail() {
                         {uniqueGrade.title}
                     </CardTitle>
 
-                    <CardContent className="gap-20 flex-3">
+                    <CardContent className="gap-20 flex-3 items-start">
                         <div className="w-2/3 flex flex-col items-center justify-center border-2">
-                            <p>Le PDF</p>
+                            <p className="mb-4 font-semibold">Aperçu du PDF</p>
+                            <iframe
+                                src={`/storage/${uniqueGrade.pdf_path}`}
+                                className="w-full h-[600px] border"
+                                title="Aperçu du test"
+                            ></iframe>
                         </div>
                         <div className="flex-1/3">
                             <Card className="p-5">

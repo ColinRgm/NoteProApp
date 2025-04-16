@@ -19,7 +19,8 @@ class Grade extends Model
         'user_id',
         'grade',
         'semester',
-        'test_name'
+        'test_name',
+        'pdf'
     ];
 
     protected $appends = ['title'];

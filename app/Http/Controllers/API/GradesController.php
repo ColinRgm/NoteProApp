@@ -45,9 +45,14 @@ class GradesController extends Controller
             'module_id' => 'nullable|exists:modules,id',
             'grade' => 'required|numeric|min:1|max:6',
             'semester' => 'required|integer|min:1|max:8',
-            'test_name' => 'nullable|string'
-            // 'pdf' => 'nullable|file|mimes:pdf|max:2048',
+            'test_name' => 'nullable|string',
+            'pdf' => 'nullable|file|mimes:pdf|max:2048',
         ]);
+
+        if ($request->hasFile('pdf')) {
+            $path = $request->file('pdf')->store('gradesPDF', 'public');
+            $validated['pdf'] = $path;
+        }
 
         Grade::create([
             'branch_id' => $validated['branch_id'],
@@ -56,7 +61,7 @@ class GradesController extends Controller
             'grade' => $validated['grade'],
             'semester' => $validated['semester'],
             'test_name' => $validated['test_name'],
-            'pdf' => 'test.pdf',
+            'pdf' => $validated['pdf']
         ]);
 
         return redirect('dashboard')->with('success', 'Note ajoutée avec succès');

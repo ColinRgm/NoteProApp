@@ -24,6 +24,7 @@ interface RegisterForm {
     grade: string;
     semester: string;
     test_name: string;
+    pdf: File | null
 }
 
 interface RegisterProps {
@@ -42,7 +43,7 @@ export default function Create({ branches, modules }: RegisterProps) {
         branch_id: '',
         module_id: '',
         grade: '',
-        pdf: 'test.pdf',
+        pdf: null,
         semester: '',
         test_name: '',
     });
@@ -154,12 +155,17 @@ export default function Create({ branches, modules }: RegisterProps) {
                                 </div>
                             </div>
 
-                            {/*<div>
-                                <div className="flex flex-col">
+                            <div>
+                                <div className="flex flex-col gap-1 w-[500px]">
                                     <Label htmlFor="pdf">Ajout d'un PDF</Label>
-                                    <Input name="pdf" type="file" className="w-[500px]" />
+                                    <Input
+                                        name="pdf"
+                                        type="file"
+                                        accept="application/pdf"
+                                        onChange={(e) => setData('pdf', e.target.files?.[0] || null)}
+                                    />
                                 </div>
-                            </div>*/}
+                            </div>
 
                             <Button
                                 type="submit"
