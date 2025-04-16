@@ -2,7 +2,7 @@
 
 Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur le quel ils pourraient avoir une vue d’ensemble de leurs notes, moyennes, tests, etc…
 
-## 🚀 Fonctionnalités
+## — 🚀 Fonctionnalités —
 ### Globale
 
 - ✅ Ajout de notes + PDF (si existant)
@@ -13,14 +13,14 @@ Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur 
 
 ### Pour les formateurs / coach
 
-## 🛠️ Technologies utilisées
+## — 🛠️ Technologies utilisées —
 
 - Langage : `JavaScript` / `PHP` / `Rust` / etc.
 - Framework : `React` / `Laravel` / etc.
 - Base de données : `PostgreSQL` / `MySQL` / etc.
 - Autres : `Tailwind CSS`, `Docker`, etc.
 
-## 📦 Installation
+## — 📦 Installation—
 
 ```bash
 # Cloner le dépôt
@@ -43,3 +43,12 @@ php artisan key:generate
 
 ```
 
+## — Base de données —
+
+```bash
+# Faire les migrations
+php artisan migrate
+
+# Ajout des données essentielles
+php artisan db:seed
+```
