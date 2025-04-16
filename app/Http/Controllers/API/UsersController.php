@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Notifications\WelcomeUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
@@ -53,7 +54,7 @@ class UsersController extends Controller
             'coach_id' => 'nullable|integer'
         ]);
 
-        User::create([
+        $newUser = User::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
@@ -62,6 +63,8 @@ class UsersController extends Controller
             'formateur_id' => $validated['formateur_id'],
             'coach_id' => $validated['coach_id']
         ]);
+
+        $newUser->notify(new WelcomeUser());
 
         return redirect('dashboard')->with('success', 'Utilisateur créé avec succès !');
     }
