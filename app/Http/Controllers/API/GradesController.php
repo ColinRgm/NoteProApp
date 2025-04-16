@@ -39,7 +39,6 @@ class GradesController extends Controller
 
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'branch_id' => 'nullable|exists:branches,id',
             'module_id' => 'nullable|exists:modules,id',
@@ -54,15 +53,9 @@ class GradesController extends Controller
             $validated['pdf'] = $path;
         }
 
-        Grade::create([
-            'branch_id' => $validated['branch_id'],
-            'module_id' => $validated['module_id'],
-            'user_id' => auth()->id(),
-            'grade' => $validated['grade'],
-            'semester' => $validated['semester'],
-            'test_name' => $validated['test_name'],
-            'pdf' => $validated['pdf']
-        ]);
+
+        Grade::create($validated);
+
 
         return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
     }

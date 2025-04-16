@@ -24,7 +24,7 @@ interface RegisterForm {
     grade: string;
     semester: string;
     test_name: string;
-    pdf: File | null
+    pdf: File
 }
 
 interface RegisterProps {
@@ -52,7 +52,9 @@ export default function Create({ branches, modules }: RegisterProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route('grades.store'));
+        post(route('grades.store'), {
+            forceFormData: true,
+        });
     };
 
     return (
@@ -65,7 +67,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                         Ajouter une note
                     </CardTitle>
                     <CardContent className="flex flex-col gap-5">
-                        <form className="flex flex-col items-center justify-center gap-12" onSubmit={submit}>
+                        <form className="flex flex-col items-center justify-center gap-12" onSubmit={submit} encType="multipart/form-data">
                             <div className="flex w-[500px] flex-col gap-2">
                                 <Label htmlFor="branch">Choix de la branche</Label>
                                 <Select
@@ -166,7 +168,7 @@ export default function Create({ branches, modules }: RegisterProps) {
                                     />
                                 </div>
                             </div>
-
+                            {console.log(data.pdf)}
                             <Button
                                 type="submit"
                                 className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
