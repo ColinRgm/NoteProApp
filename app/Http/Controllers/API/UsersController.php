@@ -54,7 +54,7 @@ class UsersController extends Controller
             'coach_id' => 'nullable|integer'
         ]);
 
-        $newUser = User::create([
+        User::create([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
@@ -64,7 +64,7 @@ class UsersController extends Controller
             'coach_id' => $validated['coach_id']
         ]);
 
-        $newUser->notify(new WelcomeUser());
+        // $newUser->notify(new WelcomeUser());
 
         return redirect('dashboard')->with('success', 'Utilisateur créé avec succès !');
     }

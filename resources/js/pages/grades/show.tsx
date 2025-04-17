@@ -11,7 +11,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function GradeDetail() {
-
     const { uniqueGrade } = usePage().props;
 
     return (
@@ -24,21 +23,26 @@ export default function GradeDetail() {
                         {uniqueGrade.title}
                     </CardTitle>
 
-                    <CardContent className="gap-20 flex-3 items-start">
-                        <div className="w-2/3 flex flex-col items-center justify-center border-2">
-                            <p className="mb-4 font-semibold">Aperçu du PDF</p>
-                            <iframe
-                                src={`/storage/${uniqueGrade.pdf}`}
-                                className="w-full h-[600px] border"
-                                title="Aperçu du test"
-                            ></iframe>
+                    <CardContent className="flex-3 items-start gap-20">
+                        <div className="flex flex-col items-center justify-center w-2/3">
+                            {uniqueGrade.pdf && uniqueGrade.pdf !== '' ? (
+                                <>
+                                    <p className="mb-4 font-semibold">Aperçu du PDF</p>
+                                    <iframe src={`/storage/${uniqueGrade.pdf}`} className="h-[600px] w-full border" title="Aperçu du test"></iframe>
+                                </>
+                            ) : (
+                                <h3>Aucun PDF pour ce test</h3>
+                            )}
                         </div>
-                        <div className="flex-1/3">
+                        <div className="flex flex-1/3 flex-col gap-20">
                             <Card className="p-5">
                                 <CardTitle size="lg">Note</CardTitle>
                                 <CardContent className="text-4xl">{uniqueGrade.grade}</CardContent>
                             </Card>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi corporis, dolores ducimus id labore odit perferendis possimus quo repellendus sunt veniam veritatis, voluptates. Inventore ipsum porro repellendus saepe suscipit?</p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi corporis, dolores ducimus id labore odit perferendis
+                                possimus quo repellendus sunt veniam veritatis, voluptates. Inventore ipsum porro repellendus saepe suscipit?
+                            </p>
                         </div>
                     </CardContent>
                 </Card>

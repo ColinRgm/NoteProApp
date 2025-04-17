@@ -1,11 +1,13 @@
 # NoteProApp
 
-Site web pour Jobtrek, permettant aux apprentis de pouvoir avoir un endroit sur le quel ils pourraient avoir une vue d’ensemble de leurs notes, moyennes, tests, etc…
+Il s'agit d'un plateforme sur laquelle les apprentis ont la possibilité d'entrer leurs notes scolaires,
+ce qui leurs permet d'avoir une vue d'ensemble sur la progression de leurs apprentissage,
+le calcule des différentes moyennes se fait dynamiquement ce qui garanti 
 
 ## — 🚀 Fonctionnalités —
 ### Globale
-- ✅ Calcule des moyennes par groupes
-- ✅ Calcule de la moyenne générale
+- ✅ Calcul des moyennes par groupes
+- ✅ Calcul de la moyenne générale
 - ✅ Vue individuelle pour chaque note
 
 ### Pour les apprentis

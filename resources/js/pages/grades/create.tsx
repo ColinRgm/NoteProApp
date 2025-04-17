@@ -17,8 +17,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 interface RegisterForm {
-    // Get the grade
-    // Get the semester
     branch_id: string;
     module_id: number;
     grade: string;
@@ -38,7 +36,7 @@ interface RegisterProps {
     }[];
 }
 
-export default function Create({ branches, modules }: RegisterProps) {
+export default function CreateGrade({ branches, modules }: RegisterProps) {
     const { data, setData, post } = useForm<RegisterForm>({
         branch_id: '',
         module_id: '',
@@ -171,9 +169,9 @@ export default function Create({ branches, modules }: RegisterProps) {
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
+                                className="mt-4 border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
                             >
-                                Ajouter
+                                Ajouter la note
                             </Button>
                         </form>
                     </CardContent>
