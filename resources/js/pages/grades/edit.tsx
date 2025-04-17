@@ -22,7 +22,7 @@ interface RegisterForm {
     grade: string;
     semester: string;
     test_name: string;
-    pdf: File;
+    pdf: string;
 }
 
 interface RegisterProps {
