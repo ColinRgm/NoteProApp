@@ -112,7 +112,7 @@ class GradesController extends Controller
         Grade::updated($validated);
 
 
-        return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
+        return redirect('dashboard')->with('success', 'Note modifiée avec succès');
     }
 
 
