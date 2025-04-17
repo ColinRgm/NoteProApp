@@ -11,13 +11,11 @@ import { FormEventHandler, useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Modifier la note',
-        href: 'grades/{id}/edit',
+        href: 'grades/{id}}/edit',
     },
 ];
 
 interface RegisterForm {
-    // Get the grade
-    // Get the semester
     id: string;
     branch_id: string;
     module_id: string;
@@ -38,27 +36,31 @@ interface RegisterProps {
     }[];
 }
 
-export default function GradeDetail({ branches, modules }: RegisterProps) {
+export default function EditGrade({ branches, modules }: RegisterProps) {
     const { uniqueGrade } = usePage<{ props: { uniqueGrade: RegisterForm } }>().props;
 
     const { data, setData, patch } = useForm<RegisterForm>({
         branch_id: uniqueGrade.branch_id,
         module_id: uniqueGrade.module_id,
         grade: uniqueGrade.grade,
-        pdf: uniqueGrade.pdf,
+        pdf: uniqueGrade.pdf ?? null,
         semester: uniqueGrade.semester,
         test_name: uniqueGrade.test_name,
     });
 
+
+
     const [branchId, setBranchId] = useState(parseInt(uniqueGrade.branch_id));
     const [moduleId, setModuleId] = useState(parseInt(uniqueGrade.module_id));
 
+
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        patch(route('grades.update', uniqueGrade.id), {
-            forceFormData: true,
-        });
+        patch(route('grades.update', uniqueGrade.id));
     };
+
+
+
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

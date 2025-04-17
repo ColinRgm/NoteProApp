@@ -92,25 +92,29 @@ class GradesController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
+        $newData = $request->validate([
             'branch_id' => 'nullable|exists:branches,id',
             'module_id' => 'nullable|exists:modules,id',
-            'grade' => 'required|numeric|min:1|max:6',
-            'semester' => 'required|integer|min:1|max:8',
+            'grade' => 'nullable|numeric|min:1|max:6',
+            'semester' => 'nullable|integer|min:1|max:8',
             'test_name' => 'nullable|string',
             'pdf' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
         if ($request->hasFile('pdf')) {
             $path = $request->file('pdf')->store('gradesPDF', 'public');
-            $validated['pdf'] = $path;
+            $newData['pdf'] = $path;
         }
 
-        $validated['user_id'] = auth()->id();
+        $updateGrade = Grade::findOrFail($id);
 
+        if ($updateGrade->user_id !== auth()->id()) {
+            abort(403);
+        }
 
-        Grade::updated($validated);
+        $updateGrade->save($newData);
 
+        // dd($newData);
 
         return redirect('dashboard')->with('success', 'Note modifiée avec succès');
     }

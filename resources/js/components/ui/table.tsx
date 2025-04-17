@@ -53,7 +53,7 @@ export default function Table({ users, grades, maxRows }: Props) {
                         {grade.title}
                     </Link>,
                     grade.grade,
-                    <Link href={`/grades/${grade.id}/edit`} key={grade.id}>
+                    <Link href={`/grades/${grade.id}/edit`} key={grade.id} className="flex items-end justify-center">
                         <PencilLine />
                     </Link>
                 ]),
