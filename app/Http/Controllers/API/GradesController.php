@@ -16,7 +16,7 @@ class GradesController extends Controller
         $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'test_name', 'created_at', 'user_id', 'module_id')
             ->orderBy('semester', 'asc')
-            ->paginate(8);
+            ->paginate();
 
         return Inertia::render('grades', [
             'grades' => $grades,
@@ -69,21 +69,50 @@ class GradesController extends Controller
 
         return Inertia::render('grades/show', [
             'id' => $id,
-            // 'pdf' => $uniqueGrade->pdf,
             'uniqueGrade' => $uniqueGrade,
         ]);
     }
 
 
-    public function edit(Grade $grade)
+    public function edit($id)
     {
-        //
+        $branches = Branch::all();
+
+        $modules = Module::all();
+
+        $uniqueGrade = Grade::with('branch:id,name', 'module:id,name')->findOrFail($id);
+
+        return inertia('grades/edit', [
+            'branches' => $branches,
+            'modules' => $modules,
+            'uniqueGrade' => $uniqueGrade,
+        ]);
     }
 
 
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'branch_id' => 'nullable|exists:branches,id',
+            'module_id' => 'nullable|exists:modules,id',
+            'grade' => 'required|numeric|min:1|max:6',
+            'semester' => 'required|integer|min:1|max:8',
+            'test_name' => 'nullable|string',
+            'pdf' => 'nullable|file|mimes:pdf|max:2048',
+        ]);
+
+        if ($request->hasFile('pdf')) {
+            $path = $request->file('pdf')->store('gradesPDF', 'public');
+            $validated['pdf'] = $path;
+        }
+
+        $validated['user_id'] = auth()->id();
+
+
+        Grade::updated($validated);
+
+
+        return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
     }
 
 

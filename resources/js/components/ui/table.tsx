@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react';
+import { PencilLine } from 'lucide-react';
 
 interface Props {
     users: {
@@ -45,13 +46,16 @@ export default function Table({ users, grades, maxRows }: Props) {
             };
         } else if (window.location.href.includes(gradesURL) || window.location.href.includes(dashboardURL)) {
             return {
-                headers: ['Branches / modules', 'Note'],
+                headers: ['Branches / modules', 'Note', 'Modifier'],
                 rows: displayGrades.map(grade => [
                     <Link
                         href={`/grades/${grade.id}`} key={grade.id}>
                         {grade.title}
                     </Link>,
-                    grade.grade
+                    grade.grade,
+                    <Link href={`/grades/${grade.id}/edit`} key={grade.id}>
+                        <PencilLine />
+                    </Link>
                 ]),
                 noDataMessage: 'Aucune note trouvée..'
             };
