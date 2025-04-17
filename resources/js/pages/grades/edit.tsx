@@ -18,6 +18,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 interface RegisterForm {
     // Get the grade
     // Get the semester
+    id: string;
     branch_id: string;
     module_id: string;
     grade: string;
@@ -54,7 +55,7 @@ export default function GradeDetail({ branches, modules }: RegisterProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        patch(route('grades.update'), {
+        patch(route('grades.update', uniqueGrade.id), {
             forceFormData: true,
         });
     };
@@ -184,9 +185,9 @@ export default function GradeDetail({ branches, modules }: RegisterProps) {
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-xl border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
+                                className="mt-4 border-1 border-[#141e66] bg-[#141e66] hover:border-1 hover:border-[#141e66] hover:bg-white hover:text-[#141e66]"
                             >
-                                Modifier
+                                Enregistrer les modifications
                             </Button>
                         </form>
                     </CardContent>
