@@ -43,7 +43,7 @@ export default function EditGrade({ branches, modules }: RegisterProps) {
         branch_id: uniqueGrade.branch_id,
         module_id: uniqueGrade.module_id,
         grade: uniqueGrade.grade,
-        pdf: uniqueGrade.pdf ?? stringify(),
+        pdf: uniqueGrade.pdf,
         semester: uniqueGrade.semester,
         test_name: uniqueGrade.test_name,
     });
