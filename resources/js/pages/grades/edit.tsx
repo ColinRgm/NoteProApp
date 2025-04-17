@@ -11,7 +11,7 @@ import { FormEventHandler, useState } from 'react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Modifier la note',
-        href: 'grades/{id}}/edit',
+        href: 'grades/edit',
     },
 ];
 
@@ -43,7 +43,7 @@ export default function EditGrade({ branches, modules }: RegisterProps) {
         branch_id: uniqueGrade.branch_id,
         module_id: uniqueGrade.module_id,
         grade: uniqueGrade.grade,
-        pdf: uniqueGrade.pdf ?? null,
+        pdf: uniqueGrade.pdf ?? stringify(),
         semester: uniqueGrade.semester,
         test_name: uniqueGrade.test_name,
     });
@@ -56,11 +56,10 @@ export default function EditGrade({ branches, modules }: RegisterProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        patch(route('grades.update', uniqueGrade.id));
+        patch(route('grades.update', uniqueGrade.id), {
+            // forceFormData: true,
+        });
     };
-
-
-
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

@@ -92,6 +92,8 @@ class GradesController extends Controller
 
     public function update(Request $request, string $id)
     {
+        // dd($request->all());
+
         $newData = $request->validate([
             'branch_id' => 'nullable|exists:branches,id',
             'module_id' => 'nullable|exists:modules,id',
@@ -112,7 +114,7 @@ class GradesController extends Controller
             abort(403);
         }
 
-        $updateGrade->save($newData);
+        $updateGrade->update($newData);
 
         // dd($newData);
 
