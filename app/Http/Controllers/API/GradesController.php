@@ -7,6 +7,7 @@ use App\Mail\NewGrade;
 use App\Models\Branch;
 use App\Models\Grade;
 use App\Models\Module;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
@@ -69,7 +70,22 @@ class GradesController extends Controller
             $branch = Branch::find($grade->branch_id);
         }
 
-        Mail::to(auth()->user()->email)->send(new NewGrade($grade, $module, $branch));
+        // Récupérer les formateurs et coachs associés
+        $user = auth()->user();
+        $formatorEmail = $user->formateur_id ? User::find($user->formateur_id)->email : null;
+        // $coachEmail = $user->coach_id ? User::find($user->coach_id)->email : null;
+
+        $emails = [$user->email];
+
+        if ($formatorEmail) {
+            $emails[] = $formatorEmail;
+        }
+
+        /*if ($coachEmail) {
+            $emails[] = $coachEmail;
+        }*/
+
+        Mail::to($emails)->send(new NewGrade($grade, $module, $branch));
 
         return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
     }

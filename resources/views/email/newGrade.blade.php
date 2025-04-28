@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<p>Voici les informations de la note que vous venez d'ajouter !</p>
+<p>Voici la dernière note ajoutée par {{auth()->user()->first_name}} {{auth()->user()->last_name}}</p>
 
 @if($module && $module->name)
     <h2> {{ $module->id }} - {{ $module->name }} </h2>
@@ -20,5 +20,6 @@
     <li><strong>Note: </strong> {{ $grade->grade }} </li>
     <li><strong>Semestre: </strong> {{ $grade->semester }} </li>
 </ul>
+<p>Connectez-vous à <a href="http://127.0.0.1:8000/dashboard">NoteProApp</a> pour accéder à l'ensemble des notes</p>
 </body>
 </html>
