@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { PencilLine } from 'lucide-react';
+import { PencilLine, Trash2 } from 'lucide-react';
 
 interface Props {
     users: {
@@ -32,7 +32,6 @@ export default function Table({ users, grades, maxRows }: Props) {
     const studentsURL = 'users';
 
 
-
     const getTableConfig = () => {
 
 
@@ -46,16 +45,25 @@ export default function Table({ users, grades, maxRows }: Props) {
             };
         } else if (window.location.href.includes(gradesURL) || window.location.href.includes(dashboardURL)) {
             return {
-                headers: ['Branches / modules', 'Note', 'Modifier'],
+                headers: ['Branches / modules', 'Note', 'Modifier / Supprimer'],
                 rows: displayGrades.map(grade => [
                     <Link
                         href={`/grades/${grade.id}`} key={grade.id}>
                         {grade.title}
                     </Link>,
                     grade.grade,
-                    <Link href={`/grades/${grade.id}/edit`} key={grade.id} className="flex items-end justify-center">
-                        <PencilLine />
-                    </Link>
+                    <div className="flex flex-row items-start justify-center gap-5">
+                        <Link href={`/grades/${grade.id}/edit`} key={grade.id}>
+                            <PencilLine />
+                        </Link>
+                        <form action={`/grades/${grade.id}`} method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" className="cursor-pointer">
+                                <Trash2 />
+                            </button>
+                        </form>
+                    </div>
+
                 ]),
                 noDataMessage: 'Aucune note trouvée..'
             };

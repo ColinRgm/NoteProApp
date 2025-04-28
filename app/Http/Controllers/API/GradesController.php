@@ -152,6 +152,14 @@ class GradesController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        $grade = Grade::findOrFail($id);
+
+        if ($grade->user_id !== auth()->id()) {
+            abort(403, 'Vous n\'êtes pas autorisé à supprimer cette note.');
+        }
+
+        $grade->delete();
+
+        return redirect('dashboard')->with('success', 'Note supprimée avec succès');
     }
 }
