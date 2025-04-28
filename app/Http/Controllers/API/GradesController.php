@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewGrade;
 use App\Models\Branch;
 use App\Models\Grade;
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class GradesController extends Controller
@@ -15,8 +17,8 @@ class GradesController extends Controller
     {
         $grades = Grade::with('branch:id,name', 'user', 'module:id,name')
             ->select('id', 'branch_id', 'pdf', 'grade', 'semester', 'test_name', 'created_at', 'user_id', 'module_id')
-            ->orderBy('semester', 'asc')
-            ->paginate();
+            ->orderBy('grades', 'asc')
+            ->paginate(6);
 
         return Inertia::render('grades', [
             'grades' => $grades,
@@ -55,9 +57,19 @@ class GradesController extends Controller
 
         $validated['user_id'] = auth()->id();
 
+        $grade = Grade::create($validated);
+        $module = null;
+        $branch = null;
 
-        Grade::create($validated);
+        if ($grade->module_id) {
+            $module = Module::find($grade->module_id);
+        }
 
+        if ($grade->branch_id) {
+            $branch = Branch::find($grade->branch_id);
+        }
+
+        Mail::to(auth()->user()->email)->send(new NewGrade($grade, $module, $branch));
 
         return redirect('dashboard')->with('success', 'Note ajoutée avec succès');
     }
