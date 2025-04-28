@@ -24,14 +24,15 @@ export default function GradeDetail() {
                     </CardTitle>
 
                     <CardContent className="flex-3 items-start gap-20">
-                        <div className="flex flex-col items-center justify-center w-2/3">
+                        <div className="flex flex-col justify-center w-2/3">
                             {uniqueGrade.pdf && uniqueGrade.pdf !== '' ? (
                                 <>
                                     <p className="mb-4 font-semibold">Aperçu du PDF</p>
                                     <iframe src={`/storage/${uniqueGrade.pdf}`} className="h-[600px] w-full border" title="Aperçu du test"></iframe>
+                                    {/*<img src={`/storage/${uniqueGrade.pdf}`} alt={uniqueGrade.title} className="h-[100%] w-[100%]"/>*/}
                                 </>
                             ) : (
-                                <h3>Aucun PDF pour ce test</h3>
+                                <p className="mb-4 font-semibold">Aucun PDF pour ce test</p>
                             )}
                         </div>
                         <div className="flex flex-1/3 flex-col gap-20">
@@ -39,10 +40,13 @@ export default function GradeDetail() {
                                 <CardTitle size="lg">Note</CardTitle>
                                 <CardContent className="text-4xl">{uniqueGrade.grade}</CardContent>
                             </Card>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi corporis, dolores ducimus id labore odit perferendis
-                                possimus quo repellendus sunt veniam veritatis, voluptates. Inventore ipsum porro repellendus saepe suscipit?
-                            </p>
+                            <div>
+                                <p className="mb-4 font-semibold">Descriptif de la note</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi corporis, dolores ducimus id labore odit perferendis
+                                    possimus quo repellendus sunt veniam veritatis, voluptates. Inventore ipsum porro repellendus saepe suscipit?
+                                </p>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>

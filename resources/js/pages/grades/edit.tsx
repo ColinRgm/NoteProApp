@@ -22,7 +22,7 @@ interface RegisterForm {
     grade: string;
     semester: string;
     test_name: string;
-    pdf: string;
+    pdf: File | null;
 }
 
 interface RegisterProps {
@@ -48,14 +48,19 @@ export default function EditGrade({ branches, modules }: RegisterProps) {
         test_name: uniqueGrade.test_name,
     });
 
-
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setData('pdf', file);
+        }
+    };
 
     const [branchId, setBranchId] = useState(parseInt(uniqueGrade.branch_id));
     const [moduleId, setModuleId] = useState(parseInt(uniqueGrade.module_id));
 
-
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
+
         patch(route('grades.update', uniqueGrade.id), {
             // forceFormData: true,
         });
@@ -175,12 +180,7 @@ export default function EditGrade({ branches, modules }: RegisterProps) {
                             <div>
                                 <div className="flex w-[500px] flex-col gap-1">
                                     <Label htmlFor="pdf">Ajout d'un PDF</Label>
-                                    <Input
-                                        name="pdf"
-                                        type="file"
-                                        accept="application/pdf"
-                                        onChange={(e) => setData('pdf', e.target.files?.[0] || null)}
-                                    />
+                                    <Input name="pdf" type="file" accept="application/pdf" onChange={handleFileChange} />
                                 </div>
                             </div>
 

@@ -22,7 +22,7 @@ interface RegisterForm {
     grade: string;
     semester: string;
     test_name: string;
-    pdf: File
+    pdf: File | null;
 }
 
 interface RegisterProps {
@@ -45,6 +45,13 @@ export default function CreateGrade({ branches, modules }: RegisterProps) {
         semester: '',
         test_name: '',
     });
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setData('pdf', file)
+        }
+    }
 
     const [branchId, setBranchId] = useState(null);
 
@@ -162,7 +169,7 @@ export default function CreateGrade({ branches, modules }: RegisterProps) {
                                         name="pdf"
                                         type="file"
                                         accept="application/pdf"
-                                        onChange={(e) => setData('pdf', e.target.files?.[0] || null)}
+                                        onChange={handleFileChange}
                                     />
                                 </div>
                             </div>
