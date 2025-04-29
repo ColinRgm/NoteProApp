@@ -56,12 +56,7 @@ export default function Table({ users, grades, maxRows }: Props) {
                         <Link href={`/grades/${grade.id}/edit`} key={grade.id}>
                             <PencilLine />
                         </Link>
-                        <form action={`/grades/${grade.id}`} method="POST">
-                            <input type="hidden" name="_method" value="DELETE" />
-                            <button type="submit" className="cursor-pointer">
-                                <Trash2 />
-                            </button>
-                        </form>
+                        <button onClick={() -> handleDelete}><Trash2 /></button>
                     </div>
 
                 ]),
