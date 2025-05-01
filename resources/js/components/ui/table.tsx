@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { PencilLine, Trash2 } from 'lucide-react';
+import DeleteGrade from '@/components/delete-grade';
 
 interface Props {
     users: {
@@ -52,11 +53,11 @@ export default function Table({ users, grades, maxRows }: Props) {
                         {grade.title}
                     </Link>,
                     grade.grade,
-                    <div className="flex flex-row items-start justify-center gap-5">
+                    <div className="flex flex-row items-center justify-end gap-5">
                         <Link href={`/grades/${grade.id}/edit`} key={grade.id}>
                             <PencilLine />
                         </Link>
-                        <button onClick={() -> handleDelete}><Trash2 /></button>
+                        <DeleteGrade id={grade.id}/>
                     </div>
 
                 ]),
@@ -77,7 +78,8 @@ export default function Table({ users, grades, maxRows }: Props) {
                     <tr>
                         {tableConfig.headers.map((header, index) => (
                             <th key={index}
-                                className={`tg-0lax ${index === 0 ? 'text-left' : 'text-center'}`}>{header}</th>
+                                className={`tg-0lax ${
+                                    index === 0 ? 'text-left' : index === 2 ? 'text-right' : 'text-center'}`}>{header}</th>
                         ))}
                     </tr>
                     </thead>

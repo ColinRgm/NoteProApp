@@ -150,7 +150,7 @@ class GradesController extends Controller
     }
 
 
-    public function destroy(Grade $grade, string $id)
+    public function destroy(string $id)
     {
         $grade = Grade::findOrFail($id);
 
