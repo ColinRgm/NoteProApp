@@ -111,13 +111,13 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                                         as="button"
                                         className="rounded-md text-sm text-neutral-600 underline hover:text-neutral-900 focus:ring-2 focus:ring-offset-2 focus:outline-hidden"
                                     >
-                                        Click here to re-send the verification email.
+                                        Cliquez ici pour ré-envoyer un email de vérification.
                                     </Link>
                                 </p>
 
                                 {status === 'verification-link-sent' && (
                                     <div className="mt-2 text-sm font-medium text-green-600">
-                                        A new verification link has been sent to your email address.
+                                        Un nouveau lien de vérification a été envoyé à votre adresse mail.
                                     </div>
                                 )}
                             </div>
